@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTG Metagame Report — Modern</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+  --bg:#0d0d1a;--panel:#1a1a2e;--border:#2a2a4a;
+  --purple:#7b2d8b;--violet:#533483;
+  --text:#e8e8e8;--muted:#9090b0;--gold:#c9a227;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Open Sans',sans-serif;line-height:1.6;font-size:15px}
+a{color:var(--gold);text-decoration:none}
+
+/* ── Header ── */
+.rh{
+  background:linear-gradient(135deg,#080814 0%,#150a28 35%,#240e0e 70%,#080814 100%);
+  border-bottom:2px solid var(--violet);
+  padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden
+}
+.rh::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(83,52,131,.28) 0%,transparent 65%);
+  pointer-events:none
+}
+.rh::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 80% 80%,rgba(139,0,0,.15) 0%,transparent 55%);
+  pointer-events:none
+}
+.rh-inner{position:relative;z-index:1}
+.rh-title{
+  font-family:'Cinzel',serif;font-weight:900;letter-spacing:5px;
+  font-size:clamp(1.9em,5.5vw,3.4em);color:var(--gold);
+  text-shadow:0 0 18px rgba(201,162,39,.65),0 0 55px rgba(83,52,131,.75),0 0 100px rgba(139,0,0,.35);
+  margin-bottom:14px
+}
+.rh-sub{font-family:'Cinzel',serif;font-size:1.05em;color:#c0a0e0;letter-spacing:2px;margin-bottom:6px}
+.rh-meta{font-size:.82em;color:var(--muted);margin-bottom:34px}
+.stats-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.stat-card{
+  background:rgba(20,20,40,.88);border:1px solid var(--violet);
+  border-radius:9px;padding:14px 26px;text-align:center;min-width:108px;
+  box-shadow:0 0 18px rgba(83,52,131,.2)
+}
+.stat-num{
+  font-family:'Cinzel',serif;font-size:1.9em;font-weight:700;
+  color:var(--gold);text-shadow:0 0 14px rgba(201,162,39,.5);line-height:1
+}
+.stat-lbl{font-size:.7em;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:5px}
+
+/* ── Nav ── */
+.toc{background:#0f0f22;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.toc-i{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;overflow-x:auto;scrollbar-width:none}
+.toc-i::-webkit-scrollbar{display:none}
+.toc a{
+  display:block;padding:11px 15px;font-size:.76em;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s
+}
+.toc a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── Container & Sections ── */
+.ctr{max-width:1200px;margin:0 auto;padding:24px 20px 60px}
+.sec{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-top:22px}
+.sec-title{
+  font-family:'Cinzel',serif;font-size:1.25em;font-weight:700;
+  color:var(--gold);border-bottom:1px solid var(--violet);
+  padding-bottom:10px;margin-bottom:18px;letter-spacing:1px
+}
+.nd{color:var(--muted);font-style:italic;padding:12px 0}
+
+/* ── Tables ── */
+table{width:100%;border-collapse:collapse;font-size:.87em}
+thead th{
+  background:linear-gradient(180deg,#201530 0%,var(--panel) 100%);
+  color:var(--gold);font-family:'Cinzel',serif;font-size:.78em;
+  letter-spacing:.5px;padding:10px 12px;text-align:left;
+  border-bottom:1px solid var(--violet);white-space:nowrap
+}
+tbody tr{border-bottom:1px solid rgba(42,42,74,.45)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:rgba(83,52,131,.1)}
+tbody td{padding:8px 12px}
+
+/* Archetype perf */
+tr.over td{color:#72d090}
+tr.under td{color:#d07070}
+tr.over{box-shadow:inset 3px 0 0 #2d8b4e;background:rgba(45,139,78,.06)}
+tr.under{box-shadow:inset 3px 0 0 #8b2d2d;background:rgba(139,45,45,.06)}
+
+/* Player medals */
+.m-gold{color:#ffd700}.m-silver{color:#c0c0c0}.m-bronze{color:#cd7f32}
+tr.rk-gold{background:rgba(255,215,0,.04)}
+tr.rk-silver{background:rgba(192,192,192,.03)}
+tr.rk-bronze{background:rgba(205,127,50,.04)}
+
+/* Rank col */
+td.rk{font-family:'Cinzel',serif;color:var(--muted);text-align:right;padding-right:14px!important;width:38px}
+
+/* Pct bar */
+.pb-wrap{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.pb{height:6px;border-radius:3px;background:linear-gradient(90deg,#7b2d8b,#533483);flex-shrink:0}
+
+/* Cards 2×2 grid */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cs{background:rgba(10,10,22,.55);border:1px solid var(--border);border-radius:7px;padding:16px}
+.cs-title{font-family:'Cinzel',serif;font-size:.9em;color:#c0a0e0;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);letter-spacing:.5px}
+
+/* Rising/falling */
+.rise{color:#72d090;font-weight:600}
+.fall{color:#d07070;font-weight:600}
+
+/* Chart container */
+.cw{position:relative;width:100%}
+
+/* Metagame table */
+.mt{margin-top:18px}
+
+/* Footer */
+.rf{text-align:center;padding:28px 20px;color:var(--muted);font-size:.8em;border-top:1px solid var(--border);margin-top:36px}
+
+/* Responsive */
+@media(max-width:768px){
+  .cg{grid-template-columns:1fr}
+  .stats-row{gap:10px}
+  .stat-card{padding:11px 16px;min-width:88px}
+  .stat-num{font-size:1.6em}
+  .rh-title{letter-spacing:2px}
+}
+</style>
+</head>
+<body>
+<header class="rh">
+<div class="rh-inner">
+<h1 class="rh-title">MTG Metagame Report</h1>
+<div class="rh-sub">Modern</div>
+<div class="rh-meta">Generated mayo 15, 2026</div>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-num">9</div><div class="stat-lbl">Tournaments</div></div>
+<div class="stat-card"><div class="stat-num">97</div><div class="stat-lbl">Deck Entries</div></div>
+<div class="stat-card"><div class="stat-num">77</div><div class="stat-lbl">Players</div></div>
+<div class="stat-card"><div class="stat-num">32</div><div class="stat-lbl">Archetypes</div></div>
+</div>
+</div>
+</header>
+<nav class="toc"><div class="toc-i">
+<a href="#s1">Metagame Share</a><a href="#s2">Archetype Performance</a><a href="#s3">Player Rankings</a><a href="#s4">Most Played Cards</a><a href="#s5">Metagame Evolution</a><a href="#s6">Rising Cards</a>
+</div></nav>
+<main class="ctr">
+<section class="sec" id="s1">
+<h2 class="sec-title">Metagame Share</h2>
+<div class="cw" style="height:600px"><canvas id="mchart"></canvas></div>
+<table class="mt"><thead><tr><th>#</th><th>Archetype</th><th>Appearances</th><th>% of Field</th><th>Wins</th><th>Win%</th><th>Top-8%</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Boros Energy</td><td>18</td><td><div class="pb-wrap"><div class="pb" style="width:55.7px"></div>18.6%</div></td><td>1</td><td>5.6%</td><td>83.3%</td></tr>
+<tr><td class="rk">2</td><td>Jeskai Blink</td><td>11</td><td><div class="pb-wrap"><div class="pb" style="width:34.0px"></div>11.3%</div></td><td>2</td><td>18.2%</td><td>63.6%</td></tr>
+<tr><td class="rk">3</td><td>UW Belcher</td><td>7</td><td><div class="pb-wrap"><div class="pb" style="width:21.6px"></div>7.2%</div></td><td>1</td><td>14.3%</td><td>71.4%</td></tr>
+<tr><td class="rk">4</td><td>Amulet Titan</td><td>6</td><td><div class="pb-wrap"><div class="pb" style="width:18.6px"></div>6.2%</div></td><td>0</td><td>0.0%</td><td>50.0%</td></tr>
+<tr><td class="rk">5</td><td>Domain Zoo</td><td>5</td><td><div class="pb-wrap"><div class="pb" style="width:15.5px"></div>5.2%</div></td><td>1</td><td>20.0%</td><td>40.0%</td></tr>
+<tr><td class="rk">6</td><td>Affinity</td><td>5</td><td><div class="pb-wrap"><div class="pb" style="width:15.5px"></div>5.2%</div></td><td>1</td><td>20.0%</td><td>80.0%</td></tr>
+<tr><td class="rk">7</td><td>Esper Reanimator</td><td>4</td><td><div class="pb-wrap"><div class="pb" style="width:12.4px"></div>4.1%</div></td><td>0</td><td>0.0%</td><td>50.0%</td></tr>
+<tr><td class="rk">8</td><td>Eldrazi Tron</td><td>4</td><td><div class="pb-wrap"><div class="pb" style="width:12.4px"></div>4.1%</div></td><td>0</td><td>0.0%</td><td>75.0%</td></tr>
+<tr><td class="rk">9</td><td>Ruby Storm</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:9.3px"></div>3.1%</div></td><td>1</td><td>33.3%</td><td>66.7%</td></tr>
+<tr><td class="rk">10</td><td>Neobrand</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:9.3px"></div>3.1%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">11</td><td>Merfolk</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:9.3px"></div>3.1%</div></td><td>0</td><td>0.0%</td><td>33.3%</td></tr>
+<tr><td class="rk">12</td><td>Eldrazi Ramp</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:9.3px"></div>3.1%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">13</td><td>Boros Wildfire</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:9.3px"></div>3.1%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">14</td><td>Temur Prowess</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:6.2px"></div>2.1%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">15</td><td>Scapeshift</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:6.2px"></div>2.1%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">16</td><td>Esper Blink</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:6.2px"></div>2.1%</div></td><td>1</td><td>50.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">17</td><td>UR Prowess</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:3.1px"></div>1.0%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">18</td><td>Simic Ritual</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:3.1px"></div>1.0%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">19</td><td>Samwisse Combo</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:3.1px"></div>1.0%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">20</td><td>Red Belcher</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:3.1px"></div>1.0%</div></td><td>1</td><td>100.0%</td><td>100.0%</td></tr>
+</tbody></table>
+</section>
+<section class="sec" id="s2">
+<h2 class="sec-title">Archetype Performance</h2>
+<table><thead><tr><th>Archetype</th><th>Appearances</th><th>Win Rate</th><th>Avg Finish</th><th>Top-8 Rate</th><th>Verdict</th></tr></thead><tbody>
+<tr class="over"><td>Boros Energy</td><td>18</td><td>5.6%</td><td>8.0</td><td>83.3%</td><td>▲ Overperforming</td></tr>
+<tr class="under"><td>Jeskai Blink</td><td>11</td><td>18.2%</td><td>11.5</td><td>63.6%</td><td>▼ Underperforming</td></tr>
+<tr class="under"><td>UW Belcher</td><td>7</td><td>14.3%</td><td>7.3</td><td>71.4%</td><td>▼ Underperforming</td></tr>
+<tr class="under"><td>Amulet Titan</td><td>6</td><td>0.0%</td><td>13.9</td><td>50.0%</td><td>▼ Underperforming</td></tr>
+<tr class="under"><td>Domain Zoo</td><td>5</td><td>20.0%</td><td>10.3</td><td>40.0%</td><td>▼ Underperforming</td></tr>
+<tr class="over"><td>Affinity</td><td>5</td><td>20.0%</td><td>7.3</td><td>80.0%</td><td>▲ Overperforming</td></tr>
+<tr class="under"><td>Esper Reanimator</td><td>4</td><td>0.0%</td><td>11.3</td><td>50.0%</td><td>▼ Underperforming</td></tr>
+<tr class="over"><td>Eldrazi Tron</td><td>4</td><td>0.0%</td><td>7.9</td><td>75.0%</td><td>▲ Overperforming</td></tr>
+<tr class="under"><td>Ruby Storm</td><td>3</td><td>33.3%</td><td>5.2</td><td>66.7%</td><td>▼ Underperforming</td></tr>
+<tr class="over"><td>Neobrand</td><td>3</td><td>0.0%</td><td>5.2</td><td>100.0%</td><td>▲ Overperforming</td></tr>
+<tr class="under"><td>Merfolk</td><td>3</td><td>0.0%</td><td>10.2</td><td>33.3%</td><td>▼ Underperforming</td></tr>
+<tr class="over"><td>Eldrazi Ramp</td><td>3</td><td>0.0%</td><td>6.5</td><td>100.0%</td><td>▲ Overperforming</td></tr>
+<tr class="over"><td>Boros Wildfire</td><td>3</td><td>0.0%</td><td>2.5</td><td>100.0%</td><td>▲ Overperforming</td></tr>
+</tbody></table>
+</section>
+<section class="sec" id="s3">
+<h2 class="sec-title">Player Rankings</h2>
+<table><thead><tr><th>Rank</th><th>Player</th><th>Points</th><th>Wins</th><th>Top-4</th><th>Top-8</th><th>Events</th><th>Fav. Archetype</th><th>Win Rate</th></tr></thead><tbody>
+<tr class="rk-gold"><td class="rk"><span class="m-gold">🥇</span></td><td><strong>Freddy Paredes</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>4</td><td>Boros Wildfire</td><td>41.7%</td></tr>
+<tr class="rk-silver"><td class="rk"><span class="m-silver">🥈</span></td><td><strong>Francisco Miranda</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>2</td><td>Domain Zoo</td><td>83.3%</td></tr>
+<tr class="rk-bronze"><td class="rk"><span class="m-bronze">🥉</span></td><td><strong>Andres Cifuentes</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>2</td><td>UW Belcher</td><td>83.3%</td></tr>
+<tr><td class="rk">4</td><td><strong>Francisca Garcia Veliz</strong></td><td><strong>4</strong></td><td>1</td><td>0</td><td>1</td><td>2</td><td>Jeskai Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">5</td><td><strong>Roberto del Rio</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>Affinity</td><td>100.0%</td></tr>
+<tr><td class="rk">6</td><td><strong>Raul Soto</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>Neobrand</td><td>50.0%</td></tr>
+<tr><td class="rk">7</td><td><strong>Pedro Gonzalez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>3</td><td>Scapeshift</td><td>33.3%</td></tr>
+<tr><td class="rk">8</td><td><strong>Mario Bizama</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>Ruby Storm</td><td>100.0%</td></tr>
+<tr><td class="rk">9</td><td><strong>Marco Gaete</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>Esper Blink</td><td>100.0%</td></tr>
+<tr><td class="rk">10</td><td><strong>Julian Prado</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>Red Belcher</td><td>100.0%</td></tr>
+</tbody></table>
+</section>
+<section class="sec" id="s4">
+<h2 class="sec-title">Most Played Cards</h2>
+<div class="cg">
+<div class="cs">
+<div class="cs-title">Overall</div>
+<table><thead><tr><th>#</th><th>Card</th><th>% Decks</th><th>Avg</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Consign to Memory</td><td>50.5%</td><td>3.5</td></tr>
+<tr><td class="rk">2</td><td>Mountain</td><td>47.4%</td><td>1.3</td></tr>
+<tr><td class="rk">3</td><td>Plains</td><td>46.4%</td><td>2.0</td></tr>
+<tr><td class="rk">4</td><td>Flooded Strand</td><td>45.4%</td><td>3.5</td></tr>
+<tr><td class="rk">5</td><td>Mystical Dispute</td><td>45.4%</td><td>2.2</td></tr>
+<tr><td class="rk">6</td><td>Surgical Extraction</td><td>44.3%</td><td>1.2</td></tr>
+<tr><td class="rk">7</td><td>Wrath of the Skies</td><td>44.3%</td><td>2.5</td></tr>
+<tr><td class="rk">8</td><td>Arid Mesa</td><td>40.2%</td><td>3.7</td></tr>
+<tr><td class="rk">9</td><td>Celestial Purge</td><td>40.2%</td><td>1.4</td></tr>
+<tr><td class="rk">10</td><td>Phlage, Titan of Fire's Fury</td><td>39.2%</td><td>3.8</td></tr>
+</tbody></table>
+</div>
+<div class="cs">
+<div class="cs-title">Creatures</div>
+<table><thead><tr><th>#</th><th>Card</th><th>% Decks</th><th>Avg</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Phlage, Titan of Fire's Fury</td><td>39.2%</td><td>3.8</td></tr>
+<tr><td class="rk">2</td><td>Ragavan, Nimble Pilferer</td><td>35.1%</td><td>3.8</td></tr>
+<tr><td class="rk">3</td><td>Obsidian Charmaw</td><td>29.9%</td><td>2.7</td></tr>
+<tr><td class="rk">4</td><td>Solitude</td><td>24.7%</td><td>3.6</td></tr>
+<tr><td class="rk">5</td><td>The Legend of Roku</td><td>20.6%</td><td>1.7</td></tr>
+<tr><td class="rk">6</td><td>Ajani, Nacatl Pariah</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">7</td><td>Guide of Souls</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">8</td><td>Ocelot Pride</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">9</td><td>Quantum Riddler</td><td>18.6%</td><td>3.8</td></tr>
+<tr><td class="rk">10</td><td>Seasoned Pyromancer</td><td>18.6%</td><td>2.8</td></tr>
+</tbody></table>
+</div>
+<div class="cs">
+<div class="cs-title">Spells (Inst/Sorc)</div>
+<table><thead><tr><th>#</th><th>Card</th><th>% Decks</th><th>Avg</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Consign to Memory</td><td>50.5%</td><td>3.5</td></tr>
+<tr><td class="rk">2</td><td>Mystical Dispute</td><td>45.4%</td><td>2.2</td></tr>
+<tr><td class="rk">3</td><td>Surgical Extraction</td><td>44.3%</td><td>1.2</td></tr>
+<tr><td class="rk">4</td><td>Wrath of the Skies</td><td>44.3%</td><td>2.5</td></tr>
+<tr><td class="rk">5</td><td>Celestial Purge</td><td>40.2%</td><td>1.4</td></tr>
+<tr><td class="rk">6</td><td>Galvanic Discharge</td><td>33.0%</td><td>3.8</td></tr>
+<tr><td class="rk">7</td><td>Orim's Chant</td><td>28.9%</td><td>2.1</td></tr>
+<tr><td class="rk">8</td><td>Prismatic Ending</td><td>22.7%</td><td>1.9</td></tr>
+<tr><td class="rk">9</td><td>Force of Negation</td><td>20.6%</td><td>2.3</td></tr>
+<tr><td class="rk">10</td><td>Sink into Stupor</td><td>18.6%</td><td>3.2</td></tr>
+</tbody></table>
+</div>
+<div class="cs">
+<div class="cs-title">Lands</div>
+<table><thead><tr><th>#</th><th>Card</th><th>% Decks</th><th>Avg</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mountain</td><td>47.4%</td><td>1.3</td></tr>
+<tr><td class="rk">2</td><td>Plains</td><td>46.4%</td><td>2.0</td></tr>
+<tr><td class="rk">3</td><td>Flooded Strand</td><td>45.4%</td><td>3.5</td></tr>
+<tr><td class="rk">4</td><td>Arid Mesa</td><td>40.2%</td><td>3.7</td></tr>
+<tr><td class="rk">5</td><td>Sacred Foundry</td><td>39.2%</td><td>2.2</td></tr>
+<tr><td class="rk">6</td><td>Arena of Glory</td><td>37.1%</td><td>2.6</td></tr>
+<tr><td class="rk">7</td><td>Elegant Parlor</td><td>35.1%</td><td>1.6</td></tr>
+<tr><td class="rk">8</td><td>Island</td><td>32.0%</td><td>1.7</td></tr>
+<tr><td class="rk">9</td><td>Steam Vents</td><td>28.9%</td><td>1.5</td></tr>
+<tr><td class="rk">10</td><td>Marsh Flats</td><td>26.8%</td><td>3.2</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+<section class="sec" id="s5">
+<h2 class="sec-title">Metagame Evolution</h2>
+<div class="cw" style="height:420px"><canvas id="echart"></canvas></div>
+</section>
+<section class="sec" id="s6">
+<h2 class="sec-title">Rising Cards</h2>
+<table><thead><tr><th>Card</th><th>Old %</th><th>New %</th><th>Change</th></tr></thead><tbody>
+<tr><td>Orim's Chant</td><td>19.2%</td><td>40.0%</td><td class="rise">▲ 20.8%</td></tr>
+<tr><td>Sacred Foundry</td><td>32.7%</td><td>46.7%</td><td class="rise">▲ 14.0%</td></tr>
+<tr><td>Malevolent Rumble</td><td>1.9%</td><td>15.6%</td><td class="rise">▲ 13.6%</td></tr>
+<tr><td>Subtlety</td><td>1.9%</td><td>15.6%</td><td class="rise">▲ 13.6%</td></tr>
+<tr><td>Windswept Heath</td><td>15.4%</td><td>28.9%</td><td class="rise">▲ 13.5%</td></tr>
+<tr><td>Cavern of Souls</td><td>0.0%</td><td>13.3%</td><td class="rise">▲ 13.3%</td></tr>
+<tr><td>Vexing Bauble</td><td>26.9%</td><td>40.0%</td><td class="rise">▲ 13.1%</td></tr>
+<tr><td>Celestial Purge</td><td>34.6%</td><td>46.7%</td><td class="rise">▲ 12.1%</td></tr>
+<tr><td>Misty Rainforest</td><td>3.8%</td><td>15.6%</td><td class="rise">▲ 11.7%</td></tr>
+<tr><td>Commercial District</td><td>1.9%</td><td>13.3%</td><td class="rise">▲ 11.4%</td></tr>
+<tr><td>Verdant Catacombs</td><td>0.0%</td><td>11.1%</td><td class="rise">▲ 11.1%</td></tr>
+<tr><td>Mountain</td><td>42.3%</td><td>53.3%</td><td class="rise">▲ 11.0%</td></tr>
+<tr><td>Meltdown</td><td>7.7%</td><td>17.8%</td><td class="rise">▲ 10.1%</td></tr>
+<tr><td>Flare of Denial</td><td>5.8%</td><td>15.6%</td><td class="rise">▲ 9.8%</td></tr>
+<tr><td>Stomping Ground</td><td>3.8%</td><td>13.3%</td><td class="rise">▲ 9.5%</td></tr>
+<tr><td>Ghost Quarter</td><td>1.9%</td><td>11.1%</td><td class="rise">▲ 9.2%</td></tr>
+<tr><td>Galvanic Discharge</td><td>28.8%</td><td>37.8%</td><td class="rise">▲ 8.9%</td></tr>
+<tr><td>Wooded Foothills</td><td>13.5%</td><td>22.2%</td><td class="rise">▲ 8.8%</td></tr>
+<tr><td>Force of Vigor</td><td>9.6%</td><td>17.8%</td><td class="rise">▲ 8.2%</td></tr>
+<tr><td>Forest</td><td>9.6%</td><td>17.8%</td><td class="rise">▲ 8.2%</td></tr>
+</tbody></table>
+</section>
+<footer class="rf">
+<p>Generated by <strong>MTG Metagame Tracker</strong> · mayo 15, 2026</p>
+</footer>
+</main>
+<script>
+(function(){
+const L=['Boros Energy','Jeskai Blink','UW Belcher','Amulet Titan','Domain Zoo','Affinity','Esper Reanimator','Eldrazi Tron','Ruby Storm','Neobrand','Merfolk','Eldrazi Ramp','Boros Wildfire','Temur Prowess','Scapeshift','Esper Blink','UR Prowess','Simic Ritual','Samwisse Combo','Red Belcher'];
+const V=[18.56,11.34,7.22,6.19,5.15,5.15,4.12,4.12,3.09,3.09,3.09,3.09,3.09,2.06,2.06,2.06,1.03,1.03,1.03,1.03];
+function gc(r){var R=Math.round(0x7b+(0xcc-0x7b)*r),G=Math.round(0x2d+(0x44-0x2d)*r),B=Math.round(0x8b+(0x33-0x8b)*r);return`rgba(${R},${G},${B},0.8)`;}
+const C=L.map((_,i)=>gc(i/Math.max(L.length-1,1)));
+new Chart(document.getElementById('mchart'),{
+type:'bar',
+data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
+options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.parsed.x.toFixed(1)+'% of field'}}},
+scales:{x:{grid:{color:'#2a2a4a'},ticks:{color:'#e8e8e8',callback:v=>v.toFixed(1)+'%'}},
+y:{grid:{color:'#2a2a4a'},ticks:{color:'#e8e8e8',font:{size:11}}}}}
+});
+})();
+(function(){
+const EL=['2026-04-04 1st RCQ METAGAME','2026-04-18 1st RCQ Casa de Juegos','2026-04-25 1st La Comarca Providencia','2026-04-25 1st RCQ BLOOD MOON','2026-05-02 1er RCQ Modern La Comarca SB','2026-05-02 RCQ Modern Todo Freak Viña del Mar','2026-05-03 RCQ Game of Magic Concepcion','2026-05-09 RCQ Modern Metagame','2026-05-10 RCQ Modern Zendicard'];
+const ED=[
+{label:'Boros Energy',data:[37.50,20.00,22.22,0.00,25.00,23.08,25.00,25.00,0.00],borderColor:'#7b2d8b',backgroundColor:'#7b2d8b18',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802018',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Jeskai Blink',data:[25.00,10.00,22.22,6.67,0.00,0.00,12.50,25.00,12.50],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e18',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Eldrazi Tron',data:[0.00,0.00,0.00,20.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#c9a227',backgroundColor:'#c9a22718',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Amulet Titan',data:[12.50,10.00,22.22,0.00,0.00,0.00,12.50,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d918',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Eldrazi Ramp',data:[0.00,0.00,0.00,0.00,0.00,15.38,12.50,0.00,0.00],borderColor:'#cc3333',backgroundColor:'#cc333318',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Boros Wildfire',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,12.50,12.50],borderColor:'#2d8b4e',backgroundColor:'#2d8b4e18',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+{label:'Hardened Scales',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00],borderColor:'#9b6b2d',backgroundColor:'#9b6b2d18',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false},
+];
+new Chart(document.getElementById('echart'),{
+type:'line',data:{labels:EL,datasets:ED},
+options:{responsive:true,maintainAspectRatio:false,
+interaction:{mode:'index',intersect:false},
+plugins:{legend:{position:'top',labels:{color:'#e8e8e8',boxWidth:12,font:{family:"'Open Sans'"}}},
+tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%'}}},
+scales:{x:{grid:{color:'#2a2a4a'},ticks:{color:'#e8e8e8',maxRotation:45,minRotation:30,
+callback:function(v){var l=this.getLabelForValue(v);return l?l.substring(0,10):''}}},
+y:{min:0,grid:{color:'#2a2a4a'},ticks:{color:'#e8e8e8',callback:v=>v.toFixed(0)+'%'}}}}
+});
+})();
+</script>
+</body>
+</html>
