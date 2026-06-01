@@ -10,143 +10,118 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-/* ── Variables ────────────────────────────────────────────────────── */
+/* ── Variables ─────────────────────────────────────────────────────── */
 :root{
-  --bg:#0d0d1a;
-  --sb-bg:#1a1e2e;
-  --card-bg:#1a1e2e;
-  --card-border:#2a2a4a;
-  --hbar-bg:#12151f;
-  --purple:#c040a0;
-  --violet:#7b4f7a;
-  --text:#e8e8f0;
-  --muted:#a0a0c0;
-  --gold:#b8962e;
-  --green:#4a6b3a;
-  --hero-img:none;
-  --sb-w:220px;
-  --hbar-h:60px;
+  --bg:#0d0d1a;--sb-bg:#1a1e2e;--card-bg:#1a1e2e;--card-border:#2a2a4a;
+  --hbar-bg:#12151f;--purple:#c040a0;--violet:#7b4f7a;--text:#e8e8f0;
+  --muted:#a0a0c0;--gold:#b8962e;--green:#4a6b3a;--hero-img:none;
+  --sb-w:220px;--hbar-h:60px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6}
 a{color:var(--gold);text-decoration:none}
 
-/* ── Sidebar ───────────────────────────────────────────────────────── */
+/* ── Sidebar ────────────────────────────────────────────────────────── */
 .sidebar{
   position:fixed;left:0;top:0;bottom:0;width:var(--sb-w);
   background:var(--sb-bg);border-right:1px solid var(--card-border);
   overflow-y:auto;z-index:200;display:flex;flex-direction:column;
   transition:transform .25s ease
 }
-.sb-brand{
-  padding:16px 14px 14px;border-bottom:1px solid var(--card-border);
-  display:flex;align-items:center;gap:10px;min-height:var(--hbar-h)
-}
+.sb-brand{padding:16px 14px 14px;border-bottom:1px solid var(--card-border);
+  display:flex;align-items:center;gap:10px;min-height:var(--hbar-h)}
 .rh-logo-container{background:#ffffff;border-radius:4px;padding:4px;display:inline-block;flex-shrink:0}
 .rh-logo{max-height:45px;width:auto;object-fit:contain;display:block}
-.sb-title{
-  font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:.82em;font-weight:700;
-  color:var(--gold);letter-spacing:2px;line-height:1.2;
-  text-shadow:0 0 12px rgba(184,150,46,.35)
-}
+.sb-title{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:.82em;font-weight:700;
+  color:var(--gold);letter-spacing:2px;line-height:1.2;text-shadow:0 0 12px rgba(184,150,46,.35)}
 .sb-nav{list-style:none;padding:10px 0;flex:1}
-.sb-nav li a{
-  display:flex;align-items:center;gap:9px;padding:9px 16px;
+.sb-nav li a{display:flex;align-items:center;gap:9px;padding:9px 16px;
   color:var(--muted);font-size:.82em;text-decoration:none;
-  border-left:3px solid transparent;transition:all .15s;white-space:nowrap;overflow:hidden
-}
+  border-left:3px solid transparent;transition:all .15s;white-space:nowrap;overflow:hidden}
 .sb-nav li a:hover{color:var(--text);background:rgba(192,64,160,.08);border-left-color:var(--violet)}
 .sb-nav li a.active{color:var(--gold);background:rgba(184,150,46,.07);border-left-color:var(--gold)}
 .sb-icon{font-size:.95em;flex-shrink:0}
 .sb-footer{padding:12px 14px;font-size:.68em;color:#555580;border-top:1px solid var(--card-border)}
 
-/* ── Layout wrapper (right of sidebar) ─────────────────────────────── */
+/* ── Layout ─────────────────────────────────────────────────────────── */
 .layout{margin-left:var(--sb-w);display:flex;flex-direction:column;min-height:100vh}
 
-/* ── Header bar ────────────────────────────────────────────────────── */
-.hbar{
-  position:sticky;top:0;height:var(--hbar-h);z-index:100;
+/* ── Header bar ─────────────────────────────────────────────────────── */
+.hbar{position:sticky;top:0;height:var(--hbar-h);z-index:100;
   display:flex;align-items:center;padding:0 20px;gap:12px;
   background:var(--hbar-bg);border-bottom:1px solid var(--card-border);
   background-image:linear-gradient(to right,rgba(18,21,31,.97),rgba(18,21,31,.92)),var(--hero-img);
-  background-size:cover;background-position:center top
-}
+  background-size:cover;background-position:center top}
 .hbar-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
-.hbar-hamburger{
-  display:none;background:transparent;border:none;
-  color:var(--muted);cursor:pointer;font-size:1.2em;padding:4px 6px;flex-shrink:0
-}
-.hbar-title{
-  font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.05em;font-weight:700;
-  color:var(--gold);letter-spacing:3px;white-space:nowrap;
-  text-shadow:0 0 16px rgba(184,150,46,.4)
-}
-.hbar-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-.hbar-badge{
-  background:rgba(192,64,160,.12);border:1px solid rgba(192,64,160,.35);
+.hbar-hamburger{display:none;background:transparent;border:none;
+  color:var(--muted);cursor:pointer;font-size:1.2em;padding:4px 6px;flex-shrink:0}
+.hbar-title{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.05em;font-weight:700;
+  color:var(--gold);letter-spacing:3px;white-space:nowrap;text-shadow:0 0 16px rgba(184,150,46,.4)}
+.hbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.hbar-badge{background:rgba(192,64,160,.12);border:1px solid rgba(192,64,160,.35);
   color:#d080c0;padding:3px 10px;border-radius:12px;font-size:.73em;
-  font-family:'Cinzel','Times New Roman',Georgia,serif;letter-spacing:1px;white-space:nowrap
-}
+  font-family:'Cinzel','Times New Roman',Georgia,serif;letter-spacing:1px;white-space:nowrap}
 .hbar-meta{font-size:.72em;color:var(--muted);white-space:nowrap}
 .lang-toggle{display:flex;align-items:center;gap:4px}
-.lang-btn{
-  background:transparent;border:1px solid rgba(184,150,46,.3);
+.lang-btn{background:transparent;border:1px solid rgba(184,150,46,.3);
   color:var(--muted);cursor:pointer;font-family:'Cinzel','Times New Roman',Georgia,serif;
-  font-size:.68em;letter-spacing:1px;padding:3px 8px;border-radius:4px;transition:all .18s
-}
+  font-size:.68em;letter-spacing:1px;padding:3px 8px;border-radius:4px;transition:all .18s}
 .lang-btn:hover{border-color:var(--gold);color:var(--gold)}
 .lang-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,150,46,.1);font-weight:700}
 .lang-sep{color:var(--muted);font-size:.85em;user-select:none}
 
-/* ── Main content area ─────────────────────────────────────────────── */
+/* ── Period tabs ────────────────────────────────────────────────────── */
+.period-tabs{display:flex;gap:5px;align-items:center}
+.ptab{
+  background:transparent;border:1px solid var(--card-border);
+  color:var(--muted);cursor:pointer;font-family:'Cinzel','Times New Roman',Georgia,serif;
+  font-size:.68em;letter-spacing:1px;padding:4px 10px;border-radius:4px;
+  transition:all .2s;white-space:nowrap
+}
+.ptab:hover{border-color:var(--violet);color:var(--text)}
+.ptab-pre.active{border-color:#d07040;color:#e09060;background:rgba(208,112,64,.12);
+  box-shadow:0 0 8px rgba(208,112,64,.25);font-weight:700}
+.ptab-post.active{border-color:#40b070;color:#60d090;background:rgba(64,176,112,.12);
+  box-shadow:0 0 8px rgba(64,176,112,.25);font-weight:700}
+.ptab-all.active{border-color:var(--purple);color:#d080c0;background:rgba(192,64,160,.12);
+  box-shadow:0 0 8px rgba(192,64,160,.25);font-weight:700}
+
+/* ── Main content ───────────────────────────────────────────────────── */
 .main{flex:1;padding:18px 22px 60px}
 
-/* ── KPI row ───────────────────────────────────────────────────────── */
+/* ── KPI row ────────────────────────────────────────────────────────── */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.kpi-card{
-  background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
+.kpi-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
   padding:14px 16px;display:flex;align-items:center;gap:12px;
-  box-shadow:0 2px 16px rgba(0,0,0,.3),0 0 0 0 transparent;
-  transition:box-shadow .2s
-}
+  box-shadow:0 2px 16px rgba(0,0,0,.3);transition:box-shadow .2s}
 .kpi-card:hover{box-shadow:0 2px 20px rgba(0,0,0,.4),0 0 12px rgba(192,64,160,.1)}
 .kpi-icon{font-size:1.7em;opacity:.8;flex-shrink:0;line-height:1}
 .kpi-body{flex:1;min-width:0}
-.kpi-num{
-  font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.65em;font-weight:700;
-  color:var(--gold);line-height:1;text-shadow:0 0 12px rgba(184,150,46,.4)
-}
+.kpi-num{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.65em;font-weight:700;
+  color:var(--gold);line-height:1;text-shadow:0 0 12px rgba(184,150,46,.4)}
 .kpi-lbl{font-size:.68em;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-top:4px}
 
-/* ── Section cards ─────────────────────────────────────────────────── */
-.card{
-  background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
-  padding:20px 18px;margin-bottom:18px;
-  box-shadow:0 2px 10px rgba(0,0,0,.2)
-}
-.sec-title{
-  font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.05em;font-weight:700;
+/* ── Section cards ──────────────────────────────────────────────────── */
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
+  padding:20px 18px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.sec-title{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.05em;font-weight:700;
   color:var(--gold);border-bottom:1px solid var(--card-border);
-  padding-bottom:9px;margin-bottom:8px;letter-spacing:1px;
-  display:flex;align-items:center;gap:8px
-}
+  padding-bottom:9px;margin-bottom:8px;letter-spacing:1px;display:flex;align-items:center;gap:8px}
 .sec-icon{font-size:.95em;opacity:.85}
-.sec-count{font-size:.65em;color:var(--muted);font-family:'Open Sans',Arial,Helvetica,sans-serif;font-weight:400;letter-spacing:0;margin-left:auto}
+.sec-count{font-size:.65em;color:var(--muted);font-family:'Open Sans',Arial,Helvetica,sans-serif;
+  font-weight:400;letter-spacing:0;margin-left:auto}
 .sec-desc{font-style:italic;color:#7878a0;font-size:.85em;margin-bottom:16px;line-height:1.5}
 .nd{color:var(--muted);font-style:italic;padding:10px 0}
 
-/* ── Tables ────────────────────────────────────────────────────────── */
+/* ── Tables ─────────────────────────────────────────────────────────── */
 .tbl-wrap{overflow-x:auto}
 .tbl-wrap table{min-width:480px}
 table{width:100%;border-collapse:collapse;font-size:.85em}
-thead th{
-  background:#0f3460;color:var(--gold);
+thead th{background:#0f3460;color:var(--gold);
   font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:.75em;letter-spacing:.5px;
-  padding:10px 12px;text-align:left;white-space:nowrap;
-  cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;
-  box-shadow:inset 0 -2px 0 var(--purple)
-}
+  padding:10px 12px;text-align:left;white-space:nowrap;cursor:pointer;user-select:none;
+  position:sticky;top:0;z-index:10;box-shadow:inset 0 -2px 0 var(--purple)}
 thead th:hover{background:#123870;color:#d4b050}
 thead th[data-sort="1"]::after{content:' ▲';color:var(--purple);font-size:.85em}
 thead th[data-sort="-1"]::after{content:' ▼';color:var(--purple);font-size:.85em}
@@ -155,85 +130,65 @@ tbody tr:nth-child(even){background:#16213e}
 tbody tr{border-bottom:1px solid rgba(42,42,74,.5);transition:background .12s}
 tbody tr:hover{background:rgba(83,52,131,.28)!important}
 tbody td{padding:8px 12px}
-
-/* Show-more button */
-.smb{
-  background:transparent;border:1px solid var(--card-border);color:var(--muted);
+.smb{background:transparent;border:1px solid var(--card-border);color:var(--muted);
   cursor:pointer;font-size:.78em;padding:5px 18px;border-radius:4px;
-  transition:all .18s;font-family:'Open Sans',Arial,Helvetica,sans-serif
-}
+  transition:all .18s;font-family:'Open Sans',Arial,Helvetica,sans-serif}
 .smb:hover{border-color:var(--gold);color:var(--gold)}
-
-/* Archetype perf rows */
 tr.over td{color:#72d090}
 tr.under td{color:#d07878}
 tr.over{box-shadow:inset 3px 0 0 #4a6b3a;background:rgba(74,107,58,.10)!important}
 tr.under{box-shadow:inset 3px 0 0 #8b2d2d;background:rgba(139,45,45,.08)!important}
-
-/* Player medals */
 .m-gold{color:#ffd700}.m-silver{color:#c0c0c0}.m-bronze{color:#cd7f32}
 tr.rk-gold{background:rgba(255,215,0,.04)!important}
 tr.rk-silver{background:rgba(192,192,192,.03)!important}
 tr.rk-bronze{background:rgba(205,127,50,.04)!important}
-
-/* Rank col */
-td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);text-align:right;padding-right:14px!important;width:38px}
-
-/* Progress bar */
+td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
+  text-align:right;padding-right:14px!important;width:38px}
 .pb-wrap{display:flex;align-items:center;gap:7px;white-space:nowrap}
 .pb{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--violet));flex-shrink:0}
 
-/* Cards 2×2 grid */
+/* ── Cards 2×2 grid ─────────────────────────────────────────────────── */
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .cs{background:rgba(9,11,24,.55);border:1px solid var(--card-border);border-radius:6px;padding:14px}
-.cs-title{
-  font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:.85em;color:#c8a8e0;
-  margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--card-border);letter-spacing:.5px
-}
+.cs-title{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:.85em;color:#c8a8e0;
+  margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--card-border);letter-spacing:.5px}
 
-/* Rising / falling */
+/* ── Rising / falling ───────────────────────────────────────────────── */
 .rise{color:#72d090;font-weight:600}
 .fall{color:#d07878;font-weight:600}
 
-/* Chart container */
+/* ── Chart containers ───────────────────────────────────────────────── */
 .cw{position:relative;width:100%;transition:height .25s ease}
 .mt{margin-top:16px}
 
-/* Evolution filter panel */
+/* ── Evolution filter panel ─────────────────────────────────────────── */
 .efp{margin-bottom:14px}
 .efp-btns{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.efp-btn{
-  background:transparent;border:1px solid var(--card-border);color:var(--muted);
-  cursor:pointer;font-size:.77em;padding:4px 12px;border-radius:4px;
-  transition:all .16s;font-family:'Open Sans',Arial,Helvetica,sans-serif
-}
+.efp-btn{background:transparent;border:1px solid var(--card-border);color:var(--muted);
+  cursor:pointer;font-size:.77em;padding:4px 12px;border-radius:4px;transition:all .16s;
+  font-family:'Open Sans',Arial,Helvetica,sans-serif}
 .efp-btn:hover{border-color:var(--gold);color:var(--gold)}
 .efp-count{font-size:.77em;color:var(--muted);margin-left:4px}
 .efp-lbl{font-size:.77em;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.efp-grid{
-  display:flex;flex-wrap:wrap;gap:6px 14px;max-height:130px;overflow-y:auto;
-  padding:8px 10px;background:rgba(9,11,24,.5);border:1px solid var(--card-border);border-radius:6px
-}
+.efp-grid{display:flex;flex-wrap:wrap;gap:6px 14px;max-height:130px;overflow-y:auto;
+  padding:8px 10px;background:rgba(9,11,24,.5);border:1px solid var(--card-border);border-radius:6px}
 .efp-grid::-webkit-scrollbar{width:6px}
 .efp-grid::-webkit-scrollbar-track{background:transparent}
 .efp-grid::-webkit-scrollbar-thumb{background:var(--card-border);border-radius:3px}
-.efa{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:.79em;color:var(--text);white-space:nowrap;user-select:none}
+.efa{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:.79em;
+  color:var(--text);white-space:nowrap;user-select:none}
 .efa input[type=checkbox]{cursor:pointer;accent-color:var(--purple)}
 .efa-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;display:inline-block}
 
-/* Footer */
-.rf{
-  text-align:center;padding:18px 20px;color:var(--muted);font-size:.77em;
-  border-top:1px solid var(--card-border)
-}
+/* ── Footer ─────────────────────────────────────────────────────────── */
+.rf{text-align:center;padding:18px 20px;color:var(--muted);font-size:.77em;
+  border-top:1px solid var(--card-border)}
 
-/* Mobile overlay */
+/* ── Overlay ────────────────────────────────────────────────────────── */
 .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:190}
 
-/* ── Responsive ────────────────────────────────────────────────────── */
-@media(max-width:900px){
-  .hbar-meta{display:none}
-}
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media(max-width:900px){.hbar-meta{display:none}}
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%)}
   .sidebar.open{transform:translateX(0)}
@@ -244,6 +199,8 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
   .cg{grid-template-columns:1fr}
   .main{padding:12px 12px 40px}
   .hbar{padding:0 12px}
+  .period-tabs{gap:3px}
+  .ptab{font-size:.62em;padding:3px 7px}
 }
 @media(max-width:480px){
   .kpi-row{grid-template-columns:repeat(2,1fr)}
@@ -273,23 +230,96 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
 <header class="hbar">
 <div class="hbar-left"><button class="hbar-hamburger" id="sbtoggle" aria-label="Menu">&#9776;</button><span class="hbar-title">DAILY MODERN</span></div>
 <div class="hbar-right">
-<span class="hbar-badge">Modern</span>
-<span class="hbar-meta"><span data-es="Generado el" data-en="Generated">Generado el</span> mayo 31, 2026</span>
+<div class="period-tabs">
+<button class="ptab ptab-pre" id="ptab-pre" onclick="setPeriod('pre')">Pre-Ban</button>
+<button class="ptab ptab-post" id="ptab-post" onclick="setPeriod('post')">Post-Ban</button>
+<button class="ptab ptab-all active" id="ptab-all" onclick="setPeriod('all')">All Time</button>
+</div>
+<span class="hbar-badge" id="period-badge" data-fmt="All Formats">All Formats — All Time</span>
+<span class="hbar-meta"><span data-es="Generado el" data-en="Generated">Generado el</span> junio 1, 2026</span>
 <div class="lang-toggle"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button><span class="lang-sep"> | </span><button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button></div>
 </div>
 </header>
 <main class="main">
 <div class="kpi-row">
-<div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-body"><div class="kpi-num">13</div><div class="kpi-lbl" data-es="Torneos" data-en="Tournaments">Torneos</div></div></div>
-<div class="kpi-card"><div class="kpi-icon">🃏</div><div class="kpi-body"><div class="kpi-num">141</div><div class="kpi-lbl" data-es="Mazos" data-en="Deck Entries">Mazos</div></div></div>
-<div class="kpi-card"><div class="kpi-icon">👤</div><div class="kpi-body"><div class="kpi-num">100</div><div class="kpi-lbl" data-es="Jugadores" data-en="Players">Jugadores</div></div></div>
-<div class="kpi-card"><div class="kpi-icon">📊</div><div class="kpi-body"><div class="kpi-num">45</div><div class="kpi-lbl" data-es="Arquetipos" data-en="Archetypes">Arquetipos</div></div></div>
+<div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-body"><div class="kpi-num" id="kpi-t">13</div><div class="kpi-lbl" data-es="Torneos" data-en="Tournaments">Torneos</div></div></div>
+<div class="kpi-card"><div class="kpi-icon">🃏</div><div class="kpi-body"><div class="kpi-num" id="kpi-d">141</div><div class="kpi-lbl" data-es="Mazos" data-en="Deck Entries">Mazos</div></div></div>
+<div class="kpi-card"><div class="kpi-icon">👤</div><div class="kpi-body"><div class="kpi-num" id="kpi-p">100</div><div class="kpi-lbl" data-es="Jugadores" data-en="Players">Jugadores</div></div></div>
+<div class="kpi-card"><div class="kpi-icon">📊</div><div class="kpi-body"><div class="kpi-num" id="kpi-a">45</div><div class="kpi-lbl" data-es="Arquetipos" data-en="Archetypes">Arquetipos</div></div></div>
 </div>
 <section class="card" id="s1">
-<h2 class="sec-title"><span class="sec-icon">📊</span><span data-es="Presencia de Metagame" data-en="Metagame Share">Presencia de Metagame</span><span class="sec-count">(45)</span></h2>
+<h2 class="sec-title"><span class="sec-icon">📊</span><span data-es="Presencia de Metagame" data-en="Metagame Share">Presencia de Metagame</span><span class="sec-count" id="cnt-s1"></span></h2>
 <p class="sec-desc" data-es="Porcentaje de presencia de cada arquetipo en el campo. Mayor % significa más jugadores eligieron ese arquetipo." data-en="Presence percentage of each archetype. Higher % means more players chose that archetype.">Porcentaje de presencia de cada arquetipo en el campo. Mayor % significa más jugadores eligieron ese arquetipo.</p>
-<div class="cw" style="height:1170px"><canvas id="mchart"></canvas></div>
-<div class="tbl-wrap"><table class="mt"><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th></tr></thead><tbody>
+<div class="pblock pblock-pre" style="display:none">
+<div class="cw" id="mcw-pre" style="height:988px"><canvas id="mchart-pre"></canvas></div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Boros Energy</td><td>22</td><td><div class="pb-wrap"><div class="pb" style="width:55.9px"></div>18.6%</div></td><td>1</td><td>4.5%</td><td>81.8%</td></tr>
+<tr><td class="rk">2</td><td>Jeskai Blink</td><td>12</td><td><div class="pb-wrap"><div class="pb" style="width:30.5px"></div>10.2%</div></td><td>2</td><td>16.7%</td><td>66.7%</td></tr>
+<tr><td class="rk">3</td><td>Affinity</td><td>9</td><td><div class="pb-wrap"><div class="pb" style="width:22.9px"></div>7.6%</div></td><td>2</td><td>22.2%</td><td>55.6%</td></tr>
+<tr><td class="rk">4</td><td>UW Belcher</td><td>8</td><td><div class="pb-wrap"><div class="pb" style="width:20.3px"></div>6.8%</div></td><td>1</td><td>12.5%</td><td>62.5%</td></tr>
+<tr><td class="rk">5</td><td>Amulet Titan</td><td>7</td><td><div class="pb-wrap"><div class="pb" style="width:17.8px"></div>5.9%</div></td><td>0</td><td>0.0%</td><td>42.9%</td></tr>
+<tr><td class="rk">6</td><td>Domain Zoo</td><td>6</td><td><div class="pb-wrap"><div class="pb" style="width:15.3px"></div>5.1%</div></td><td>1</td><td>16.7%</td><td>50.0%</td></tr>
+<tr><td class="rk">7</td><td>Eldrazi Tron</td><td>4</td><td><div class="pb-wrap"><div class="pb" style="width:10.2px"></div>3.4%</div></td><td>0</td><td>0.0%</td><td>75.0%</td></tr>
+<tr><td class="rk">8</td><td>Sultai Ritual</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>0</td><td>0.0%</td><td>66.7%</td></tr>
+<tr><td class="rk">9</td><td>Ruby Storm</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>1</td><td>33.3%</td><td>66.7%</td></tr>
+<tr><td class="rk">10</td><td>Neobrand</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">11</td><td>Merfolk</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>0</td><td>0.0%</td><td>33.3%</td></tr>
+<tr><td class="rk">12</td><td>Esper Reanimator</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>0</td><td>0.0%</td><td>66.7%</td></tr>
+<tr><td class="rk">13</td><td>Eldrazi Ramp</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">14</td><td>Boros Wildfire</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:7.6px"></div>2.5%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">15</td><td>UR Prowess</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:5.1px"></div>1.7%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">16</td><td>Temur Prowess</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:5.1px"></div>1.7%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">17</td><td>Scapeshift</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:5.1px"></div>1.7%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">18</td><td>Living End</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:5.1px"></div>1.7%</div></td><td>0</td><td>0.0%</td><td>50.0%</td></tr>
+<tr><td class="rk">19</td><td>Esper Blink</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:5.1px"></div>1.7%</div></td><td>1</td><td>50.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">20</td><td>Zoo Reanimator</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">21</td><td>Simic Ritual</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">22</td><td>Samwisse Combo</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">23</td><td>Red Belcher</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>1</td><td>100.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">24</td><td>Rakdos Mid</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">25</td><td>Mono White Control</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">26</td><td>Mono Red Belcher Storm</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">27</td><td>Mono Black Necrodominance</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">28</td><td>Jeskai Energy Control</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">29</td><td>Hollow One</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">30</td><td>Hardened Scales</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">31</td><td>Hammer Time</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">32</td><td>Grixis Fenix</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">33</td><td>Goryo's Vengeance</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">34</td><td>Esper Goryo's</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">35</td><td>Esper Control</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">36</td><td>Dimir Oculus</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">37</td><td>Dimir Midrange</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">38</td><td>Broodscale</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<div class="cw" id="mcw-post" style="height:494px"><canvas id="mchart-post"></canvas></div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>UW Control</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:26.1px"></div>8.7%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">2</td><td>UW Blink</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:26.1px"></div>8.7%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">3</td><td>Living End</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:26.1px"></div>8.7%</div></td><td>1</td><td>50.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">4</td><td>Affinity</td><td>2</td><td><div class="pb-wrap"><div class="pb" style="width:26.1px"></div>8.7%</div></td><td>0</td><td>0.0%</td><td>50.0%</td></tr>
+<tr><td class="rk">5</td><td>UW Belcher</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">6</td><td>Neobrand</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">7</td><td>Mono Black Necrodominance</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">8</td><td>Grull Ponza</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">9</td><td>Grixis Reanimator</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">10</td><td>Esper Goryo's</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">11</td><td>Esper Control</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">12</td><td>Esper Blink</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">13</td><td>Eldrazi Tron</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>1</td><td>100.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">14</td><td>Eldrazi Ramp</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">15</td><td>Boros Wildfire</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>1</td><td>100.0%</td><td>100.0%</td></tr>
+<tr><td class="rk">16</td><td>Boros Energy</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">17</td><td>Boros Burn</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">18</td><td>BG Midrange</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+<tr><td class="rk">19</td><td>8 Rack</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:13.0px"></div>4.3%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-all">
+<div class="cw" id="mcw-all" style="height:1170px"><canvas id="mchart-all"></canvas></div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th></tr></thead><tbody>
 <tr><td class="rk">1</td><td>Boros Energy</td><td>23</td><td><div class="pb-wrap"><div class="pb" style="width:48.9px"></div>16.3%</div></td><td>1</td><td>4.3%</td><td>78.3%</td></tr>
 <tr><td class="rk">2</td><td>Jeskai Blink</td><td>12</td><td><div class="pb-wrap"><div class="pb" style="width:25.5px"></div>8.5%</div></td><td>2</td><td>16.7%</td><td>66.7%</td></tr>
 <tr><td class="rk">3</td><td>Affinity</td><td>11</td><td><div class="pb-wrap"><div class="pb" style="width:23.4px"></div>7.8%</div></td><td>2</td><td>18.2%</td><td>54.5%</td></tr>
@@ -336,10 +366,33 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
 <tr><td class="rk">44</td><td>BG Midrange</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.1px"></div>0.7%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
 <tr><td class="rk">45</td><td>8 Rack</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.1px"></div>0.7%</div></td><td>0</td><td>0.0%</td><td>0.0%</td></tr>
 </tbody></table></div>
+</div>
 </section>
 <section class="card" id="s2">
-<h2 class="sec-title"><span class="sec-icon">🏆</span><span data-es="Rendimiento por Arquetipo" data-en="Archetype Performance">Rendimiento por Arquetipo</span><span class="sec-count">(16)</span></h2>
+<h2 class="sec-title"><span class="sec-icon">🏆</span><span data-es="Rendimiento por Arquetipo" data-en="Archetype Performance">Rendimiento por Arquetipo</span><span class="sec-count" id="cnt-s2"></span></h2>
 <p class="sec-desc" data-es="Rendimiento de cada arquetipo. Verde = sobre-rinde respecto a su presencia. Rojo = bajo rendimiento." data-en="Archetype performance. Green = overperforming. Red = underperforming.">Rendimiento de cada arquetipo. Verde = sobre-rinde respecto a su presencia. Rojo = bajo rendimiento.</p>
+<div class="pblock pblock-pre" style="display:none">
+<div class="tbl-wrap"><table><thead><tr><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="Win Rate" data-en="Win Rate" data-sort="0">Win Rate</th><th data-es="Fin. Promedio" data-en="Avg Finish" data-sort="0">Fin. Promedio</th><th data-es="Pos. Exacta" data-en="Avg. Place" data-sort="0">Pos. Exacta</th><th data-es="Tasa Top-8" data-en="Top-8 Rate" data-sort="0">Tasa Top-8</th><th data-es="Veredicto" data-en="Verdict" data-sort="0">Veredicto</th></tr></thead><tbody>
+<tr class="over"><td>Boros Energy</td><td>22</td><td>4.5%</td><td>7.8</td><td>12.8</td><td>81.8%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
+<tr class="under"><td>Jeskai Blink</td><td>12</td><td>16.7%</td><td>9.8</td><td>14.5</td><td>66.7%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="under"><td>Affinity</td><td>9</td><td>22.2%</td><td>9.5</td><td>12.0</td><td>55.6%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="under"><td>UW Belcher</td><td>8</td><td>12.5%</td><td>9.4</td><td>10.0</td><td>62.5%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="under"><td>Amulet Titan</td><td>7</td><td>0.0%</td><td>11.9</td><td>8.7</td><td>42.9%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="under"><td>Domain Zoo</td><td>6</td><td>16.7%</td><td>7.7</td><td>8.0</td><td>50.0%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="over"><td>Eldrazi Tron</td><td>4</td><td>0.0%</td><td>10.9</td><td>17.0</td><td>75.0%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
+<tr class="under"><td>Sultai Ritual</td><td>3</td><td>0.0%</td><td>11.0</td><td>23.0</td><td>66.7%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="under"><td>Ruby Storm</td><td>3</td><td>33.3%</td><td>5.2</td><td>15.0</td><td>66.7%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="over"><td>Neobrand</td><td>3</td><td>0.0%</td><td>5.2</td><td>3.5</td><td>100.0%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
+<tr class="under"><td>Merfolk</td><td>3</td><td>0.0%</td><td>10.2</td><td>11.5</td><td>33.3%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="under"><td>Esper Reanimator</td><td>3</td><td>0.0%</td><td>7.0</td><td>16.0</td><td>66.7%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
+<tr class="over"><td>Eldrazi Ramp</td><td>3</td><td>0.0%</td><td>6.5</td><td>—</td><td>100.0%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
+<tr class="over"><td>Boros Wildfire</td><td>3</td><td>0.0%</td><td>2.5</td><td>—</td><td>100.0%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<p class="nd" data-es="Sin datos (mín. 3 apariciones requeridas)." data-en="No data available (min 3 appearances required).">Sin datos (mín. 3 apariciones requeridas).</p>
+</div>
+<div class="pblock pblock-all">
 <div class="tbl-wrap"><table><thead><tr><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="Win Rate" data-en="Win Rate" data-sort="0">Win Rate</th><th data-es="Fin. Promedio" data-en="Avg Finish" data-sort="0">Fin. Promedio</th><th data-es="Pos. Exacta" data-en="Avg. Place" data-sort="0">Pos. Exacta</th><th data-es="Tasa Top-8" data-en="Top-8 Rate" data-sort="0">Tasa Top-8</th><th data-es="Veredicto" data-en="Verdict" data-sort="0">Veredicto</th></tr></thead><tbody>
 <tr class="over"><td>Boros Energy</td><td>23</td><td>4.3%</td><td>9.5</td><td>12.8</td><td>78.3%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
 <tr class="under"><td>Jeskai Blink</td><td>12</td><td>16.7%</td><td>9.8</td><td>14.5</td><td>66.7%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
@@ -358,10 +411,131 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
 <tr class="under"><td>Esper Reanimator</td><td>3</td><td>0.0%</td><td>7.0</td><td>16.0</td><td>66.7%</td><td><span data-es="▼ Bajo rendimiento" data-en="▼ Underperforming">▼ Bajo rendimiento</span></td></tr>
 <tr class="over"><td>Esper Blink</td><td>3</td><td>33.3%</td><td>4.7</td><td>4.0</td><td>100.0%</td><td><span data-es="▲ Sobre-rinde" data-en="▲ Overperforming">▲ Sobre-rinde</span></td></tr>
 </tbody></table></div>
+</div>
 </section>
 <section class="card" id="s3">
-<h2 class="sec-title"><span class="sec-icon">👤</span><span data-es="Ranking de Jugadores" data-en="Player Rankings">Ranking de Jugadores</span><span class="sec-count">(100)</span></h2>
+<h2 class="sec-title"><span class="sec-icon">👤</span><span data-es="Ranking de Jugadores" data-en="Player Rankings">Ranking de Jugadores</span><span class="sec-count" id="cnt-s3"></span></h2>
 <p class="sec-desc" data-es="Ranking por puntos acumulados. Puntos: Ganador=3, Top 4=2, Top 8=1." data-en="Ranking by accumulated points. Points: Winner=3, Top 4=2, Top 8=1.">Ranking por puntos acumulados. Puntos: Ganador=3, Top 4=2, Top 8=1.</p>
+<div class="pblock pblock-pre" style="display:none">
+<div class="tbl-wrap"><table><thead><tr><th data-es="Rank" data-en="Rank" data-sort="0">Rank</th><th data-es="Jugador" data-en="Player" data-sort="0">Jugador</th><th data-es="Puntos" data-en="Points" data-sort="0">Puntos</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Top 4" data-en="Top 4" data-sort="0">Top 4</th><th data-es="Top 8" data-en="Top 8" data-sort="0">Top 8</th><th data-es="Eventos" data-en="Events" data-sort="0">Eventos</th><th data-es="Mejor Posición" data-en="Best Finish" data-sort="0">Mejor Posición</th><th data-es="Arq. Favorito" data-en="Fav. Archetype" data-sort="0">Arq. Favorito</th><th data-es="Win Rate" data-en="Win Rate" data-sort="0">Win Rate</th></tr></thead><tbody>
+<tr class="rk-gold"><td class="rk"><span class="m-gold">🥇</span></td><td><strong>Freddy Paredes</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>4</td><td>12th</td><td>Boros Wildfire</td><td>41.7%</td></tr>
+<tr class="rk-silver"><td class="rk"><span class="m-silver">🥈</span></td><td><strong>Francisco Miranda</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>2</td><td>1st</td><td>Domain Zoo</td><td>83.3%</td></tr>
+<tr class="rk-bronze"><td class="rk"><span class="m-bronze">🥉</span></td><td><strong>Andres Cifuentes</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>3</td><td>2nd</td><td>UW Belcher</td><td>55.6%</td></tr>
+<tr><td class="rk">4</td><td><strong>Francisca Garcia Veliz</strong></td><td><strong>4</strong></td><td>1</td><td>0</td><td>1</td><td>2</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">5</td><td><strong>Tomas Martinez Cordova</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
+<tr><td class="rk">6</td><td><strong>Roberto del Rio</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
+<tr><td class="rk">7</td><td><strong>Pedro Gonzalez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>3</td><td>16th</td><td>Scapeshift</td><td>33.3%</td></tr>
+<tr><td class="rk">8</td><td><strong>Mario Bizama</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>100.0%</td></tr>
+<tr><td class="rk">9</td><td><strong>Marco Gaete</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Esper Blink</td><td>100.0%</td></tr>
+<tr><td class="rk">10</td><td><strong>Julian Prado</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Red Belcher</td><td>100.0%</td></tr>
+<tr><td class="rk">11</td><td><strong>Joaquin Maldonado</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>8th</td><td>Boros Energy</td><td>50.0%</td></tr>
+<tr><td class="rk">12</td><td><strong>Gustavo Danker</strong></td><td><strong>3</strong></td><td>0</td><td>0</td><td>3</td><td>4</td><td>7th</td><td>Boros Energy</td><td>25.0%</td></tr>
+<tr><td class="rk">13</td><td><strong>Felipe Hidalgo</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>100.0%</td></tr>
+<tr><td class="rk">14</td><td><strong>Diego Mosscoso</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>100.0%</td></tr>
+<tr><td class="rk">15</td><td><strong>Daniel Soto</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>5th</td><td>Affinity</td><td>50.0%</td></tr>
+<tr><td class="rk">16</td><td><strong>Camilo Rodriguez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>4</td><td>19th</td><td>Jeskai Blink</td><td>25.0%</td></tr>
+<tr><td class="rk">17</td><td><strong>Rodrigo Nuñez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Hollow One</td><td>66.7%</td></tr>
+<tr><td class="rk">18</td><td><strong>Raul Soto</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Neobrand</td><td>66.7%</td></tr>
+<tr><td class="rk">19</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Neobrand</td><td>33.3%</td></tr>
+<tr><td class="rk">20</td><td><strong>Patricio Duarte</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
+<tr><td class="rk">21</td><td><strong>Oscar Hernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>11th</td><td>Domain Zoo</td><td>33.3%</td></tr>
+<tr><td class="rk">22</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Hammer Time</td><td>66.7%</td></tr>
+<tr><td class="rk">23</td><td><strong>Marcelo Lopez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">24</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>3</td><td>23rd</td><td>Sultai Ritual</td><td>22.2%</td></tr>
+<tr><td class="rk">25</td><td><strong>Luis Cabrera Berrios</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
+<tr><td class="rk">26</td><td><strong>Julio Velasquez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">27</td><td><strong>Juan Pablo Turra</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>14th</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">28</td><td><strong>Juan Cerda</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Sultai Ritual</td><td>66.7%</td></tr>
+<tr><td class="rk">29</td><td><strong>Javier ''Pillin'' Rivera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>66.7%</td></tr>
+<tr><td class="rk">30</td><td><strong>Francisco Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Amulet Titan</td><td>66.7%</td></tr>
+<tr><td class="rk">31</td><td><strong>Felipe ''Cachorro'' Guzman</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>66.7%</td></tr>
+<tr><td class="rk">32</td><td><strong>Emanuel Sutter</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Esper Reanimator</td><td>66.7%</td></tr>
+<tr><td class="rk">33</td><td><strong>David brill</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>10th</td><td>Boros Wildfire</td><td>33.3%</td></tr>
+<tr><td class="rk">34</td><td><strong>Daniel Fernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Affinity</td><td>33.3%</td></tr>
+<tr><td class="rk">35</td><td><strong>Cristian Valenzuela</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Energy Control</td><td>66.7%</td></tr>
+<tr><td class="rk">36</td><td><strong>Cesar Urrutia</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Living End</td><td>66.7%</td></tr>
+<tr><td class="rk">37</td><td><strong>Camilo Cabrera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">38</td><td><strong>Alex Cid</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">39</td><td><strong>Vicente Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>25th</td><td>Boros Energy</td><td>16.7%</td></tr>
+<tr><td class="rk">40</td><td><strong>Sebastian Tello</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Merfolk</td><td>33.3%</td></tr>
+<tr><td class="rk">41</td><td><strong>Samuel Zurita</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Esper Reanimator</td><td>33.3%</td></tr>
+<tr><td class="rk">42</td><td><strong>Pablo Parra</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Goryo's Vengeance</td><td>33.3%</td></tr>
+<tr><td class="rk">43</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">44</td><td><strong>Luis Cabrera</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>—</td><td>UW Belcher</td><td>16.7%</td></tr>
+<tr><td class="rk">45</td><td><strong>Juan Verdugo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">46</td><td><strong>Joaquín Maldonado</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">47</td><td><strong>Ignacio Valenzuela Salgado</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">48</td><td><strong>Hugo Castro</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Amulet Titan</td><td>33.3%</td></tr>
+<tr><td class="rk">49</td><td><strong>Hernan Lobos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">50</td><td><strong>Gabriel Saba</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">51</td><td><strong>Frederick Escobar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Esper Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">52</td><td><strong>Fernando Oviedo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Hardened Scales</td><td>33.3%</td></tr>
+<tr><td class="rk">53</td><td><strong>Emanuel Montaño</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">54</td><td><strong>Eduardo Murga</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">55</td><td><strong>David Reyes</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">56</td><td><strong>Daniel Lopez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>3</td><td>6th</td><td>Mono Black Necrodominance</td><td>11.1%</td></tr>
+<tr><td class="rk">57</td><td><strong>Crisitian Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Domain Zoo</td><td>33.3%</td></tr>
+<tr><td class="rk">58</td><td><strong>Calos Venegas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">59</td><td><strong>Calos Olea</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">60</td><td><strong>Angelo Perez Villablanca</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">61</td><td><strong>Alejandro Gatica</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">62</td><td><strong>Tomas Cordova</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">63</td><td><strong>Thomas Fischer Pulgar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Merfolk</td><td>0.0%</td></tr>
+<tr><td class="rk">64</td><td><strong>Sebastian Cotreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UW Belcher</td><td>0.0%</td></tr>
+<tr><td class="rk">65</td><td><strong>Sebastian Cabello</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">66</td><td><strong>Rodrigo Lopez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">67</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
+<tr><td class="rk">68</td><td><strong>Oscar Lapierre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">69</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Mono Red Belcher Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">70</td><td><strong>Nicolas De Prada</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">71</td><td><strong>Mauricio Rios</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
+<tr><td class="rk">72</td><td><strong>Mario Vega</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Merfolk</td><td>0.0%</td></tr>
+<tr><td class="rk">73</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Temur Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">74</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">75</td><td><strong>Juan Torres</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">76</td><td><strong>Ivan Chaparro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">77</td><td><strong>Isaias Lembach</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Zoo Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">78</td><td><strong>Ignacio V. De La Paz</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Samwisse Combo</td><td>0.0%</td></tr>
+<tr><td class="rk">79</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>20th</td><td>Esper Control</td><td>0.0%</td></tr>
+<tr><td class="rk">80</td><td><strong>Hernan Pimentel</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">81</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">82</td><td><strong>Fuji Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">83</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">84</td><td><strong>Francisco Gonzalez (Lagarto)</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Mono White Control</td><td>0.0%</td></tr>
+<tr><td class="rk">85</td><td><strong>Francisca Garcia</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">86</td><td><strong>Fernando Yaksic</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>13th</td><td>Temur Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">87</td><td><strong>Felipe Fuentes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Oculus</td><td>0.0%</td></tr>
+<tr><td class="rk">88</td><td><strong>Daniel Palma</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">89</td><td><strong>Alonso Cancino</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Living End</td><td>0.0%</td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<div class="tbl-wrap"><table><thead><tr><th data-es="Rank" data-en="Rank" data-sort="0">Rank</th><th data-es="Jugador" data-en="Player" data-sort="0">Jugador</th><th data-es="Puntos" data-en="Points" data-sort="0">Puntos</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Top 4" data-en="Top 4" data-sort="0">Top 4</th><th data-es="Top 8" data-en="Top 8" data-sort="0">Top 8</th><th data-es="Eventos" data-en="Events" data-sort="0">Eventos</th><th data-es="Mejor Posición" data-en="Best Finish" data-sort="0">Mejor Posición</th><th data-es="Arq. Favorito" data-en="Fav. Archetype" data-sort="0">Arq. Favorito</th><th data-es="Win Rate" data-en="Win Rate" data-sort="0">Win Rate</th></tr></thead><tbody>
+<tr class="rk-gold"><td class="rk"><span class="m-gold">🥇</span></td><td><strong>Daniel Lopez</strong></td><td><strong>4</strong></td><td>0</td><td>2</td><td>0</td><td>2</td><td>4th</td><td>Mono Black Necrodominance</td><td>66.7%</td></tr>
+<tr class="rk-silver"><td class="rk"><span class="m-silver">🥈</span></td><td><strong>Nicolas Morales</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>100.0%</td></tr>
+<tr class="rk-bronze"><td class="rk"><span class="m-bronze">🥉</span></td><td><strong>Matias Castro</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Living End</td><td>100.0%</td></tr>
+<tr><td class="rk">4</td><td><strong>Freddy Paredes</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Wildfire</td><td>100.0%</td></tr>
+<tr><td class="rk">5</td><td><strong>Sebastian Quintana</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
+<tr><td class="rk">6</td><td><strong>Ricardo Vasquez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>66.7%</td></tr>
+<tr><td class="rk">7</td><td><strong>Pedro Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Control</td><td>66.7%</td></tr>
+<tr><td class="rk">8</td><td><strong>Patricio Roman</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">9</td><td><strong>Francisca Garcia Veliz</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Control</td><td>66.7%</td></tr>
+<tr><td class="rk">10</td><td><strong>Daniel Soto</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Affinity</td><td>66.7%</td></tr>
+<tr><td class="rk">11</td><td><strong>Andres Camargo</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>UW Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">12</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>Neobrand</td><td>33.3%</td></tr>
+<tr><td class="rk">13</td><td><strong>Pablo Parra</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>5th</td><td>Esper Goryo's</td><td>33.3%</td></tr>
+<tr><td class="rk">14</td><td><strong>Javier Fredes Gonzalez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Esper Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">15</td><td><strong>David Reyes</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>Living End</td><td>33.3%</td></tr>
+<tr><td class="rk">16</td><td><strong>Roberto del Rio</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">17</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">18</td><td><strong>Joaquin Maldonado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">19</td><td><strong>Ingacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Esper Control</td><td>0.0%</td></tr>
+<tr><td class="rk">20</td><td><strong>Eduardo Mendez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>8 Rack</td><td>0.0%</td></tr>
+<tr><td class="rk">21</td><td><strong>Daniel Cuellar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>BG Midrange</td><td>0.0%</td></tr>
+<tr><td class="rk">22</td><td><strong>Cristobal Rolando</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-all">
 <div class="tbl-wrap"><table><thead><tr><th data-es="Rank" data-en="Rank" data-sort="0">Rank</th><th data-es="Jugador" data-en="Player" data-sort="0">Jugador</th><th data-es="Puntos" data-en="Points" data-sort="0">Puntos</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Top 4" data-en="Top 4" data-sort="0">Top 4</th><th data-es="Top 8" data-en="Top 8" data-sort="0">Top 8</th><th data-es="Eventos" data-en="Events" data-sort="0">Eventos</th><th data-es="Mejor Posición" data-en="Best Finish" data-sort="0">Mejor Posición</th><th data-es="Arq. Favorito" data-en="Fav. Archetype" data-sort="0">Arq. Favorito</th><th data-es="Win Rate" data-en="Win Rate" data-sort="0">Win Rate</th></tr></thead><tbody>
 <tr class="rk-gold"><td class="rk"><span class="m-gold">🥇</span></td><td><strong>Freddy Paredes</strong></td><td><strong>8</strong></td><td>1</td><td>2</td><td>1</td><td>5</td><td>12th</td><td>Boros Wildfire</td><td>53.3%</td></tr>
 <tr class="rk-silver"><td class="rk"><span class="m-silver">🥈</span></td><td><strong>Francisca Garcia Veliz</strong></td><td><strong>6</strong></td><td>1</td><td>1</td><td>1</td><td>3</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
@@ -464,10 +638,460 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
 <tr><td class="rk">99</td><td><strong>Cristobal Rolando</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
 <tr><td class="rk">100</td><td><strong>Alonso Cancino</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Living End</td><td>0.0%</td></tr>
 </tbody></table></div>
+</div>
 </section>
 <section class="card" id="s4">
-<h2 class="sec-title"><span class="sec-icon">🃏</span><span data-es="Cartas Más Jugadas" data-en="Most Played Cards">Cartas Más Jugadas</span></h2>
+<h2 class="sec-title"><span class="sec-icon">🃏</span><span data-es="Cartas Más Jugadas" data-en="Most Played Cards">Cartas Más Jugadas</span><span class="sec-count" id="cnt-s4"></span></h2>
 <p class="sec-desc" data-es="Cartas más usadas en todos los mazos. % de Mazos = porcentaje de mazos que incluye esa carta." data-en="Most used cards across all decks. % of Decks = percentage of decks including this card.">Cartas más usadas en todos los mazos. % de Mazos = porcentaje de mazos que incluye esa carta.</p>
+<div class="pblock pblock-pre" style="display:none">
+<div class="cg">
+<div class="cs">
+<div class="cs-title" data-es="General" data-en="Overall">General</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Consign to Memory</td><td>52.5%</td><td>3.4</td></tr>
+<tr><td class="rk">2</td><td>Mountain</td><td>45.8%</td><td>1.3</td></tr>
+<tr><td class="rk">3</td><td>Mystical Dispute</td><td>44.9%</td><td>2.3</td></tr>
+<tr><td class="rk">4</td><td>Plains</td><td>44.1%</td><td>1.9</td></tr>
+<tr><td class="rk">5</td><td>Flooded Strand</td><td>43.2%</td><td>3.5</td></tr>
+<tr><td class="rk">6</td><td>Surgical Extraction</td><td>43.2%</td><td>1.2</td></tr>
+<tr><td class="rk">7</td><td>Wrath of the Skies</td><td>41.5%</td><td>2.5</td></tr>
+<tr><td class="rk">8</td><td>Arid Mesa</td><td>39.8%</td><td>3.7</td></tr>
+<tr><td class="rk">9</td><td>Phlage, Titan of Fire's Fury</td><td>37.3%</td><td>3.8</td></tr>
+<tr><td class="rk">10</td><td>Sacred Foundry</td><td>37.3%</td><td>2.2</td></tr>
+<tr><td class="rk">11</td><td>Celestial Purge</td><td>36.4%</td><td>1.5</td></tr>
+<tr><td class="rk">12</td><td>Arena of Glory</td><td>35.6%</td><td>2.6</td></tr>
+<tr><td class="rk">13</td><td>Ragavan, Nimble Pilferer</td><td>33.9%</td><td>3.8</td></tr>
+<tr><td class="rk">14</td><td>Damping Sphere</td><td>33.1%</td><td>1.9</td></tr>
+<tr><td class="rk">15</td><td>Elegant Parlor</td><td>33.1%</td><td>1.6</td></tr>
+<tr><td class="rk">16</td><td>Island</td><td>33.1%</td><td>1.6</td></tr>
+<tr><td class="rk">17</td><td>Vexing Bauble</td><td>32.2%</td><td>1.4</td></tr>
+<tr><td class="rk">18</td><td>Steam Vents</td><td>31.4%</td><td>1.5</td></tr>
+<tr><td class="rk">19</td><td>Galvanic Discharge</td><td>30.5%</td><td>3.8</td></tr>
+<tr><td class="rk">20</td><td>Obsidian Charmaw</td><td>28.8%</td><td>2.6</td></tr>
+<tr><td class="rk">21</td><td>Orim's Chant</td><td>27.1%</td><td>2.1</td></tr>
+<tr><td class="rk">22</td><td>Blood Moon</td><td>26.3%</td><td>1.9</td></tr>
+<tr><td class="rk">23</td><td>Marsh Flats</td><td>26.3%</td><td>3.1</td></tr>
+<tr><td class="rk">24</td><td>Force of Negation</td><td>25.4%</td><td>2.4</td></tr>
+<tr><td class="rk">25</td><td>Ashiok, Dream Render</td><td>23.7%</td><td>1.3</td></tr>
+<tr><td class="rk">26</td><td>High Noon</td><td>23.7%</td><td>1.8</td></tr>
+<tr><td class="rk">27</td><td>Sink into Stupor</td><td>22.9%</td><td>3.1</td></tr>
+<tr><td class="rk">28</td><td>Solitude</td><td>22.9%</td><td>3.6</td></tr>
+<tr><td class="rk">29</td><td>Thundering Falls</td><td>22.0%</td><td>1.0</td></tr>
+<tr><td class="rk">30</td><td>Prismatic Ending</td><td>21.2%</td><td>1.9</td></tr>
+<tr><td class="rk">31</td><td>The Legend of Roku</td><td>21.2%</td><td>1.7</td></tr>
+<tr><td class="rk">32</td><td>Windswept Heath</td><td>21.2%</td><td>2.4</td></tr>
+<tr><td class="rk">33</td><td>Hallowed Fountain</td><td>19.5%</td><td>1.0</td></tr>
+<tr><td class="rk">34</td><td>Ajani, Nacatl Pariah</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">35</td><td>Goblin Bombardment</td><td>18.6%</td><td>3.0</td></tr>
+<tr><td class="rk">36</td><td>Guide of Souls</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">37</td><td>Meticulous Archive</td><td>18.6%</td><td>1.0</td></tr>
+<tr><td class="rk">38</td><td>Ocelot Pride</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">39</td><td>Seasoned Pyromancer</td><td>18.6%</td><td>2.9</td></tr>
+<tr><td class="rk">40</td><td>Thraben Charm</td><td>18.6%</td><td>2.3</td></tr>
+<tr><td class="rk">41</td><td>Boseiju, Who Endures</td><td>17.8%</td><td>2.0</td></tr>
+<tr><td class="rk">42</td><td>Scalding Tarn</td><td>17.8%</td><td>2.9</td></tr>
+<tr><td class="rk">43</td><td>Voice of Victory</td><td>17.8%</td><td>1.9</td></tr>
+<tr><td class="rk">44</td><td>Quantum Riddler</td><td>16.9%</td><td>3.9</td></tr>
+<tr><td class="rk">45</td><td>Wooded Foothills</td><td>16.9%</td><td>3.3</td></tr>
+<tr><td class="rk">46</td><td>Ephemerate</td><td>16.1%</td><td>2.5</td></tr>
+<tr><td class="rk">47</td><td>Fable of the Mirror-Breaker</td><td>16.1%</td><td>1.7</td></tr>
+<tr><td class="rk">48</td><td>March of Otherworldly Light</td><td>16.1%</td><td>1.5</td></tr>
+<tr><td class="rk">49</td><td>Urza's Saga</td><td>16.1%</td><td>4.0</td></tr>
+<tr><td class="rk">50</td><td>Strix Serenade</td><td>15.3%</td><td>1.7</td></tr>
+</tbody></table></div>
+</div>
+<div class="cs">
+<div class="cs-title" data-es="Criaturas" data-en="Creatures">Criaturas</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Phlage, Titan of Fire's Fury</td><td>37.3%</td><td>3.8</td></tr>
+<tr><td class="rk">2</td><td>Ragavan, Nimble Pilferer</td><td>33.9%</td><td>3.8</td></tr>
+<tr><td class="rk">3</td><td>Obsidian Charmaw</td><td>28.8%</td><td>2.6</td></tr>
+<tr><td class="rk">4</td><td>Solitude</td><td>22.9%</td><td>3.6</td></tr>
+<tr><td class="rk">5</td><td>The Legend of Roku</td><td>21.2%</td><td>1.7</td></tr>
+<tr><td class="rk">6</td><td>Ajani, Nacatl Pariah</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">7</td><td>Guide of Souls</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">8</td><td>Ocelot Pride</td><td>18.6%</td><td>4.0</td></tr>
+<tr><td class="rk">9</td><td>Seasoned Pyromancer</td><td>18.6%</td><td>2.9</td></tr>
+<tr><td class="rk">10</td><td>Voice of Victory</td><td>17.8%</td><td>1.9</td></tr>
+<tr><td class="rk">11</td><td>Quantum Riddler</td><td>16.9%</td><td>3.9</td></tr>
+<tr><td class="rk">12</td><td>Fable of the Mirror-Breaker</td><td>16.1%</td><td>1.7</td></tr>
+<tr><td class="rk">13</td><td>Harbinger of the Seas</td><td>13.6%</td><td>2.6</td></tr>
+<tr><td class="rk">14</td><td>Ranger-Captain of Eos</td><td>13.6%</td><td>1.4</td></tr>
+<tr><td class="rk">15</td><td>Phelia, Exuberant Shepherd</td><td>12.7%</td><td>3.8</td></tr>
+<tr><td class="rk">16</td><td>Subtlety</td><td>11.0%</td><td>3.0</td></tr>
+<tr><td class="rk">17</td><td>Collector Ouphe</td><td>9.3%</td><td>1.2</td></tr>
+<tr><td class="rk">18</td><td>Endurance</td><td>9.3%</td><td>2.2</td></tr>
+<tr><td class="rk">19</td><td>Arcbound Ravager</td><td>8.5%</td><td>2.4</td></tr>
+<tr><td class="rk">20</td><td>Abhorrent Oculus</td><td>7.6%</td><td>2.8</td></tr>
+<tr><td class="rk">21</td><td>Arboreal Grazer</td><td>7.6%</td><td>3.9</td></tr>
+<tr><td class="rk">22</td><td>Casey Jones, Vigilante</td><td>7.6%</td><td>2.1</td></tr>
+<tr><td class="rk">23</td><td>Emry, Lurker of the Loch</td><td>7.6%</td><td>2.6</td></tr>
+<tr><td class="rk">24</td><td>Kappa Cannoneer</td><td>7.6%</td><td>4.0</td></tr>
+<tr><td class="rk">25</td><td>Pinnacle Emissary</td><td>7.6%</td><td>4.0</td></tr>
+<tr><td class="rk">26</td><td>Psychic Frog</td><td>7.6%</td><td>4.0</td></tr>
+<tr><td class="rk">27</td><td>Atraxa, Grand Unifier</td><td>6.8%</td><td>2.9</td></tr>
+<tr><td class="rk">28</td><td>Griselbrand</td><td>6.8%</td><td>1.1</td></tr>
+<tr><td class="rk">29</td><td>Hydroelectric Specimen</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">30</td><td>Icetill Explorer</td><td>6.8%</td><td>2.3</td></tr>
+<tr><td class="rk">31</td><td>Tameshi, Reality Architect</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">32</td><td>Aftermath Analyst</td><td>5.9%</td><td>1.4</td></tr>
+<tr><td class="rk">33</td><td>Cultivator Colossus</td><td>5.9%</td><td>1.0</td></tr>
+<tr><td class="rk">34</td><td>Devourer of Destiny</td><td>5.9%</td><td>3.0</td></tr>
+<tr><td class="rk">35</td><td>Elesh Norn, Mother of Machines</td><td>5.9%</td><td>1.0</td></tr>
+<tr><td class="rk">36</td><td>Ice-Fang Coatl</td><td>5.9%</td><td>4.0</td></tr>
+<tr><td class="rk">37</td><td>Krang, Master Mind</td><td>5.9%</td><td>1.7</td></tr>
+<tr><td class="rk">38</td><td>Primeval Titan</td><td>5.9%</td><td>4.0</td></tr>
+<tr><td class="rk">39</td><td>Scion of Draco</td><td>5.9%</td><td>4.0</td></tr>
+<tr><td class="rk">40</td><td>Sire of Seven Deaths</td><td>5.9%</td><td>1.7</td></tr>
+<tr><td class="rk">41</td><td>Six</td><td>5.9%</td><td>1.0</td></tr>
+<tr><td class="rk">42</td><td>Territorial Kavu</td><td>5.9%</td><td>4.0</td></tr>
+<tr><td class="rk">43</td><td>Thundertrap Trainer</td><td>5.9%</td><td>3.9</td></tr>
+<tr><td class="rk">44</td><td>Clarion Conqueror</td><td>5.1%</td><td>1.3</td></tr>
+<tr><td class="rk">45</td><td>Doorkeeper Thrull</td><td>5.1%</td><td>4.0</td></tr>
+<tr><td class="rk">46</td><td>Dryad Arbor</td><td>5.1%</td><td>1.0</td></tr>
+<tr><td class="rk">47</td><td>Fallaji Archaeologist</td><td>5.1%</td><td>3.5</td></tr>
+<tr><td class="rk">48</td><td>Orcish Bowmasters</td><td>5.1%</td><td>3.5</td></tr>
+<tr><td class="rk">49</td><td>Shardless Agent</td><td>5.1%</td><td>4.0</td></tr>
+<tr><td class="rk">50</td><td>Walking Ballista</td><td>5.1%</td><td>1.7</td></tr>
+</tbody></table></div>
+</div>
+<div class="cs">
+<div class="cs-title" data-es="Hechizos" data-en="Spells (Inst/Sorc)">Hechizos</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Consign to Memory</td><td>52.5%</td><td>3.4</td></tr>
+<tr><td class="rk">2</td><td>Mystical Dispute</td><td>44.9%</td><td>2.3</td></tr>
+<tr><td class="rk">3</td><td>Surgical Extraction</td><td>43.2%</td><td>1.2</td></tr>
+<tr><td class="rk">4</td><td>Wrath of the Skies</td><td>41.5%</td><td>2.5</td></tr>
+<tr><td class="rk">5</td><td>Celestial Purge</td><td>36.4%</td><td>1.5</td></tr>
+<tr><td class="rk">6</td><td>Galvanic Discharge</td><td>30.5%</td><td>3.8</td></tr>
+<tr><td class="rk">7</td><td>Orim's Chant</td><td>27.1%</td><td>2.1</td></tr>
+<tr><td class="rk">8</td><td>Force of Negation</td><td>25.4%</td><td>2.4</td></tr>
+<tr><td class="rk">9</td><td>Sink into Stupor</td><td>22.9%</td><td>3.1</td></tr>
+<tr><td class="rk">10</td><td>Prismatic Ending</td><td>21.2%</td><td>1.9</td></tr>
+<tr><td class="rk">11</td><td>Thraben Charm</td><td>18.6%</td><td>2.3</td></tr>
+<tr><td class="rk">12</td><td>Ephemerate</td><td>16.1%</td><td>2.5</td></tr>
+<tr><td class="rk">13</td><td>March of Otherworldly Light</td><td>16.1%</td><td>1.5</td></tr>
+<tr><td class="rk">14</td><td>Strix Serenade</td><td>15.3%</td><td>1.7</td></tr>
+<tr><td class="rk">15</td><td>Dismember</td><td>14.4%</td><td>2.2</td></tr>
+<tr><td class="rk">16</td><td>Force of Vigor</td><td>14.4%</td><td>1.9</td></tr>
+<tr><td class="rk">17</td><td>Lightning Bolt</td><td>12.7%</td><td>3.7</td></tr>
+<tr><td class="rk">18</td><td>Flare of Denial</td><td>11.9%</td><td>3.1</td></tr>
+<tr><td class="rk">19</td><td>Meltdown</td><td>11.9%</td><td>1.5</td></tr>
+<tr><td class="rk">20</td><td>Thoughtseize</td><td>11.9%</td><td>3.4</td></tr>
+<tr><td class="rk">21</td><td>Into the Flood Maw</td><td>11.0%</td><td>1.9</td></tr>
+<tr><td class="rk">22</td><td>Spell Snare</td><td>11.0%</td><td>1.6</td></tr>
+<tr><td class="rk">23</td><td>Unholy Heat</td><td>9.3%</td><td>3.3</td></tr>
+<tr><td class="rk">24</td><td>Spell Pierce</td><td>8.5%</td><td>1.7</td></tr>
+<tr><td class="rk">25</td><td>Stern Scolding</td><td>8.5%</td><td>2.0</td></tr>
+<tr><td class="rk">26</td><td>Summoner's Pact</td><td>8.5%</td><td>2.6</td></tr>
+<tr><td class="rk">27</td><td>Wear</td><td>8.5%</td><td>1.7</td></tr>
+<tr><td class="rk">28</td><td>Fatal Push</td><td>7.6%</td><td>3.4</td></tr>
+<tr><td class="rk">29</td><td>Galvanic Blast</td><td>7.6%</td><td>1.9</td></tr>
+<tr><td class="rk">30</td><td>Green Sun's Zenith</td><td>7.6%</td><td>3.4</td></tr>
+<tr><td class="rk">31</td><td>Malevolent Rumble</td><td>7.6%</td><td>3.4</td></tr>
+<tr><td class="rk">32</td><td>Metallic Rebuke</td><td>7.6%</td><td>3.0</td></tr>
+<tr><td class="rk">33</td><td>Path to Exile</td><td>7.6%</td><td>2.6</td></tr>
+<tr><td class="rk">34</td><td>Scapeshift</td><td>7.6%</td><td>3.0</td></tr>
+<tr><td class="rk">35</td><td>Whipflare</td><td>7.6%</td><td>2.1</td></tr>
+<tr><td class="rk">36</td><td>Disrupting Shoal</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">37</td><td>Fire Magic</td><td>6.8%</td><td>2.3</td></tr>
+<tr><td class="rk">38</td><td>Jwari Disruption</td><td>6.8%</td><td>2.9</td></tr>
+<tr><td class="rk">39</td><td>Kozilek's Command</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">40</td><td>Sea Gate Restoration</td><td>6.8%</td><td>3.6</td></tr>
+<tr><td class="rk">41</td><td>Suppression Ray</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">42</td><td>Whir of Invention</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">43</td><td>Brotherhood's End</td><td>5.9%</td><td>1.7</td></tr>
+<tr><td class="rk">44</td><td>Preordain</td><td>5.9%</td><td>3.7</td></tr>
+<tr><td class="rk">45</td><td>Waterlogged Teachings</td><td>5.9%</td><td>2.7</td></tr>
+<tr><td class="rk">46</td><td>Beyeen Veil</td><td>5.1%</td><td>1.7</td></tr>
+<tr><td class="rk">47</td><td>Manamorphose</td><td>5.1%</td><td>4.0</td></tr>
+<tr><td class="rk">48</td><td>Pyroclasm</td><td>5.1%</td><td>1.7</td></tr>
+<tr><td class="rk">49</td><td>Stubborn Denial</td><td>5.1%</td><td>2.7</td></tr>
+<tr><td class="rk">50</td><td>Desperate Ritual</td><td>4.2%</td><td>4.0</td></tr>
+</tbody></table></div>
+</div>
+<div class="cs">
+<div class="cs-title" data-es="Tierras" data-en="Lands">Tierras</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mountain</td><td>45.8%</td><td>1.3</td></tr>
+<tr><td class="rk">2</td><td>Plains</td><td>44.1%</td><td>1.9</td></tr>
+<tr><td class="rk">3</td><td>Flooded Strand</td><td>43.2%</td><td>3.5</td></tr>
+<tr><td class="rk">4</td><td>Arid Mesa</td><td>39.8%</td><td>3.7</td></tr>
+<tr><td class="rk">5</td><td>Sacred Foundry</td><td>37.3%</td><td>2.2</td></tr>
+<tr><td class="rk">6</td><td>Arena of Glory</td><td>35.6%</td><td>2.6</td></tr>
+<tr><td class="rk">7</td><td>Elegant Parlor</td><td>33.1%</td><td>1.6</td></tr>
+<tr><td class="rk">8</td><td>Island</td><td>33.1%</td><td>1.6</td></tr>
+<tr><td class="rk">9</td><td>Steam Vents</td><td>31.4%</td><td>1.5</td></tr>
+<tr><td class="rk">10</td><td>Marsh Flats</td><td>26.3%</td><td>3.1</td></tr>
+<tr><td class="rk">11</td><td>Sink into Stupor</td><td>22.9%</td><td>3.1</td></tr>
+<tr><td class="rk">12</td><td>Thundering Falls</td><td>22.0%</td><td>1.0</td></tr>
+<tr><td class="rk">13</td><td>Windswept Heath</td><td>21.2%</td><td>2.4</td></tr>
+<tr><td class="rk">14</td><td>Hallowed Fountain</td><td>19.5%</td><td>1.0</td></tr>
+<tr><td class="rk">15</td><td>Meticulous Archive</td><td>18.6%</td><td>1.0</td></tr>
+<tr><td class="rk">16</td><td>Boseiju, Who Endures</td><td>17.8%</td><td>2.0</td></tr>
+<tr><td class="rk">17</td><td>Scalding Tarn</td><td>17.8%</td><td>2.9</td></tr>
+<tr><td class="rk">18</td><td>Wooded Foothills</td><td>16.9%</td><td>3.3</td></tr>
+<tr><td class="rk">19</td><td>Urza's Saga</td><td>16.1%</td><td>4.0</td></tr>
+<tr><td class="rk">20</td><td>Swamp</td><td>15.3%</td><td>1.9</td></tr>
+<tr><td class="rk">21</td><td>Forest</td><td>13.6%</td><td>2.3</td></tr>
+<tr><td class="rk">22</td><td>Otawara, Soaring City</td><td>13.6%</td><td>1.1</td></tr>
+<tr><td class="rk">23</td><td>Breeding Pool</td><td>12.7%</td><td>1.0</td></tr>
+<tr><td class="rk">24</td><td>Fiery Islet</td><td>12.7%</td><td>2.7</td></tr>
+<tr><td class="rk">25</td><td>Godless Shrine</td><td>11.9%</td><td>1.1</td></tr>
+<tr><td class="rk">26</td><td>Misty Rainforest</td><td>11.9%</td><td>3.1</td></tr>
+<tr><td class="rk">27</td><td>Watery Grave</td><td>11.9%</td><td>1.2</td></tr>
+<tr><td class="rk">28</td><td>Bloodstained Mire</td><td>11.0%</td><td>3.2</td></tr>
+<tr><td class="rk">29</td><td>Polluted Delta</td><td>11.0%</td><td>2.9</td></tr>
+<tr><td class="rk">30</td><td>Bojuka Bog</td><td>10.2%</td><td>1.0</td></tr>
+<tr><td class="rk">31</td><td>Shifting Woodland</td><td>9.3%</td><td>1.1</td></tr>
+<tr><td class="rk">32</td><td>Undercity Sewers</td><td>8.5%</td><td>1.1</td></tr>
+<tr><td class="rk">33</td><td>Hedge Maze</td><td>7.6%</td><td>2.1</td></tr>
+<tr><td class="rk">34</td><td>Snow-Covered Forest</td><td>7.6%</td><td>2.0</td></tr>
+<tr><td class="rk">35</td><td>Spirebluff Canal</td><td>7.6%</td><td>4.0</td></tr>
+<tr><td class="rk">36</td><td>Stomping Ground</td><td>7.6%</td><td>1.6</td></tr>
+<tr><td class="rk">37</td><td>Commercial District</td><td>6.8%</td><td>1.5</td></tr>
+<tr><td class="rk">38</td><td>Eldrazi Temple</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">39</td><td>Hydroelectric Specimen</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">40</td><td>Jwari Disruption</td><td>6.8%</td><td>2.9</td></tr>
+<tr><td class="rk">41</td><td>Sea Gate Restoration</td><td>6.8%</td><td>3.6</td></tr>
+<tr><td class="rk">42</td><td>Shadowy Backstreet</td><td>6.8%</td><td>1.0</td></tr>
+<tr><td class="rk">43</td><td>Snow-Covered Island</td><td>6.8%</td><td>1.5</td></tr>
+<tr><td class="rk">44</td><td>Suppression Ray</td><td>6.8%</td><td>4.0</td></tr>
+<tr><td class="rk">45</td><td>Verdant Catacombs</td><td>6.8%</td><td>3.1</td></tr>
+<tr><td class="rk">46</td><td>Cavern of Souls</td><td>5.9%</td><td>1.9</td></tr>
+<tr><td class="rk">47</td><td>Crumbling Vestige</td><td>5.9%</td><td>3.9</td></tr>
+<tr><td class="rk">48</td><td>Echoing Deeps</td><td>5.9%</td><td>1.0</td></tr>
+<tr><td class="rk">49</td><td>Gruul Turf</td><td>5.9%</td><td>3.6</td></tr>
+<tr><td class="rk">50</td><td>Hanweir Battlements</td><td>5.9%</td><td>1.0</td></tr>
+</tbody></table></div>
+</div>
+</div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<div class="cg">
+<div class="cs">
+<div class="cs-title" data-es="General" data-en="Overall">General</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mystical Dispute</td><td>60.9%</td><td>2.4</td></tr>
+<tr><td class="rk">2</td><td>Consign to Memory</td><td>52.2%</td><td>3.7</td></tr>
+<tr><td class="rk">3</td><td>Island</td><td>47.8%</td><td>1.3</td></tr>
+<tr><td class="rk">4</td><td>Flooded Strand</td><td>39.1%</td><td>3.0</td></tr>
+<tr><td class="rk">5</td><td>Plains</td><td>39.1%</td><td>2.3</td></tr>
+<tr><td class="rk">6</td><td>Solitude</td><td>34.8%</td><td>3.4</td></tr>
+<tr><td class="rk">7</td><td>Swamp</td><td>34.8%</td><td>3.6</td></tr>
+<tr><td class="rk">8</td><td>Wrath of the Skies</td><td>34.8%</td><td>2.8</td></tr>
+<tr><td class="rk">9</td><td>Damping Sphere</td><td>30.4%</td><td>1.9</td></tr>
+<tr><td class="rk">10</td><td>Hallowed Fountain</td><td>30.4%</td><td>2.0</td></tr>
+<tr><td class="rk">11</td><td>Marsh Flats</td><td>30.4%</td><td>3.0</td></tr>
+<tr><td class="rk">12</td><td>Sink into Stupor</td><td>30.4%</td><td>2.0</td></tr>
+<tr><td class="rk">13</td><td>Vexing Bauble</td><td>30.4%</td><td>2.0</td></tr>
+<tr><td class="rk">14</td><td>Arid Mesa</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">15</td><td>Force of Negation</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">16</td><td>High Noon</td><td>26.1%</td><td>1.8</td></tr>
+<tr><td class="rk">17</td><td>Meticulous Archive</td><td>26.1%</td><td>1.7</td></tr>
+<tr><td class="rk">18</td><td>Polluted Delta</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">19</td><td>Prismatic Ending</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">20</td><td>Scalding Tarn</td><td>26.1%</td><td>1.3</td></tr>
+<tr><td class="rk">21</td><td>Surgical Extraction</td><td>26.1%</td><td>1.2</td></tr>
+<tr><td class="rk">22</td><td>Teferi, Time Raveler</td><td>26.1%</td><td>2.8</td></tr>
+<tr><td class="rk">23</td><td>Thoughtseize</td><td>26.1%</td><td>3.2</td></tr>
+<tr><td class="rk">24</td><td>Breeding Pool</td><td>21.7%</td><td>1.0</td></tr>
+<tr><td class="rk">25</td><td>Fatal Push</td><td>21.7%</td><td>3.2</td></tr>
+<tr><td class="rk">26</td><td>Forest</td><td>21.7%</td><td>2.8</td></tr>
+<tr><td class="rk">27</td><td>Misty Rainforest</td><td>21.7%</td><td>3.0</td></tr>
+<tr><td class="rk">28</td><td>Quantum Riddler</td><td>21.7%</td><td>3.4</td></tr>
+<tr><td class="rk">29</td><td>Rest in Peace</td><td>21.7%</td><td>1.8</td></tr>
+<tr><td class="rk">30</td><td>Steam Vents</td><td>21.7%</td><td>1.0</td></tr>
+<tr><td class="rk">31</td><td>Tormod's Crypt</td><td>21.7%</td><td>1.8</td></tr>
+<tr><td class="rk">32</td><td>Windswept Heath</td><td>21.7%</td><td>1.6</td></tr>
+<tr><td class="rk">33</td><td>Ashiok, Dream Render</td><td>17.4%</td><td>1.3</td></tr>
+<tr><td class="rk">34</td><td>Blood Moon</td><td>17.4%</td><td>2.0</td></tr>
+<tr><td class="rk">35</td><td>Chalice of the Void</td><td>17.4%</td><td>1.3</td></tr>
+<tr><td class="rk">36</td><td>Commercial District</td><td>17.4%</td><td>1.0</td></tr>
+<tr><td class="rk">37</td><td>Endurance</td><td>17.4%</td><td>3.0</td></tr>
+<tr><td class="rk">38</td><td>Ephemerate</td><td>17.4%</td><td>3.3</td></tr>
+<tr><td class="rk">39</td><td>Mountain</td><td>17.4%</td><td>1.5</td></tr>
+<tr><td class="rk">40</td><td>Otawara, Soaring City</td><td>17.4%</td><td>1.0</td></tr>
+<tr><td class="rk">41</td><td>Pithing Needle</td><td>17.4%</td><td>1.5</td></tr>
+<tr><td class="rk">42</td><td>Spell Snare</td><td>17.4%</td><td>1.8</td></tr>
+<tr><td class="rk">43</td><td>Stomping Ground</td><td>17.4%</td><td>1.8</td></tr>
+<tr><td class="rk">44</td><td>Thundering Falls</td><td>17.4%</td><td>1.0</td></tr>
+<tr><td class="rk">45</td><td>Watery Grave</td><td>17.4%</td><td>1.5</td></tr>
+<tr><td class="rk">46</td><td>Arena of Glory</td><td>13.0%</td><td>1.0</td></tr>
+<tr><td class="rk">47</td><td>Bitter Triumph</td><td>13.0%</td><td>1.3</td></tr>
+<tr><td class="rk">48</td><td>Bloodstained Mire</td><td>13.0%</td><td>2.0</td></tr>
+<tr><td class="rk">49</td><td>Celestial Purge</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">50</td><td>Dismember</td><td>13.0%</td><td>1.7</td></tr>
+</tbody></table></div>
+</div>
+<div class="cs">
+<div class="cs-title" data-es="Criaturas" data-en="Creatures">Criaturas</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Solitude</td><td>34.8%</td><td>3.4</td></tr>
+<tr><td class="rk">2</td><td>Quantum Riddler</td><td>21.7%</td><td>3.4</td></tr>
+<tr><td class="rk">3</td><td>Endurance</td><td>17.4%</td><td>3.0</td></tr>
+<tr><td class="rk">4</td><td>Generous Ent</td><td>13.0%</td><td>3.3</td></tr>
+<tr><td class="rk">5</td><td>Guide of Souls</td><td>13.0%</td><td>4.0</td></tr>
+<tr><td class="rk">6</td><td>Harbinger of the Seas</td><td>13.0%</td><td>2.0</td></tr>
+<tr><td class="rk">7</td><td>Ocelot Pride</td><td>13.0%</td><td>4.0</td></tr>
+<tr><td class="rk">8</td><td>Phelia, Exuberant Shepherd</td><td>13.0%</td><td>4.0</td></tr>
+<tr><td class="rk">9</td><td>Psychic Frog</td><td>13.0%</td><td>4.0</td></tr>
+<tr><td class="rk">10</td><td>White Orchid Phantom</td><td>13.0%</td><td>3.3</td></tr>
+<tr><td class="rk">11</td><td>Wistfulness</td><td>13.0%</td><td>3.0</td></tr>
+<tr><td class="rk">12</td><td>Witch Enchanter</td><td>13.0%</td><td>3.7</td></tr>
+<tr><td class="rk">13</td><td>Abhorrent Oculus</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">14</td><td>Arcbound Ravager</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">15</td><td>Atraxa, Grand Unifier</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">16</td><td>Boggart Trawler</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">17</td><td>Clarion Conqueror</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">18</td><td>Colossal Skyturtle</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">19</td><td>Curator of Mysteries</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">20</td><td>Dark Confidant</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">21</td><td>Devourer of Destiny</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">22</td><td>Drannith Magistrate</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">23</td><td>Emperor of Bones</td><td>8.7%</td><td>3.5</td></tr>
+<tr><td class="rk">24</td><td>Emry, Lurker of the Loch</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">25</td><td>Fable of the Mirror-Breaker</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">26</td><td>Formidable Speaker</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">27</td><td>Foundation Breaker</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">28</td><td>Griselbrand</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">29</td><td>Kaheera, the Orphanguard</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">30</td><td>Kappa Cannoneer</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">31</td><td>Krang, Master Mind</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">32</td><td>Mockingbird</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">33</td><td>Oliphaunt</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">34</td><td>Orcish Bowmasters</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">35</td><td>Pinnacle Emissary</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">36</td><td>Ranger-Captain of Eos</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">37</td><td>Shardless Agent</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">38</td><td>Sheoldred, the Apocalypse</td><td>8.7%</td><td>3.5</td></tr>
+<tr><td class="rk">39</td><td>Sire of Seven Deaths</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">40</td><td>Soulless Jailer</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">41</td><td>Starfield Shepherd</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">42</td><td>Street Wraith</td><td>8.7%</td><td>3.5</td></tr>
+<tr><td class="rk">43</td><td>Subtlety</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">44</td><td>The Legend of Roku</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">45</td><td>Walking Ballista</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">46</td><td>Aang, Swift Savior</td><td>4.3%</td><td>1.0</td></tr>
+<tr><td class="rk">47</td><td>Ajani, Nacatl Pariah</td><td>4.3%</td><td>4.0</td></tr>
+<tr><td class="rk">48</td><td>Allosaurus Rider</td><td>4.3%</td><td>4.0</td></tr>
+<tr><td class="rk">49</td><td>Arbor Elf</td><td>4.3%</td><td>2.0</td></tr>
+<tr><td class="rk">50</td><td>Archon of Cruelty</td><td>4.3%</td><td>4.0</td></tr>
+</tbody></table></div>
+</div>
+<div class="cs">
+<div class="cs-title" data-es="Hechizos" data-en="Spells (Inst/Sorc)">Hechizos</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mystical Dispute</td><td>60.9%</td><td>2.4</td></tr>
+<tr><td class="rk">2</td><td>Consign to Memory</td><td>52.2%</td><td>3.7</td></tr>
+<tr><td class="rk">3</td><td>Wrath of the Skies</td><td>34.8%</td><td>2.8</td></tr>
+<tr><td class="rk">4</td><td>Sink into Stupor</td><td>30.4%</td><td>2.0</td></tr>
+<tr><td class="rk">5</td><td>Force of Negation</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">6</td><td>Prismatic Ending</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">7</td><td>Surgical Extraction</td><td>26.1%</td><td>1.2</td></tr>
+<tr><td class="rk">8</td><td>Thoughtseize</td><td>26.1%</td><td>3.2</td></tr>
+<tr><td class="rk">9</td><td>Fatal Push</td><td>21.7%</td><td>3.2</td></tr>
+<tr><td class="rk">10</td><td>Ephemerate</td><td>17.4%</td><td>3.3</td></tr>
+<tr><td class="rk">11</td><td>Spell Snare</td><td>17.4%</td><td>1.8</td></tr>
+<tr><td class="rk">12</td><td>Bitter Triumph</td><td>13.0%</td><td>1.3</td></tr>
+<tr><td class="rk">13</td><td>Celestial Purge</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">14</td><td>Dismember</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">15</td><td>Force of Vigor</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">16</td><td>March of Otherworldly Light</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">17</td><td>Orim's Chant</td><td>13.0%</td><td>2.7</td></tr>
+<tr><td class="rk">18</td><td>Path to Exile</td><td>13.0%</td><td>2.0</td></tr>
+<tr><td class="rk">19</td><td>Supreme Verdict</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">20</td><td>Bontu's Last Reckoning</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">21</td><td>Consult the Star Charts</td><td>8.7%</td><td>3.5</td></tr>
+<tr><td class="rk">22</td><td>Counterspell</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">23</td><td>End of the Hunt</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">24</td><td>Erode</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">25</td><td>Feed the Swarm</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">26</td><td>Fell the Profane</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">27</td><td>Flow State</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">28</td><td>Flusterstorm</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">29</td><td>Galvanic Blast</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">30</td><td>Galvanic Discharge</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">31</td><td>Inevitable Betrayal</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">32</td><td>Into the Flood Maw</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">33</td><td>Kozilek's Command</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">34</td><td>Lightning Bolt</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">35</td><td>Living End</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">36</td><td>Malevolent Rumble</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">37</td><td>Metallic Rebuke</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">38</td><td>Pest Control</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">39</td><td>Spell Pierce</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">40</td><td>Swan Song</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">41</td><td>Unholy Heat</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">42</td><td>Veil of Summer</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">43</td><td>Violent Outburst</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">44</td><td>Whipflare</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">45</td><td>Wrench Mind</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">46</td><td>All Is Dust</td><td>4.3%</td><td>1.0</td></tr>
+<tr><td class="rk">47</td><td>Ancestral Vision</td><td>4.3%</td><td>1.0</td></tr>
+<tr><td class="rk">48</td><td>Anger of the Gods</td><td>4.3%</td><td>1.0</td></tr>
+<tr><td class="rk">49</td><td>Assassin's Trophy</td><td>4.3%</td><td>1.0</td></tr>
+<tr><td class="rk">50</td><td>Boltwave</td><td>4.3%</td><td>4.0</td></tr>
+</tbody></table></div>
+</div>
+<div class="cs">
+<div class="cs-title" data-es="Tierras" data-en="Lands">Tierras</div>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Island</td><td>47.8%</td><td>1.3</td></tr>
+<tr><td class="rk">2</td><td>Flooded Strand</td><td>39.1%</td><td>3.0</td></tr>
+<tr><td class="rk">3</td><td>Plains</td><td>39.1%</td><td>2.3</td></tr>
+<tr><td class="rk">4</td><td>Swamp</td><td>34.8%</td><td>3.6</td></tr>
+<tr><td class="rk">5</td><td>Hallowed Fountain</td><td>30.4%</td><td>2.0</td></tr>
+<tr><td class="rk">6</td><td>Marsh Flats</td><td>30.4%</td><td>3.0</td></tr>
+<tr><td class="rk">7</td><td>Sink into Stupor</td><td>30.4%</td><td>2.0</td></tr>
+<tr><td class="rk">8</td><td>Arid Mesa</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">9</td><td>Meticulous Archive</td><td>26.1%</td><td>1.7</td></tr>
+<tr><td class="rk">10</td><td>Polluted Delta</td><td>26.1%</td><td>2.5</td></tr>
+<tr><td class="rk">11</td><td>Scalding Tarn</td><td>26.1%</td><td>1.3</td></tr>
+<tr><td class="rk">12</td><td>Breeding Pool</td><td>21.7%</td><td>1.0</td></tr>
+<tr><td class="rk">13</td><td>Forest</td><td>21.7%</td><td>2.8</td></tr>
+<tr><td class="rk">14</td><td>Misty Rainforest</td><td>21.7%</td><td>3.0</td></tr>
+<tr><td class="rk">15</td><td>Steam Vents</td><td>21.7%</td><td>1.0</td></tr>
+<tr><td class="rk">16</td><td>Windswept Heath</td><td>21.7%</td><td>1.6</td></tr>
+<tr><td class="rk">17</td><td>Commercial District</td><td>17.4%</td><td>1.0</td></tr>
+<tr><td class="rk">18</td><td>Mountain</td><td>17.4%</td><td>1.5</td></tr>
+<tr><td class="rk">19</td><td>Otawara, Soaring City</td><td>17.4%</td><td>1.0</td></tr>
+<tr><td class="rk">20</td><td>Stomping Ground</td><td>17.4%</td><td>1.8</td></tr>
+<tr><td class="rk">21</td><td>Thundering Falls</td><td>17.4%</td><td>1.0</td></tr>
+<tr><td class="rk">22</td><td>Watery Grave</td><td>17.4%</td><td>1.5</td></tr>
+<tr><td class="rk">23</td><td>Arena of Glory</td><td>13.0%</td><td>1.0</td></tr>
+<tr><td class="rk">24</td><td>Bloodstained Mire</td><td>13.0%</td><td>2.0</td></tr>
+<tr><td class="rk">25</td><td>Godless Shrine</td><td>13.0%</td><td>1.3</td></tr>
+<tr><td class="rk">26</td><td>Hedge Maze</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">27</td><td>Sacred Foundry</td><td>13.0%</td><td>2.7</td></tr>
+<tr><td class="rk">28</td><td>Witch Enchanter</td><td>13.0%</td><td>3.7</td></tr>
+<tr><td class="rk">29</td><td>Wooded Foothills</td><td>13.0%</td><td>1.7</td></tr>
+<tr><td class="rk">30</td><td>Bleachbone Verge</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">31</td><td>Boggart Trawler</td><td>8.7%</td><td>2.5</td></tr>
+<tr><td class="rk">32</td><td>Boseiju, Who Endures</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">33</td><td>Castle Locthwain</td><td>8.7%</td><td>2.0</td></tr>
+<tr><td class="rk">34</td><td>Eldrazi Temple</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">35</td><td>Fell the Profane</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">36</td><td>Fiery Islet</td><td>8.7%</td><td>3.0</td></tr>
+<tr><td class="rk">37</td><td>Hall of Storm Giants</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">38</td><td>Mistrise Village</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">39</td><td>Monumental Henge</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">40</td><td>Mystic Gate</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">41</td><td>Raucous Theater</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">42</td><td>Shadowy Backstreet</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">43</td><td>Shivan Reef</td><td>8.7%</td><td>1.5</td></tr>
+<tr><td class="rk">44</td><td>Spirebluff Canal</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">45</td><td>Ugin's Labyrinth</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">46</td><td>Undercity Sewers</td><td>8.7%</td><td>1.0</td></tr>
+<tr><td class="rk">47</td><td>Urza's Saga</td><td>8.7%</td><td>4.0</td></tr>
+<tr><td class="rk">48</td><td>Abandoned Air Temple</td><td>4.3%</td><td>1.0</td></tr>
+<tr><td class="rk">49</td><td>Ba Sing Se</td><td>4.3%</td><td>2.0</td></tr>
+<tr><td class="rk">50</td><td>Barbarian Ring</td><td>4.3%</td><td>4.0</td></tr>
+</tbody></table></div>
+</div>
+</div>
+</div>
+<div class="pblock pblock-all">
 <div class="cg">
 <div class="cs">
 <div class="cs-title" data-es="General" data-en="Overall">General</div>
@@ -690,16 +1314,136 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
 </tbody></table></div>
 </div>
 </div>
+</div>
 </section>
 <section class="card" id="s5">
-<h2 class="sec-title"><span class="sec-icon">📈</span><span data-es="Evolución del Metagame" data-en="Metagame Evolution">Evolución del Metagame</span></h2>
+<h2 class="sec-title"><span class="sec-icon">📈</span><span data-es="Evolución del Metagame" data-en="Metagame Evolution">Evolución del Metagame</span><span class="sec-count" id="cnt-s5"></span></h2>
 <p class="sec-desc" data-es="Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos." data-en="Evolution of each archetype's presence tournament by tournament. Use checkboxes to show/hide archetypes.">Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos.</p>
-<div class="efp" id="efp"></div>
-<div class="cw" id="ecw" style="height:460px"><canvas id="echart"></canvas></div>
+<div class="pblock pblock-pre" style="display:none">
+<div class="efp" id="efp-pre"></div>
+<div class="cw" id="ecw-pre" style="height:460px"><canvas id="echart-pre"></canvas></div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<div class="efp" id="efp-post"></div>
+<div class="cw" id="ecw-post" style="height:460px"><canvas id="echart-post"></canvas></div>
+</div>
+<div class="pblock pblock-all">
+<div class="efp" id="efp-all"></div>
+<div class="cw" id="ecw-all" style="height:460px"><canvas id="echart-all"></canvas></div>
+</div>
 </section>
 <section class="card" id="s6">
-<h2 class="sec-title"><span class="sec-icon">📉</span><span data-es="Cartas en Alza" data-en="Rising Cards">Cartas en Alza</span><span class="sec-count">(50)</span></h2>
+<h2 class="sec-title"><span class="sec-icon">📉</span><span data-es="Cartas en Alza" data-en="Rising Cards">Cartas en Alza</span><span class="sec-count" id="cnt-s6"></span></h2>
 <p class="sec-desc" data-es="Cartas ganando o perdiendo popularidad comparando torneos recientes vs anteriores." data-en="Cards gaining or losing popularity comparing recent vs older tournaments.">Cartas ganando o perdiendo popularidad comparando torneos recientes vs anteriores.</p>
+<div class="pblock pblock-pre" style="display:none">
+<div class="tbl-wrap"><table><thead><tr><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% Anterior" data-en="Old %" data-sort="0">% Anterior</th><th data-es="% Reciente" data-en="New %" data-sort="0">% Reciente</th><th data-es="Cambio" data-en="Change" data-sort="0">Cambio</th></tr></thead><tbody>
+<tr><td>Solitude</td><td>16.3%</td><td>40.6%</td><td class="rise">▲ 24.3%</td></tr>
+<tr><td>Wrath of the Skies</td><td>36.0%</td><td>56.3%</td><td class="rise">▲ 20.2%</td></tr>
+<tr><td>Prismatic Ending</td><td>16.3%</td><td>34.4%</td><td class="rise">▲ 18.1%</td></tr>
+<tr><td>Teferi, Time Raveler</td><td>10.5%</td><td>28.1%</td><td class="rise">▲ 17.7%</td></tr>
+<tr><td>Meticulous Archive</td><td>14.0%</td><td>31.3%</td><td class="rise">▲ 17.3%</td></tr>
+<tr><td>Plains</td><td>39.5%</td><td>56.3%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Force of Negation</td><td>20.9%</td><td>37.5%</td><td class="rise">▲ 16.6%</td></tr>
+<tr><td>Ephemerate</td><td>11.6%</td><td>28.1%</td><td class="rise">▲ 16.5%</td></tr>
+<tr><td>March of Otherworldly Light</td><td>11.6%</td><td>28.1%</td><td class="rise">▲ 16.5%</td></tr>
+<tr><td>Hallowed Fountain</td><td>15.1%</td><td>31.3%</td><td class="rise">▲ 16.1%</td></tr>
+<tr><td>Quantum Riddler</td><td>12.8%</td><td>28.1%</td><td class="rise">▲ 15.3%</td></tr>
+<tr><td>Flooded Strand</td><td>39.5%</td><td>53.1%</td><td class="rise">▲ 13.6%</td></tr>
+<tr><td>Sacred Foundry</td><td>33.7%</td><td>46.9%</td><td class="rise">▲ 13.2%</td></tr>
+<tr><td>Breeding Pool</td><td>9.3%</td><td>21.9%</td><td class="rise">▲ 12.6%</td></tr>
+<tr><td>Verdant Catacombs</td><td>3.5%</td><td>15.6%</td><td class="rise">▲ 12.1%</td></tr>
+<tr><td>Mystical Dispute</td><td>41.9%</td><td>53.1%</td><td class="rise">▲ 11.3%</td></tr>
+<tr><td>High Noon</td><td>20.9%</td><td>31.3%</td><td class="rise">▲ 10.3%</td></tr>
+<tr><td>Ashiok, Dream Render</td><td>20.9%</td><td>31.3%</td><td class="rise">▲ 10.3%</td></tr>
+<tr><td>Force of Vigor</td><td>11.6%</td><td>21.9%</td><td class="rise">▲ 10.2%</td></tr>
+<tr><td>Shardless Agent</td><td>2.3%</td><td>12.5%</td><td class="rise">▲ 10.2%</td></tr>
+<tr><td>Mountain</td><td>43.0%</td><td>53.1%</td><td class="rise">▲ 10.1%</td></tr>
+<tr><td>Galvanic Discharge</td><td>27.9%</td><td>37.5%</td><td class="rise">▲ 9.6%</td></tr>
+<tr><td>Misty Rainforest</td><td>9.3%</td><td>18.8%</td><td class="rise">▲ 9.4%</td></tr>
+<tr><td>Phlage, Titan of Fire's Fury</td><td>34.9%</td><td>43.8%</td><td class="rise">▲ 8.9%</td></tr>
+<tr><td>Collector Ouphe</td><td>7.0%</td><td>15.6%</td><td class="rise">▲ 8.6%</td></tr>
+<tr><td>Phelia, Exuberant Shepherd</td><td>10.5%</td><td>18.8%</td><td class="rise">▲ 8.3%</td></tr>
+<tr><td>Coiling Oracle</td><td>1.2%</td><td>9.4%</td><td class="rise">▲ 8.2%</td></tr>
+<tr><td>Fblthp, the Lost</td><td>1.2%</td><td>9.4%</td><td class="rise">▲ 8.2%</td></tr>
+<tr><td>Shadowy Backstreet</td><td>4.7%</td><td>12.5%</td><td class="rise">▲ 7.8%</td></tr>
+<tr><td>Obsidian Charmaw</td><td>26.7%</td><td>34.4%</td><td class="rise">▲ 7.6%</td></tr>
+<tr><td>Harbinger of the Seas</td><td>11.6%</td><td>18.8%</td><td class="rise">▲ 7.1%</td></tr>
+<tr><td>Birthing Ritual</td><td>2.3%</td><td>9.4%</td><td class="rise">▲ 7.0%</td></tr>
+<tr><td>Erode</td><td>2.3%</td><td>9.4%</td><td class="rise">▲ 7.0%</td></tr>
+<tr><td>Goryo's Vengeance</td><td>2.3%</td><td>9.4%</td><td class="rise">▲ 7.0%</td></tr>
+<tr><td>Pest Control</td><td>2.3%</td><td>9.4%</td><td class="rise">▲ 7.0%</td></tr>
+<tr><td>Stony Silence</td><td>2.3%</td><td>9.4%</td><td class="rise">▲ 7.0%</td></tr>
+<tr><td>Faithful Mending</td><td>2.3%</td><td>9.4%</td><td class="rise">▲ 7.0%</td></tr>
+<tr><td>Marsh Flats</td><td>24.4%</td><td>31.3%</td><td class="rise">▲ 6.8%</td></tr>
+<tr><td>Casey Jones, Vigilante</td><td>5.8%</td><td>12.5%</td><td class="rise">▲ 6.7%</td></tr>
+<tr><td>Hedge Maze</td><td>5.8%</td><td>12.5%</td><td class="rise">▲ 6.7%</td></tr>
+<tr><td>Snow-Covered Forest</td><td>5.8%</td><td>12.5%</td><td class="rise">▲ 6.7%</td></tr>
+<tr><td>Subtlety</td><td>9.3%</td><td>15.6%</td><td class="rise">▲ 6.3%</td></tr>
+<tr><td>Superior Spider-Man</td><td>0.0%</td><td>6.3%</td><td class="rise">▲ 6.3%</td></tr>
+<tr><td>Sunbillow Verge</td><td>0.0%</td><td>6.3%</td><td class="rise">▲ 6.3%</td></tr>
+<tr><td>Supreme Verdict</td><td>0.0%</td><td>6.3%</td><td class="rise">▲ 6.3%</td></tr>
+<tr><td>Static Prison</td><td>0.0%</td><td>6.3%</td><td class="rise">▲ 6.3%</td></tr>
+<tr><td>Chandra, Torch of Defiance</td><td>0.0%</td><td>6.3%</td><td class="rise">▲ 6.3%</td></tr>
+<tr><td>Elegant Parlor</td><td>31.4%</td><td>37.5%</td><td class="rise">▲ 6.1%</td></tr>
+<tr><td>Island</td><td>31.4%</td><td>37.5%</td><td class="rise">▲ 6.1%</td></tr>
+<tr><td>Clarion Conqueror</td><td>3.5%</td><td>9.4%</td><td class="rise">▲ 5.9%</td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<div class="tbl-wrap"><table><thead><tr><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% Anterior" data-en="Old %" data-sort="0">% Anterior</th><th data-es="% Reciente" data-en="New %" data-sort="0">% Reciente</th><th data-es="Cambio" data-en="Change" data-sort="0">Cambio</th></tr></thead><tbody>
+<tr><td>Meticulous Archive</td><td>0.0%</td><td>50.0%</td><td class="rise">▲ 50.0%</td></tr>
+<tr><td>Teferi, Time Raveler</td><td>0.0%</td><td>50.0%</td><td class="rise">▲ 50.0%</td></tr>
+<tr><td>Wrath of the Skies</td><td>9.1%</td><td>58.3%</td><td class="rise">▲ 49.2%</td></tr>
+<tr><td>Solitude</td><td>9.1%</td><td>58.3%</td><td class="rise">▲ 49.2%</td></tr>
+<tr><td>Mystical Dispute</td><td>36.4%</td><td>83.3%</td><td class="rise">▲ 47.0%</td></tr>
+<tr><td>Breeding Pool</td><td>0.0%</td><td>41.7%</td><td class="rise">▲ 41.7%</td></tr>
+<tr><td>Hallowed Fountain</td><td>9.1%</td><td>50.0%</td><td class="rise">▲ 40.9%</td></tr>
+<tr><td>Plains</td><td>18.2%</td><td>58.3%</td><td class="rise">▲ 40.2%</td></tr>
+<tr><td>Flooded Strand</td><td>18.2%</td><td>58.3%</td><td class="rise">▲ 40.2%</td></tr>
+<tr><td>Island</td><td>27.3%</td><td>66.7%</td><td class="rise">▲ 39.4%</td></tr>
+<tr><td>Otawara, Soaring City</td><td>0.0%</td><td>33.3%</td><td class="rise">▲ 33.3%</td></tr>
+<tr><td>Thundering Falls</td><td>0.0%</td><td>33.3%</td><td class="rise">▲ 33.3%</td></tr>
+<tr><td>Ephemerate</td><td>0.0%</td><td>33.3%</td><td class="rise">▲ 33.3%</td></tr>
+<tr><td>Force of Negation</td><td>9.1%</td><td>41.7%</td><td class="rise">▲ 32.6%</td></tr>
+<tr><td>High Noon</td><td>9.1%</td><td>41.7%</td><td class="rise">▲ 32.6%</td></tr>
+<tr><td>Prismatic Ending</td><td>9.1%</td><td>41.7%</td><td class="rise">▲ 32.6%</td></tr>
+<tr><td>Consign to Memory</td><td>36.4%</td><td>66.7%</td><td class="rise">▲ 30.3%</td></tr>
+<tr><td>Orim's Chant</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Witch Enchanter</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Wistfulness</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>March of Otherworldly Light</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Hedge Maze</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Supreme Verdict</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Generous Ent</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Phelia, Exuberant Shepherd</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>White Orchid Phantom</td><td>0.0%</td><td>25.0%</td><td class="rise">▲ 25.0%</td></tr>
+<tr><td>Quantum Riddler</td><td>9.1%</td><td>33.3%</td><td class="rise">▲ 24.2%</td></tr>
+<tr><td>Marsh Flats</td><td>18.2%</td><td>41.7%</td><td class="rise">▲ 23.5%</td></tr>
+<tr><td>Clarion Conqueror</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Street Wraith</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Hall of Storm Giants</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Kaheera, the Orphanguard</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Mistrise Village</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Boggart Trawler</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Starfield Shepherd</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Foundation Breaker</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Oliphaunt</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Consult the Star Charts</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Mockingbird</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Atraxa, Grand Unifier</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Isochron Scepter</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Damping Matrix</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Violent Outburst</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Flow State</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Shadowy Backstreet</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Subtlety</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Curator of Mysteries</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Griselbrand</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Erode</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+<tr><td>Counterspell</td><td>0.0%</td><td>16.7%</td><td class="rise">▲ 16.7%</td></tr>
+</tbody></table></div>
+</div>
+<div class="pblock pblock-all">
 <div class="tbl-wrap"><table><thead><tr><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% Anterior" data-en="Old %" data-sort="0">% Anterior</th><th data-es="% Reciente" data-en="New %" data-sort="0">% Reciente</th><th data-es="Cambio" data-en="Change" data-sort="0">Cambio</th></tr></thead><tbody>
 <tr><td>Solitude</td><td>18.1%</td><td>38.3%</td><td class="rise">▲ 20.2%</td></tr>
 <tr><td>Mystical Dispute</td><td>42.6%</td><td>57.4%</td><td class="rise">▲ 14.9%</td></tr>
@@ -752,8 +1496,9 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);te
 <tr><td>Damping Sphere</td><td>30.9%</td><td>36.2%</td><td class="rise">▲ 5.3%</td></tr>
 <tr><td>Harbinger of the Seas</td><td>11.7%</td><td>17.0%</td><td class="rise">▲ 5.3%</td></tr>
 </tbody></table></div>
+</div>
 </section>
-<footer class="rf">Generated by <strong>MTG Metagame Tracker</strong> &middot; mayo 31, 2026</footer>
+<footer class="rf">Generated by <strong>MTG Metagame Tracker</strong> &middot; junio 1, 2026</footer>
 </main>
 </div>
 <div class="sb-overlay" id="sb-overlay"></div>
@@ -778,19 +1523,27 @@ function sortTable(tbl,col,dir){
 }
 function initTables(){
   document.querySelectorAll('table').forEach(function(tbl){
-    var ths=Array.from(tbl.querySelectorAll('thead th'));
-    ths.forEach(function(th,ci){
-      th.style.cursor='pointer';
-      th.addEventListener('click',function(){
-        var cur=th.getAttribute('data-sort');
-        var dir=cur==='1'?-1:1;
-        ths.forEach(function(h){h.setAttribute('data-sort','0');});
-        th.setAttribute('data-sort',String(dir));
-        sortTable(tbl,ci,dir);
+    var pb=tbl.closest('.pblock');
+    if(pb&&pb.style.display==='none')return;
+    if(!tbl.hasAttribute('data-sort-init')){
+      tbl.setAttribute('data-sort-init','1');
+      var ths=Array.from(tbl.querySelectorAll('thead th'));
+      ths.forEach(function(th,ci){
+        th.style.cursor='pointer';
+        th.addEventListener('click',function(){
+          var cur=th.getAttribute('data-sort');
+          var dir=cur==='1'?-1:1;
+          ths.forEach(function(h){h.setAttribute('data-sort','0');});
+          th.setAttribute('data-sort',String(dir));
+          sortTable(tbl,ci,dir);
+        });
       });
-    });
+    }
     var tbody=tbl.querySelector('tbody');
     if(!tbody)return;
+    var oldSmr=tbody.querySelector('.smr');
+    if(oldSmr)tbody.removeChild(oldSmr);
+    tbody.querySelectorAll('.xr').forEach(function(r){r.classList.remove('xr');r.style.display='';});
     var rows=Array.from(tbody.querySelectorAll('tr'));
     if(rows.length>10){
       var total=rows.length;
@@ -820,23 +1573,260 @@ function initTables(){
   });
 }
 (function(){
-const L=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Amulet Titan','Domain Zoo','Eldrazi Tron','Neobrand','Living End','Eldrazi Ramp','Boros Wildfire','Sultai Ritual','Ruby Storm','Merfolk','Esper Reanimator','Esper Blink','UW Control','UW Blink','UR Prowess','Temur Prowess','Scapeshift','Mono Black Necrodominance','Esper Goryo\'s','Esper Control','Zoo Reanimator','Simic Ritual','Samwisse Combo','Red Belcher','Rakdos Mid','Mono White Control','Mono Red Belcher Storm','Jeskai Energy Control','Hollow One','Hardened Scales','Hammer Time','Grull Ponza','Grixis Reanimator','Grixis Fenix','Goryo\'s Vengeance','Dimir Oculus','Dimir Midrange','Broodscale','Boros Burn','BG Midrange','8 Rack'];
-const V=[16.31,8.51,7.80,6.38,4.96,4.26,3.55,2.84,2.84,2.84,2.84,2.13,2.13,2.13,2.13,2.13,1.42,1.42,1.42,1.42,1.42,1.42,1.42,1.42,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71];
-function gc(r){var R=Math.round(0xc0+(0x7b-0xc0)*r),G=Math.round(0x40+(0x4f-0x40)*r),B=Math.round(0xa0+(0x7a-0xa0)*r);return`rgba(${R},${G},${B},0.85)`;}
-const C=L.map((_,i)=>gc(i/Math.max(L.length-1,1)));
-new Chart(document.getElementById('mchart'),{
-type:'bar',
-data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
+var L=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Amulet Titan','Domain Zoo','Eldrazi Tron','Sultai Ritual','Ruby Storm','Neobrand','Merfolk','Esper Reanimator','Eldrazi Ramp','Boros Wildfire','UR Prowess','Temur Prowess','Scapeshift','Living End','Esper Blink','Zoo Reanimator','Simic Ritual','Samwisse Combo','Red Belcher','Rakdos Mid','Mono White Control','Mono Red Belcher Storm','Mono Black Necrodominance','Jeskai Energy Control','Hollow One','Hardened Scales','Hammer Time','Grixis Fenix','Goryo\'s Vengeance','Esper Goryo\'s','Esper Control','Dimir Oculus','Dimir Midrange','Broodscale'];
+var V=[18.64,10.17,7.63,6.78,5.93,5.08,3.39,2.54,2.54,2.54,2.54,2.54,2.54,2.54,1.69,1.69,1.69,1.69,1.69,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85,0.85];
+function gc(r){var R=Math.round(0xc0+(0x7b-0xc0)*r),G=Math.round(0x40+(0x4f-0x40)*r),B=Math.round(0xa0+(0x7a-0xa0)*r);return'rgba('+R+','+G+','+B+',0.85)';}
+var C=L.map((_,i)=>gc(i/Math.max(L.length-1,1)));
+var ch=new Chart(document.getElementById('mchart-pre'),{
+type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
 options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
 plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.parsed.x.toFixed(1)+'% of field'}}},
 scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:v=>v.toFixed(1)+'%'}},
 y:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
 });
+window.__charts=window.__charts||{};
+window.__charts['mchart_pre']=ch;
+})();
+(function(){
+var L=['UW Control','UW Blink','Living End','Affinity','UW Belcher','Neobrand','Mono Black Necrodominance','Grull Ponza','Grixis Reanimator','Esper Goryo\'s','Esper Control','Esper Blink','Eldrazi Tron','Eldrazi Ramp','Boros Wildfire','Boros Energy','Boros Burn','BG Midrange','8 Rack'];
+var V=[8.70,8.70,8.70,8.70,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35,4.35];
+function gc(r){var R=Math.round(0xc0+(0x7b-0xc0)*r),G=Math.round(0x40+(0x4f-0x40)*r),B=Math.round(0xa0+(0x7a-0xa0)*r);return'rgba('+R+','+G+','+B+',0.85)';}
+var C=L.map((_,i)=>gc(i/Math.max(L.length-1,1)));
+var ch=new Chart(document.getElementById('mchart-post'),{
+type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
+options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.parsed.x.toFixed(1)+'% of field'}}},
+scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:v=>v.toFixed(1)+'%'}},
+y:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
+});
+window.__charts=window.__charts||{};
+window.__charts['mchart_post']=ch;
+})();
+(function(){
+var L=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Amulet Titan','Domain Zoo','Eldrazi Tron','Neobrand','Living End','Eldrazi Ramp','Boros Wildfire','Sultai Ritual','Ruby Storm','Merfolk','Esper Reanimator','Esper Blink','UW Control','UW Blink','UR Prowess','Temur Prowess','Scapeshift','Mono Black Necrodominance','Esper Goryo\'s','Esper Control','Zoo Reanimator','Simic Ritual','Samwisse Combo','Red Belcher','Rakdos Mid','Mono White Control','Mono Red Belcher Storm','Jeskai Energy Control','Hollow One','Hardened Scales','Hammer Time','Grull Ponza','Grixis Reanimator','Grixis Fenix','Goryo\'s Vengeance','Dimir Oculus','Dimir Midrange','Broodscale','Boros Burn','BG Midrange','8 Rack'];
+var V=[16.31,8.51,7.80,6.38,4.96,4.26,3.55,2.84,2.84,2.84,2.84,2.13,2.13,2.13,2.13,2.13,1.42,1.42,1.42,1.42,1.42,1.42,1.42,1.42,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71];
+function gc(r){var R=Math.round(0xc0+(0x7b-0xc0)*r),G=Math.round(0x40+(0x4f-0x40)*r),B=Math.round(0xa0+(0x7a-0xa0)*r);return'rgba('+R+','+G+','+B+',0.85)';}
+var C=L.map((_,i)=>gc(i/Math.max(L.length-1,1)));
+var ch=new Chart(document.getElementById('mchart-all'),{
+type:'bar',data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
+options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.parsed.x.toFixed(1)+'% of field'}}},
+scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:v=>v.toFixed(1)+'%'}},
+y:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
+});
+window.__charts=window.__charts||{};
+window.__charts['mchart_all']=ch;
+})();
+(function(){
+var EL=['1st RCQ METAGAME','1st RCQ Casa de J...','1st La Comarca Pr...','RCQ Modern BloodMoon','1er RCQ Modern La...','RCQ Modern Todo F...','RCQ Game of Magic...','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood ...'];
+var ETIP_N=['1st RCQ METAGAME','1st RCQ Casa de Juegos','1st La Comarca Providencia','RCQ Modern BloodMoon','1er RCQ Modern La Comarca SB','RCQ Modern Todo Freak Viña del Mar','RCQ Game of Magic Concepcion','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood Moon Games'];
+var ETIP_D=['2026-04-04','2026-04-18','2026-04-25','2026-04-25','2026-05-02','2026-05-02','2026-05-03','2026-05-09','2026-05-10','2026-05-16'];
+var BAN_IDX=-1;
+var ED=[
+{label:'Boros Energy',data:[37.50,19.05,22.22,7.41,25.00,23.08,25.00,25.00,0.00,25.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Jeskai Blink',data:[25.00,9.52,22.22,3.70,0.00,0.00,12.50,25.00,12.50,12.50],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Sultai Ritual',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,25.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Eldrazi Ramp',data:[0.00,0.00,0.00,0.00,0.00,15.38,12.50,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Wildfire',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,12.50,12.50,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Hardened Scales',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Scapeshift',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,12.50,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Hollow One',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Simic Ritual',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Goryo\'s Vengeance',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UW Belcher',data:[12.50,4.76,11.11,7.41,0.00,0.00,12.50,25.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Affinity',data:[12.50,9.52,11.11,14.81,0.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Amulet Titan',data:[12.50,9.52,22.22,3.70,0.00,0.00,12.50,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Tron',data:[0.00,0.00,0.00,11.11,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono Red Belcher Storm',data:[0.00,0.00,11.11,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Reanimator',data:[0.00,4.76,0.00,0.00,0.00,0.00,12.50,0.00,12.50,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Ruby Storm',data:[0.00,0.00,0.00,3.70,12.50,0.00,0.00,0.00,12.50,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Temur Prowess',data:[0.00,9.52,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Domain Zoo',data:[0.00,4.76,0.00,7.41,12.50,7.69,0.00,0.00,0.00,12.50],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Blink',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Living End',data:[0.00,0.00,0.00,3.70,0.00,0.00,12.50,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Jeskai Energy Control',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Red Belcher',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Samwisse Combo',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Neobrand',data:[0.00,4.76,0.00,3.70,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UR Prowess',data:[0.00,0.00,0.00,3.70,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Dimir Oculus',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono White Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Rakdos Mid',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Broodscale',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Dimir Midrange',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grixis Fenix',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Hammer Time',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Zoo Reanimator',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+];
+var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020'];
+var banPlugin={id:'banline',afterDraw:function(chart){
+  var bi=chart.__banIdx;if(bi===undefined||bi<0)return;
+  var xs=chart.scales.x,ys=chart.scales.y;
+  var x=xs.getPixelForValue(bi);if(!x)return;
+  var ctx=chart.ctx;ctx.save();
+  ctx.setLineDash([6,4]);ctx.strokeStyle='#d07040';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(x,ys.top);ctx.lineTo(x,ys.bottom);ctx.stroke();
+  ctx.setLineDash([]);ctx.fillStyle='#d07040';
+  ctx.font='11px Open Sans,Arial,sans-serif';
+  ctx.fillText('⚡ Ban/Unban May 18',x+5,ys.top+18);
+  ctx.restore();
+}};
+var echrt=new Chart(document.getElementById('echart-pre'),{
+type:'line',data:{labels:EL,datasets:ED},
+plugins:[banPlugin],
+options:{responsive:true,maintainAspectRatio:false,
+interaction:{mode:'index',intersect:false},
+plugins:{
+  legend:{display:false},
+  tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}},
+  banline:{}
+},
+scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
+callback:function(v){return this.getLabelForValue(v)||'';}}},
+y:{min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
+}
+});
+echrt.__banIdx=BAN_IDX;
+window.__charts=window.__charts||{};
+window.__charts['echart_pre']=echrt;
+var panel=document.getElementById('efp-pre');
+if(panel){
+  var btnsDiv=document.createElement('div');btnsDiv.className='efp-btns';
+  var lbl=document.createElement('span');lbl.className='efp-lbl';
+  lbl.setAttribute('data-es','Arquetipos:');lbl.setAttribute('data-en','Archetypes:');
+  lbl.textContent='Arquetipos:';btnsDiv.appendChild(lbl);
+  function makeBtn(es,en,fn){var b=document.createElement('button');b.className='efp-btn';
+    b.setAttribute('data-es',es);b.setAttribute('data-en',en);b.textContent=es;b.onclick=fn;return b;}
+  var selCount=document.createElement('span');selCount.className='efp-count';
+  var grid=document.createElement('div');grid.className='efp-grid';
+  function visCount(){return echrt.data.datasets.filter(function(ds){return !ds.hidden;}).length;}
+  function updateH(){var n=visCount();var cw=document.getElementById('ecw-pre');
+    if(cw){cw.style.height=Math.max(450,450+Math.max(0,n-10)*18)+'px';echrt.resize();}}
+  function updateCnt(){var n=visCount();
+    selCount.setAttribute('data-es','('+n+' / '+ED.length+')');
+    selCount.setAttribute('data-en','('+n+' / '+ED.length+')');
+    selCount.textContent='('+n+' / '+ED.length+')';updateH();}
+  function syncCbs(){var cbs=grid.querySelectorAll('input[type=checkbox]');
+    cbs.forEach(function(cb,i){cb.checked=!echrt.data.datasets[i].hidden;});updateCnt();}
+  btnsDiv.appendChild(makeBtn('Top 10','Top 10',function(){
+    echrt.data.datasets.forEach(function(ds,i){ds.hidden=i>=10;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(makeBtn('Ver todos','Select All',function(){
+    echrt.data.datasets.forEach(function(ds){ds.hidden=false;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(makeBtn('Limpiar','Clear All',function(){
+    echrt.data.datasets.forEach(function(ds){ds.hidden=true;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(selCount);panel.appendChild(btnsDiv);
+  ED.forEach(function(ds,i){
+    var item=document.createElement('label');item.className='efa';
+    var cb=document.createElement('input');cb.type='checkbox';cb.checked=!ds.hidden;
+    cb.onchange=function(){echrt.data.datasets[i].hidden=!cb.checked;echrt.update();updateCnt();};
+    var dot=document.createElement('span');dot.className='efa-dot';dot.style.background=COLORS[i];
+    item.appendChild(cb);item.appendChild(dot);
+    item.appendChild(document.createTextNode(ds.label));grid.appendChild(item);});
+  panel.appendChild(grid);updateCnt();
+}
+})();
+(function(){
+var EL=['RCQ Modern Magics...','RCQ Modern Oasis ...','RCQ Modern Casa d...'];
+var ETIP_N=['RCQ Modern Magicsur La Reina','RCQ Modern Oasis Games','RCQ Modern Casa de Juegos'];
+var ETIP_D=['2026-05-21','2026-05-23','2026-05-30'];
+var BAN_IDX=-1;
+var ED=[
+{label:'UW Control',data:[0.00,50.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Wildfire',data:[0.00,25.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Living End',data:[0.00,0.00,25.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'UW Blink',data:[0.00,25.00,12.50],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Esper Blink',data:[0.00,0.00,12.50],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Esper Goryo\'s',data:[0.00,0.00,12.50],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Mono Black Necrodominance',data:[0.00,0.00,12.50],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Neobrand',data:[0.00,0.00,12.50],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Affinity',data:[9.09,0.00,12.50],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'8 Rack',data:[9.09,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'BG Midrange',data:[9.09,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Boros Burn',data:[9.09,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Boros Energy',data:[9.09,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Ramp',data:[9.09,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Tron',data:[9.09,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Control',data:[9.09,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grixis Reanimator',data:[9.09,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grull Ponza',data:[9.09,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UW Belcher',data:[9.09,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+];
+var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a'];
+var banPlugin={id:'banline',afterDraw:function(chart){
+  var bi=chart.__banIdx;if(bi===undefined||bi<0)return;
+  var xs=chart.scales.x,ys=chart.scales.y;
+  var x=xs.getPixelForValue(bi);if(!x)return;
+  var ctx=chart.ctx;ctx.save();
+  ctx.setLineDash([6,4]);ctx.strokeStyle='#d07040';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(x,ys.top);ctx.lineTo(x,ys.bottom);ctx.stroke();
+  ctx.setLineDash([]);ctx.fillStyle='#d07040';
+  ctx.font='11px Open Sans,Arial,sans-serif';
+  ctx.fillText('⚡ Ban/Unban May 18',x+5,ys.top+18);
+  ctx.restore();
+}};
+var echrt=new Chart(document.getElementById('echart-post'),{
+type:'line',data:{labels:EL,datasets:ED},
+plugins:[banPlugin],
+options:{responsive:true,maintainAspectRatio:false,
+interaction:{mode:'index',intersect:false},
+plugins:{
+  legend:{display:false},
+  tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}},
+  banline:{}
+},
+scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
+callback:function(v){return this.getLabelForValue(v)||'';}}},
+y:{min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
+}
+});
+echrt.__banIdx=BAN_IDX;
+window.__charts=window.__charts||{};
+window.__charts['echart_post']=echrt;
+var panel=document.getElementById('efp-post');
+if(panel){
+  var btnsDiv=document.createElement('div');btnsDiv.className='efp-btns';
+  var lbl=document.createElement('span');lbl.className='efp-lbl';
+  lbl.setAttribute('data-es','Arquetipos:');lbl.setAttribute('data-en','Archetypes:');
+  lbl.textContent='Arquetipos:';btnsDiv.appendChild(lbl);
+  function makeBtn(es,en,fn){var b=document.createElement('button');b.className='efp-btn';
+    b.setAttribute('data-es',es);b.setAttribute('data-en',en);b.textContent=es;b.onclick=fn;return b;}
+  var selCount=document.createElement('span');selCount.className='efp-count';
+  var grid=document.createElement('div');grid.className='efp-grid';
+  function visCount(){return echrt.data.datasets.filter(function(ds){return !ds.hidden;}).length;}
+  function updateH(){var n=visCount();var cw=document.getElementById('ecw-post');
+    if(cw){cw.style.height=Math.max(450,450+Math.max(0,n-10)*18)+'px';echrt.resize();}}
+  function updateCnt(){var n=visCount();
+    selCount.setAttribute('data-es','('+n+' / '+ED.length+')');
+    selCount.setAttribute('data-en','('+n+' / '+ED.length+')');
+    selCount.textContent='('+n+' / '+ED.length+')';updateH();}
+  function syncCbs(){var cbs=grid.querySelectorAll('input[type=checkbox]');
+    cbs.forEach(function(cb,i){cb.checked=!echrt.data.datasets[i].hidden;});updateCnt();}
+  btnsDiv.appendChild(makeBtn('Top 10','Top 10',function(){
+    echrt.data.datasets.forEach(function(ds,i){ds.hidden=i>=10;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(makeBtn('Ver todos','Select All',function(){
+    echrt.data.datasets.forEach(function(ds){ds.hidden=false;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(makeBtn('Limpiar','Clear All',function(){
+    echrt.data.datasets.forEach(function(ds){ds.hidden=true;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(selCount);panel.appendChild(btnsDiv);
+  ED.forEach(function(ds,i){
+    var item=document.createElement('label');item.className='efa';
+    var cb=document.createElement('input');cb.type='checkbox';cb.checked=!ds.hidden;
+    cb.onchange=function(){echrt.data.datasets[i].hidden=!cb.checked;echrt.update();updateCnt();};
+    var dot=document.createElement('span');dot.className='efa-dot';dot.style.background=COLORS[i];
+    item.appendChild(cb);item.appendChild(dot);
+    item.appendChild(document.createTextNode(ds.label));grid.appendChild(item);});
+  panel.appendChild(grid);updateCnt();
+}
 })();
 (function(){
 var EL=['1st RCQ METAGAME','1st RCQ Casa de J...','1st La Comarca Pr...','RCQ Modern BloodMoon','1er RCQ Modern La...','RCQ Modern Todo F...','RCQ Game of Magic...','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood ...','RCQ Modern Magics...','RCQ Modern Oasis ...','RCQ Modern Casa d...'];
 var ETIP_N=['1st RCQ METAGAME','1st RCQ Casa de Juegos','1st La Comarca Providencia','RCQ Modern BloodMoon','1er RCQ Modern La Comarca SB','RCQ Modern Todo Freak Viña del Mar','RCQ Game of Magic Concepcion','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood Moon Games','RCQ Modern Magicsur La Reina','RCQ Modern Oasis Games','RCQ Modern Casa de Juegos'];
 var ETIP_D=['2026-04-04','2026-04-18','2026-04-25','2026-04-25','2026-05-02','2026-05-02','2026-05-03','2026-05-09','2026-05-10','2026-05-16','2026-05-21','2026-05-23','2026-05-30'];
+var BAN_IDX=10;
 var ED=[
 {label:'UW Control',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,50.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
 {label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
@@ -884,101 +1874,112 @@ var ED=[
 {label:'Hammer Time',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 {label:'Zoo Reanimator',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 ];
-var echrt=new Chart(document.getElementById('echart'),{
+var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9'];
+var banPlugin={id:'banline',afterDraw:function(chart){
+  var bi=chart.__banIdx;if(bi===undefined||bi<0)return;
+  var xs=chart.scales.x,ys=chart.scales.y;
+  var x=xs.getPixelForValue(bi);if(!x)return;
+  var ctx=chart.ctx;ctx.save();
+  ctx.setLineDash([6,4]);ctx.strokeStyle='#d07040';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(x,ys.top);ctx.lineTo(x,ys.bottom);ctx.stroke();
+  ctx.setLineDash([]);ctx.fillStyle='#d07040';
+  ctx.font='11px Open Sans,Arial,sans-serif';
+  ctx.fillText('⚡ Ban/Unban May 18',x+5,ys.top+18);
+  ctx.restore();
+}};
+var echrt=new Chart(document.getElementById('echart-all'),{
 type:'line',data:{labels:EL,datasets:ED},
+plugins:[banPlugin],
 options:{responsive:true,maintainAspectRatio:false,
 interaction:{mode:'index',intersect:false},
 plugins:{
   legend:{display:false},
-  tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}}
+  tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}},
+  banline:{}
 },
 scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
 callback:function(v){return this.getLabelForValue(v)||'';}}},
 y:{min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
 }
 });
-var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9'];
-var panel=document.getElementById('efp');
+echrt.__banIdx=BAN_IDX;
+window.__charts=window.__charts||{};
+window.__charts['echart_all']=echrt;
+var panel=document.getElementById('efp-all');
 if(panel){
-  var btnsDiv=document.createElement('div');
-  btnsDiv.className='efp-btns';
-
-  var lbl=document.createElement('span');
-  lbl.className='efp-lbl';
-  lbl.setAttribute('data-es','Arquetipos:');
-  lbl.setAttribute('data-en','Archetypes:');
-  lbl.textContent='Arquetipos:';
-  btnsDiv.appendChild(lbl);
-
-  function makeBtn(es,en,fn){
-    var b=document.createElement('button');
-    b.className='efp-btn';
-    b.setAttribute('data-es',es);b.setAttribute('data-en',en);
-    b.textContent=es;b.onclick=fn;return b;
-  }
-
-  var selCount=document.createElement('span');
-  selCount.className='efp-count';
-
-  var grid=document.createElement('div');
-  grid.className='efp-grid';
-
-  function visibleCount(){return echrt.data.datasets.filter(function(ds){return !ds.hidden;}).length;}
-
-  function updateHeight(){
-    var n=visibleCount();
-    var cw=document.getElementById('ecw');
-    if(cw){cw.style.height=Math.max(450,450+Math.max(0,n-10)*18)+'px';echrt.resize();}
-  }
-
-  function updateCount(){
-    var n=visibleCount();
+  var btnsDiv=document.createElement('div');btnsDiv.className='efp-btns';
+  var lbl=document.createElement('span');lbl.className='efp-lbl';
+  lbl.setAttribute('data-es','Arquetipos:');lbl.setAttribute('data-en','Archetypes:');
+  lbl.textContent='Arquetipos:';btnsDiv.appendChild(lbl);
+  function makeBtn(es,en,fn){var b=document.createElement('button');b.className='efp-btn';
+    b.setAttribute('data-es',es);b.setAttribute('data-en',en);b.textContent=es;b.onclick=fn;return b;}
+  var selCount=document.createElement('span');selCount.className='efp-count';
+  var grid=document.createElement('div');grid.className='efp-grid';
+  function visCount(){return echrt.data.datasets.filter(function(ds){return !ds.hidden;}).length;}
+  function updateH(){var n=visCount();var cw=document.getElementById('ecw-all');
+    if(cw){cw.style.height=Math.max(450,450+Math.max(0,n-10)*18)+'px';echrt.resize();}}
+  function updateCnt(){var n=visCount();
     selCount.setAttribute('data-es','('+n+' / '+ED.length+')');
     selCount.setAttribute('data-en','('+n+' / '+ED.length+')');
-    selCount.textContent='('+n+' / '+ED.length+')';
-    updateHeight();
-  }
-
-  function syncCheckboxes(){
-    var cbs=grid.querySelectorAll('input[type=checkbox]');
-    cbs.forEach(function(cb,i){cb.checked=!echrt.data.datasets[i].hidden;});
-    updateCount();
-  }
-
+    selCount.textContent='('+n+' / '+ED.length+')';updateH();}
+  function syncCbs(){var cbs=grid.querySelectorAll('input[type=checkbox]');
+    cbs.forEach(function(cb,i){cb.checked=!echrt.data.datasets[i].hidden;});updateCnt();}
   btnsDiv.appendChild(makeBtn('Top 10','Top 10',function(){
-    echrt.data.datasets.forEach(function(ds,i){ds.hidden=i>=10;});
-    echrt.update();syncCheckboxes();
-  }));
+    echrt.data.datasets.forEach(function(ds,i){ds.hidden=i>=10;});echrt.update();syncCbs();}));
   btnsDiv.appendChild(makeBtn('Ver todos','Select All',function(){
-    echrt.data.datasets.forEach(function(ds){ds.hidden=false;});
-    echrt.update();syncCheckboxes();
-  }));
+    echrt.data.datasets.forEach(function(ds){ds.hidden=false;});echrt.update();syncCbs();}));
   btnsDiv.appendChild(makeBtn('Limpiar','Clear All',function(){
-    echrt.data.datasets.forEach(function(ds){ds.hidden=true;});
-    echrt.update();syncCheckboxes();
-  }));
-  btnsDiv.appendChild(selCount);
-  panel.appendChild(btnsDiv);
-
+    echrt.data.datasets.forEach(function(ds){ds.hidden=true;});echrt.update();syncCbs();}));
+  btnsDiv.appendChild(selCount);panel.appendChild(btnsDiv);
   ED.forEach(function(ds,i){
-    var item=document.createElement('label');
-    item.className='efa';
-    var cb=document.createElement('input');
-    cb.type='checkbox';cb.checked=!ds.hidden;
-    cb.onchange=function(){
-      echrt.data.datasets[i].hidden=!cb.checked;
-      echrt.update();updateCount();
-    };
-    var dot=document.createElement('span');
-    dot.className='efa-dot';dot.style.background=COLORS[i];
+    var item=document.createElement('label');item.className='efa';
+    var cb=document.createElement('input');cb.type='checkbox';cb.checked=!ds.hidden;
+    cb.onchange=function(){echrt.data.datasets[i].hidden=!cb.checked;echrt.update();updateCnt();};
+    var dot=document.createElement('span');dot.className='efa-dot';dot.style.background=COLORS[i];
     item.appendChild(cb);item.appendChild(dot);
-    item.appendChild(document.createTextNode(ds.label));
-    grid.appendChild(item);
-  });
-
-  panel.appendChild(grid);
-  updateCount();
+    item.appendChild(document.createTextNode(ds.label));grid.appendChild(item);});
+  panel.appendChild(grid);updateCnt();
 }
+})();
+var KPI_PRE={t:10,d:118,p:89,a:38};
+var KPI_POST={t:3,d:23,p:22,a:19};
+var KPI_ALL={t:13,d:141,p:100,a:45};
+var CNT_PRE={s1:38,s2:14,s3:89,s4:-1,s5:-1,s6:50};
+var CNT_POST={s1:19,s2:0,s3:22,s4:-1,s5:-1,s6:50};
+var CNT_ALL={s1:45,s2:16,s3:100,s4:-1,s5:-1,s6:50};
+var currentPeriod='all';
+function setPeriod(p){
+  currentPeriod=p;
+  document.querySelectorAll('.pblock').forEach(function(el){
+    el.style.display=el.classList.contains('pblock-'+p)?'':'none';
+  });
+  ['pre','post','all'].forEach(function(x){
+    var t=document.getElementById('ptab-'+x);
+    if(t){t.classList.remove('active');if(x===p)t.classList.add('active');}
+  });
+  var kpi=p==='pre'?KPI_PRE:p==='post'?KPI_POST:KPI_ALL;
+  var elt=document.getElementById('kpi-t');if(elt)elt.textContent=kpi.t;
+  var eld=document.getElementById('kpi-d');if(eld)eld.textContent=kpi.d;
+  var elp=document.getElementById('kpi-p');if(elp)elp.textContent=kpi.p;
+  var ela=document.getElementById('kpi-a');if(ela)ela.textContent=kpi.a;
+  var cnt=p==='pre'?CNT_PRE:p==='post'?CNT_POST:CNT_ALL;
+  for(var k in cnt){var el=document.getElementById('cnt-'+k);if(el)el.textContent=cnt[k]>=0?'('+cnt[k]+')':'';}
+  var badge=document.getElementById('period-badge');
+  if(badge){var fmt=badge.getAttribute('data-fmt')||'';
+    var lbl={pre:'Pre-Ban',post:'Post-Ban',all:'All Time'}[p]||'All Time';
+    badge.textContent=fmt+' — '+lbl;}
+  setTimeout(function(){
+    if(window.__charts){Object.keys(window.__charts).forEach(function(k){
+      if(k.endsWith('_'+p)){try{window.__charts[k].resize();}catch(e){}}
+    });}
+  },30);
+  initTables();
+  try{localStorage.setItem('reportPeriod',p);}catch(e){}
+}
+(function(){
+  var saved='all';
+  try{var s=localStorage.getItem('reportPeriod');if(s&&['pre','post','all'].indexOf(s)>=0)saved=s;}catch(e){}
+  setPeriod(saved);
 })();
 function setLang(lang) {
   currentLang = lang;
@@ -1003,7 +2004,6 @@ function setLang(lang) {
   }
 })();
 (function(){
-  // Active section highlight via IntersectionObserver
   var links    = document.querySelectorAll('.sb-nav a');
   var sections = document.querySelectorAll('.card[id]');
   if ('IntersectionObserver' in window) {
@@ -1017,13 +2017,11 @@ function setLang(lang) {
       });
     },{rootMargin:'-15% 0px -65% 0px'});
     sections.forEach(function(s){io.observe(s);});
-    // highlight first section on load
     if(sections.length){
       var l=document.querySelector('.sb-nav a[href="#'+sections[0].id+'"]');
       if(l) l.classList.add('active');
     }
   }
-  // Hamburger toggle for mobile
   var toggle  = document.getElementById('sbtoggle');
   var sidebar = document.getElementById('sidebar');
   var overlay = document.getElementById('sb-overlay');
