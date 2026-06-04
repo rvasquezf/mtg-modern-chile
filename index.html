@@ -9,23 +9,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2/dist/chartjs-plugin-datalabels.min.js"></script>
 <style>
-/* ── Variables ─────────────────────────────────────────────────────── */
+/* ── Bismuth Variables ──────────────────────────────────────────────── */
 :root{
-  --bg:#0d0d1a;--sb-bg:#1a1e2e;--card-bg:#1a1e2e;--card-border:#2a2a4a;
-  --hbar-bg:#12151f;--purple:#c040a0;--violet:#7b4f7a;--text:#e8e8f0;
-  --muted:#a0a0c0;--gold:#b8962e;--green:#4a6b3a;--hero-img:none;
+  --bg:#0a0a12;--sb-bg:#0f1020;--card-bg:#12121e;--card-border:#2a2a4a;
+  --hbar-bg:#0f1020;--purple:#c040a0;--violet:#8040c0;--text:#e8e8f0;
+  --muted:#9090b0;--gold:#c8a840;--green:#40a080;--hero-img:none;
   --sb-w:220px;--hbar-h:60px;
+  --bi-gold:#c8a840;--bi-blue:#4080c0;--bi-magenta:#c040a0;
+  --bi-teal:#40a080;--bi-violet:#8040c0;--bi-orange:#c06020;
+  --bi-bg:#0a0a12;--bi-surface:#12121e;--bi-metal:#2a2a3e;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6}
-a{color:var(--gold);text-decoration:none}
+body{
+  background:
+    repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(64,128,192,.03) 40px,rgba(64,128,192,.03) 41px),
+    repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(192,64,160,.03) 40px,rgba(192,64,160,.03) 41px),
+    linear-gradient(135deg,#0a0a12 0%,#0d0d1a 50%,#0a120a 100%);
+  color:var(--bi-text,#e8e8f0);
+  font-family:'Open Sans',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6
+}
+a{color:var(--bi-gold);text-decoration:none}
 
 /* ── Sidebar ────────────────────────────────────────────────────────── */
 .sidebar{
   position:fixed;left:0;top:0;bottom:0;width:var(--sb-w);
-  background:var(--sb-bg);border-right:1px solid var(--card-border);
+  background:linear-gradient(160deg,#0f1020 0%,#141428 30%,#101820 60%,#0f1518 100%);
+  border-right:1px solid var(--bi-blue);
   overflow-y:auto;z-index:200;display:flex;flex-direction:column;
   transition:transform .25s ease
 }
@@ -39,8 +51,8 @@ a{color:var(--gold);text-decoration:none}
 .sb-nav li a{display:flex;align-items:center;gap:9px;padding:9px 16px;
   color:var(--muted);font-size:.82em;text-decoration:none;
   border-left:3px solid transparent;transition:all .15s;white-space:nowrap;overflow:hidden}
-.sb-nav li a:hover{color:var(--text);background:rgba(192,64,160,.08);border-left-color:var(--violet)}
-.sb-nav li a.active{color:var(--gold);background:rgba(184,150,46,.07);border-left-color:var(--gold)}
+.sb-nav li a:hover{color:var(--text);background:rgba(64,128,192,.1);border-left-color:var(--bi-blue)}
+.sb-nav li a.active{color:var(--bi-gold);background:rgba(200,168,64,.07);border-left-color:var(--bi-gold)}
 .sb-icon{font-size:.95em;flex-shrink:0}
 .sb-footer{padding:12px 14px;font-size:.68em;color:#555580;border-top:1px solid var(--card-border)}
 
@@ -50,7 +62,7 @@ a{color:var(--gold);text-decoration:none}
 /* ── Header bar ─────────────────────────────────────────────────────── */
 .hbar{position:sticky;top:0;height:var(--hbar-h);z-index:100;
   display:flex;align-items:center;padding:0 20px;gap:12px;
-  background:var(--hbar-bg);border-bottom:1px solid var(--card-border);
+  background:var(--hbar-bg);border-bottom:1px solid var(--bi-blue);
   background-image:linear-gradient(to right,rgba(18,21,31,.97),rgba(18,21,31,.92)),var(--hero-img);
   background-size:cover;background-position:center top}
 .hbar-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
@@ -90,24 +102,48 @@ a{color:var(--gold);text-decoration:none}
 /* ── Main content ───────────────────────────────────────────────────── */
 .main{flex:1;padding:18px 22px 60px}
 
-/* ── KPI row ────────────────────────────────────────────────────────── */
+/* ── KPI row — bismuth crystal face ─────────────────────────────────── */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.kpi-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
-  padding:14px 16px;display:flex;align-items:center;gap:12px;
-  box-shadow:0 2px 16px rgba(0,0,0,.3);transition:box-shadow .2s}
-.kpi-card:hover{box-shadow:0 2px 20px rgba(0,0,0,.4),0 0 12px rgba(192,64,160,.1)}
+.kpi-card{
+  background:linear-gradient(135deg,rgba(26,26,46,.97) 0%,rgba(22,32,58,.97) 100%);
+  border:none;border-radius:8px;padding:14px 16px;
+  display:flex;align-items:center;gap:12px;
+  box-shadow:0 0 0 1px var(--bi-metal),4px 4px 14px rgba(0,0,0,.6);
+  transition:box-shadow .2s;border-left:4px solid var(--bi-metal)}
+.kpi-card:hover{box-shadow:0 0 0 1px var(--bi-blue),4px 4px 18px rgba(0,0,0,.7),0 0 10px rgba(64,128,192,.2)}
+.kpi-row .kpi-card:nth-child(1){border-left-color:var(--bi-blue)}
+.kpi-row .kpi-card:nth-child(2){border-left-color:var(--bi-magenta)}
+.kpi-row .kpi-card:nth-child(3){border-left-color:var(--bi-teal)}
+.kpi-row .kpi-card:nth-child(4){border-left-color:var(--bi-gold)}
 .kpi-icon{font-size:1.7em;opacity:.8;flex-shrink:0;line-height:1}
 .kpi-body{flex:1;min-width:0}
 .kpi-num{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.65em;font-weight:700;
-  color:var(--gold);line-height:1;text-shadow:0 0 12px rgba(184,150,46,.4)}
+  color:var(--bi-gold);line-height:1;text-shadow:0 0 12px rgba(200,168,64,.4)}
 .kpi-lbl{font-size:.68em;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-top:4px}
 
-/* ── Section cards ──────────────────────────────────────────────────── */
-.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;
-  padding:20px 18px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+/* ── Section cards — bismuth crystal face ───────────────────────────── */
+.card{
+  background:linear-gradient(135deg,rgba(26,26,46,.97) 0%,rgba(22,32,58,.97) 40%,rgba(26,42,26,.97) 100%);
+  border:none;border-radius:8px;padding:20px 18px;margin-bottom:18px;
+  box-shadow:
+    0 0 0 1px var(--bi-blue),
+    0 0 0 3px var(--bi-bg),
+    0 0 0 4px var(--bi-magenta),
+    0 0 0 6px var(--bi-bg),
+    0 0 0 7px var(--bi-teal),
+    4px 4px 20px rgba(0,0,0,.8);
+}
 .sec-title{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1.05em;font-weight:700;
-  color:var(--gold);border-bottom:1px solid var(--card-border);
+  color:var(--bi-gold);border-bottom:1px solid rgba(64,128,192,.3);
   padding-bottom:9px;margin-bottom:8px;letter-spacing:1px;display:flex;align-items:center;gap:8px}
+/* Per-section bismuth color cycle */
+#s1 .sec-title{color:var(--bi-gold)}
+#s2 .sec-title{color:var(--bi-blue)}
+#s3 .sec-title{color:var(--bi-magenta)}
+#s4 .sec-title{color:var(--bi-teal)}
+#s5 .sec-title{color:var(--bi-violet)}
+#s6 .sec-title{color:var(--bi-orange)}
+#s7 .sec-title{color:var(--bi-teal)}
 .sec-icon{font-size:.95em;opacity:.85}
 .sec-count{font-size:.65em;color:var(--muted);font-family:'Open Sans',Arial,Helvetica,sans-serif;
   font-weight:400;letter-spacing:0;margin-left:auto}
@@ -118,13 +154,15 @@ a{color:var(--gold);text-decoration:none}
 .tbl-wrap{overflow-x:auto}
 .tbl-wrap table{min-width:480px}
 table{width:100%;border-collapse:collapse;font-size:.85em}
-thead th{background:#0f3460;color:var(--gold);
+thead th{
+  background:linear-gradient(90deg,rgba(64,128,192,.28),rgba(192,64,160,.28),rgba(64,160,128,.28));
+  color:var(--bi-gold);
   font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:.75em;letter-spacing:.5px;
   padding:10px 12px;text-align:left;white-space:nowrap;cursor:pointer;user-select:none;
-  position:sticky;top:0;z-index:10;box-shadow:inset 0 -2px 0 var(--purple)}
-thead th:hover{background:#123870;color:#d4b050}
-thead th[data-sort="1"]::after{content:' ▲';color:var(--purple);font-size:.85em}
-thead th[data-sort="-1"]::after{content:' ▼';color:var(--purple);font-size:.85em}
+  position:sticky;top:0;z-index:10;border-bottom:2px solid var(--bi-gold)}
+thead th:hover{background:linear-gradient(90deg,rgba(64,128,192,.45),rgba(192,64,160,.45),rgba(64,160,128,.45));color:#e8c860}
+thead th[data-sort="1"]::after{content:' ▲';color:var(--bi-teal);font-size:.85em}
+thead th[data-sort="-1"]::after{content:' ▼';color:var(--bi-magenta);font-size:.85em}
 tbody tr:nth-child(odd){background:var(--card-bg)}
 tbody tr:nth-child(even){background:#16213e}
 tbody tr{border-bottom:1px solid rgba(42,42,74,.5);transition:background .12s}
@@ -159,6 +197,9 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 
 /* ── Chart containers ───────────────────────────────────────────────── */
 .cw{position:relative;width:100%;transition:height .25s ease}
+.pie-title{font-family:'Cinzel','Times New Roman',Georgia,serif;font-size:1em;font-weight:700;
+  color:var(--gold);text-align:center;margin-top:20px;margin-bottom:10px;letter-spacing:1px;
+  text-shadow:0 0 12px rgba(184,150,46,.35)}
 .mt{margin-top:16px}
 
 /* ── Evolution filter panel ─────────────────────────────────────────── */
@@ -210,12 +251,44 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 /* ── Eldrazi: footer tentacles ───────────────────────────────────────── */
 .eld-footer{display:block;width:100%;height:72px;margin-bottom:-1px}
 
+/* ── Bismuth scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--bi-bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--bi-blue),var(--bi-magenta),var(--bi-teal));border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--bi-teal),var(--bi-violet),var(--bi-magenta))}
+
+/* ── Bismuth buttons ─────────────────────────────────────────────────── */
+.efp-btn{
+  background:linear-gradient(135deg,rgba(64,128,192,.12),rgba(192,64,160,.12));
+  border:1px solid rgba(64,128,192,.4);color:var(--text);cursor:pointer;font-size:.77em;
+  padding:4px 12px;border-radius:4px;transition:all .2s;
+  font-family:'Open Sans',Arial,Helvetica,sans-serif}
+.efp-btn:hover{
+  background:linear-gradient(135deg,var(--bi-blue),var(--bi-magenta));
+  border-color:var(--bi-gold);color:#fff;box-shadow:0 2px 8px rgba(192,64,160,.5)}
+.smb{background:linear-gradient(135deg,rgba(64,128,192,.1),rgba(192,64,160,.1));
+  border:1px solid rgba(64,128,192,.35);color:var(--text);
+  cursor:pointer;font-size:.78em;padding:5px 18px;border-radius:4px;
+  transition:all .2s;font-family:'Open Sans',Arial,Helvetica,sans-serif}
+.smb:hover{border-color:var(--bi-gold);color:var(--bi-gold);
+  background:linear-gradient(135deg,rgba(200,168,64,.1),rgba(64,128,192,.1))}
+
+/* ── Sub-card (pie + table separation within a section) ─────────────── */
+.sub-card{
+  background:rgba(16,18,30,.7);
+  border-radius:6px;padding:16px;
+  box-shadow:0 0 0 1px var(--bi-blue),0 0 0 2px var(--bi-bg),0 0 0 3px var(--bi-teal),2px 2px 12px rgba(0,0,0,.6);
+}
+
+/* ── Bismuth table row hover ──────────────────────────────────────────── */
+tbody tr:hover{background:rgba(64,128,192,.14)!important}
+
 /* ── Eldrazi: card corner runes ──────────────────────────────────────── */
 .card{position:relative}
 .card::before{content:'';position:absolute;top:0;left:0;width:22px;height:22px;
-  clip-path:polygon(0 0,100% 0,0 100%);background:rgba(192,64,160,.2);border-radius:8px 0 0 0;pointer-events:none}
+  clip-path:polygon(0 0,100% 0,0 100%);background:rgba(64,128,192,.35);border-radius:8px 0 0 0;pointer-events:none}
 .card::after{content:'';position:absolute;bottom:0;right:0;width:22px;height:22px;
-  clip-path:polygon(100% 0,100% 100%,0 100%);background:rgba(192,64,160,.15);border-radius:0 0 8px 0;pointer-events:none}
+  clip-path:polygon(100% 0,100% 100%,0 100%);background:rgba(64,160,128,.28);border-radius:0 0 8px 0;pointer-events:none}
 
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media(max-width:900px){.hbar-meta{display:none}}
@@ -259,7 +332,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </nav>
 <div class="layout">
 <header class="hbar">
-<div class="hbar-bg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="eldA" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff00cc" stop-opacity="0.72"/><stop offset="45%" stop-color="#7b2d8b" stop-opacity="0.38"/><stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/></radialGradient><radialGradient id="eldB" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#c040a0" stop-opacity="0.45"/><stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="60" fill="#0d0d1a"/><ellipse cx="600" cy="30" rx="300" ry="34" fill="url(#eldB)" class="eld-eye-outer"/><ellipse cx="600" cy="30" rx="112" ry="23" fill="url(#eldA)" class="eld-eye-inner"/><g stroke="#c040a0" stroke-width="0.8" fill="none" opacity="0.32"><path d="M600,30 C545,22 460,26 300,12" class="elt1"/><path d="M600,30 C655,22 740,26 900,12" class="elt2"/><path d="M600,30 C548,37 430,43 240,39" class="elt3"/><path d="M600,30 C652,37 770,43 960,39" class="elt4"/><path d="M600,30 C535,18 388,22 178,8" class="elt5"/><path d="M600,30 C665,18 812,22 1022,8" class="elt6"/><path d="M600,30 C570,42 506,54 400,57" class="elt7"/><path d="M600,30 C630,42 694,54 800,57" class="elt8"/></g><g stroke="#7b2d8b" stroke-width="0.5" fill="none" opacity="0.22"><path d="M600,30 C572,23 520,20 440,17 C395,15 348,19 288,14"/><path d="M600,30 C628,23 680,20 760,17 C805,15 852,19 912,14"/><path d="M600,30 C583,38 554,48 508,52"/><path d="M600,30 C617,38 646,48 692,52"/><path d="M440,17 C420,13 408,7 394,4"/><path d="M760,17 C780,13 792,7 806,4"/></g><ellipse cx="600" cy="30" rx="14" ry="9" fill="#ff00cc" opacity="0.48" class="eld-pupil"/><ellipse cx="600" cy="30" rx="5" ry="3.5" fill="#ffffff" opacity="0.42" class="eld-pupil"/><rect width="1200" height="60" fill="#12151f" opacity="0.63"/></svg></div>
+<div class="hbar-bg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="eldA" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff00cc" stop-opacity="0.72"/><stop offset="45%" stop-color="#7b2d8b" stop-opacity="0.38"/><stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/></radialGradient><radialGradient id="eldB" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#c040a0" stop-opacity="0.45"/><stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="60" fill="#0d0d1a"/><ellipse cx="600" cy="30" rx="300" ry="34" fill="url(#eldB)" class="eld-eye-outer"/><ellipse cx="600" cy="30" rx="112" ry="23" fill="url(#eldA)" class="eld-eye-inner"/><g stroke="#c040a0" stroke-width="0.8" fill="none" opacity="0.32"><path d="M600,30 C545,22 460,26 300,12" class="elt1"/><path d="M600,30 C655,22 740,26 900,12" class="elt2"/><path d="M600,30 C548,37 430,43 240,39" class="elt3"/><path d="M600,30 C652,37 770,43 960,39" class="elt4"/><path d="M600,30 C535,18 388,22 178,8" class="elt5"/><path d="M600,30 C665,18 812,22 1022,8" class="elt6"/><path d="M600,30 C570,42 506,54 400,57" class="elt7"/><path d="M600,30 C630,42 694,54 800,57" class="elt8"/></g><g stroke="#7b2d8b" stroke-width="0.5" fill="none" opacity="0.22"><path d="M600,30 C572,23 520,20 440,17 C395,15 348,19 288,14"/><path d="M600,30 C628,23 680,20 760,17 C805,15 852,19 912,14"/><path d="M600,30 C583,38 554,48 508,52"/><path d="M600,30 C617,38 646,48 692,52"/><path d="M440,17 C420,13 408,7 394,4"/><path d="M760,17 C780,13 792,7 806,4"/></g><g opacity="0.55"><rect x="76" y="52" width="14" height="8" fill="#4080c0"/><rect x="79" y="46" width="10" height="6" fill="#4080c0"/><rect x="82" y="42" width="6" height="4" fill="#4080c0"/><rect x="196" y="54" width="16" height="6" fill="#c040a0"/><rect x="200" y="49" width="10" height="5" fill="#c040a0"/><rect x="203" y="45" width="6" height="4" fill="#c040a0"/><rect x="376" y="51" width="12" height="9" fill="#40a080"/><rect x="379" y="44" width="8" height="7" fill="#40a080"/><rect x="382" y="40" width="5" height="4" fill="#40a080"/><rect x="816" y="51" width="12" height="9" fill="#c8a840"/><rect x="819" y="44" width="8" height="7" fill="#c8a840"/><rect x="822" y="40" width="5" height="4" fill="#c8a840"/><rect x="996" y="54" width="14" height="6" fill="#8040c0"/><rect x="999" y="49" width="10" height="5" fill="#8040c0"/><rect x="1002" y="45" width="6" height="4" fill="#8040c0"/><rect x="1116" y="52" width="14" height="8" fill="#c06020"/><rect x="1119" y="46" width="10" height="6" fill="#c06020"/><rect x="1122" y="42" width="6" height="4" fill="#c06020"/></g><ellipse cx="600" cy="30" rx="14" ry="9" fill="#ff00cc" opacity="0.48" class="eld-pupil"/><ellipse cx="600" cy="30" rx="5" ry="3.5" fill="#ffffff" opacity="0.42" class="eld-pupil"/><rect width="1200" height="60" fill="#12151f" opacity="0.63"/></svg></div>
 <div class="hbar-left"><button class="hbar-hamburger" id="sbtoggle" aria-label="Menu">&#9776;</button><span class="hbar-title">DAILY MODERN</span></div>
 <div class="hbar-right">
 <div class="period-tabs">
@@ -284,8 +357,10 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <p class="sec-desc" data-es="Porcentaje de presencia de cada arquetipo en el campo. Mayor % significa más jugadores eligieron ese arquetipo." data-en="Presence percentage of each archetype. Higher % means more players chose that archetype.">Porcentaje de presencia de cada arquetipo en el campo. Mayor % significa más jugadores eligieron ese arquetipo.</p>
 <div class="pblock pblock-pre" style="display:none">
 <div class="cw" id="mcw-pre" style="height:600px"><canvas id="mchart-pre"></canvas></div>
-<div class="cw" id="pcw-pre" style="height:380px;margin-top:20px"><canvas id="pchart-pre"></canvas></div>
-<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th><th data-es="Conversión%" data-en="Conversion%" data-sort="0">Conversión%</th></tr></thead><tbody>
+<div class="sub-card" style="padding-bottom:90px;margin-top:20px"><div class="pie-title" data-es="Distribución del Meta — Pre-Ban" data-en="Metagame Distribution — Pre-Ban">Distribución del Meta — Pre-Ban</div>
+<div class="cw" id="pcw-pre" style="height:700px;margin-top:8px"><canvas id="pchart-pre"></canvas></div>
+</div>
+<div class="sub-card" style="margin-top:8px"><div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th><th data-es="Conversión%" data-en="Conversion%" data-sort="0">Conversión%</th></tr></thead><tbody>
 <tr><td class="rk">1</td><td>Boros Energy</td><td>22</td><td><div class="pb-wrap"><div class="pb" style="width:55.9px"></div>18.6%</div></td><td>1</td><td>4.5%</td><td>81.8%</td><td>81.8%</td></tr>
 <tr><td class="rk">2</td><td>Jeskai Blink</td><td>12</td><td><div class="pb-wrap"><div class="pb" style="width:30.5px"></div>10.2%</div></td><td>2</td><td>16.7%</td><td>66.7%</td><td>66.7%</td></tr>
 <tr><td class="rk">3</td><td>Affinity</td><td>9</td><td><div class="pb-wrap"><div class="pb" style="width:22.9px"></div>7.6%</div></td><td>2</td><td>22.2%</td><td>55.6%</td><td>55.6%</td></tr>
@@ -324,12 +399,14 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">36</td><td>Dimir Oculus</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
 <tr><td class="rk">37</td><td>Dimir Midrange</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
 <tr><td class="rk">38</td><td>Broodscale</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:2.5px"></div>0.8%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
-</tbody></table></div>
+</tbody></table></div></div>
 </div>
 <div class="pblock pblock-post" style="display:none">
 <div class="cw" id="mcw-post" style="height:600px"><canvas id="mchart-post"></canvas></div>
-<div class="cw" id="pcw-post" style="height:380px;margin-top:20px"><canvas id="pchart-post"></canvas></div>
-<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th><th data-es="Conversión%" data-en="Conversion%" data-sort="0">Conversión%</th></tr></thead><tbody>
+<div class="sub-card" style="padding-bottom:90px;margin-top:20px"><div class="pie-title" data-es="Distribución del Meta — Post-Ban" data-en="Metagame Distribution — Post-Ban">Distribución del Meta — Post-Ban</div>
+<div class="cw" id="pcw-post" style="height:700px;margin-top:8px"><canvas id="pchart-post"></canvas></div>
+</div>
+<div class="sub-card" style="margin-top:8px"><div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th><th data-es="Conversión%" data-en="Conversion%" data-sort="0">Conversión%</th></tr></thead><tbody>
 <tr><td class="rk">1</td><td>UW Control</td><td>5</td><td><div class="pb-wrap"><div class="pb" style="width:35.7px"></div>11.9%</div></td><td>0</td><td>0.0%</td><td>60.0%</td><td>60.0%</td></tr>
 <tr><td class="rk">2</td><td>UW Blink</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:21.4px"></div>7.1%</div></td><td>0</td><td>0.0%</td><td>66.7%</td><td>66.7%</td></tr>
 <tr><td class="rk">3</td><td>Grixis Reanimator</td><td>3</td><td><div class="pb-wrap"><div class="pb" style="width:21.4px"></div>7.1%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
@@ -355,12 +432,14 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">23</td><td>BG Midrange</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:7.1px"></div>2.4%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
 <tr><td class="rk">24</td><td>Amulet Titan</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:7.1px"></div>2.4%</div></td><td>0</td><td>0.0%</td><td>100.0%</td><td>100.0%</td></tr>
 <tr><td class="rk">25</td><td>8 Rack</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:7.1px"></div>2.4%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
-</tbody></table></div>
+</tbody></table></div></div>
 </div>
 <div class="pblock pblock-all">
 <div class="cw" id="mcw-all" style="height:600px"><canvas id="mchart-all"></canvas></div>
-<div class="cw" id="pcw-all" style="height:380px;margin-top:20px"><canvas id="pchart-all"></canvas></div>
-<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th><th data-es="Conversión%" data-en="Conversion%" data-sort="0">Conversión%</th></tr></thead><tbody>
+<div class="sub-card" style="padding-bottom:90px;margin-top:20px"><div class="pie-title" data-es="Distribución del Meta — All Time" data-en="Metagame Distribution — All Time">Distribución del Meta — All Time</div>
+<div class="cw" id="pcw-all" style="height:700px;margin-top:8px"><canvas id="pchart-all"></canvas></div>
+</div>
+<div class="sub-card" style="margin-top:8px"><div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Arquetipo" data-en="Archetype" data-sort="0">Arquetipo</th><th data-es="Apariciones" data-en="Appearances" data-sort="0">Apariciones</th><th data-es="% del Campo" data-en="% of Field" data-sort="0">% del Campo</th><th data-es="Victorias" data-en="Wins" data-sort="0">Victorias</th><th data-es="Win%" data-en="Win%" data-sort="0">Win%</th><th data-es="Top-8%" data-en="Top-8%" data-sort="0">Top-8%</th><th data-es="Conversión%" data-en="Conversion%" data-sort="0">Conversión%</th></tr></thead><tbody>
 <tr><td class="rk">1</td><td>Boros Energy</td><td>23</td><td><div class="pb-wrap"><div class="pb" style="width:43.1px"></div>14.4%</div></td><td>1</td><td>4.3%</td><td>78.3%</td><td>78.3%</td></tr>
 <tr><td class="rk">2</td><td>Jeskai Blink</td><td>12</td><td><div class="pb-wrap"><div class="pb" style="width:22.5px"></div>7.5%</div></td><td>2</td><td>16.7%</td><td>66.7%</td><td>66.7%</td></tr>
 <tr><td class="rk">3</td><td>Affinity</td><td>12</td><td><div class="pb-wrap"><div class="pb" style="width:22.5px"></div>7.5%</div></td><td>2</td><td>16.7%</td><td>50.0%</td><td>50.0%</td></tr>
@@ -407,10 +486,10 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">44</td><td>Dimir Oculus</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:1.9px"></div>0.6%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
 <tr><td class="rk">45</td><td>BG Midrange</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:1.9px"></div>0.6%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
 <tr><td class="rk">46</td><td>8 Rack</td><td>1</td><td><div class="pb-wrap"><div class="pb" style="width:1.9px"></div>0.6%</div></td><td>0</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
-</tbody></table></div>
+</tbody></table></div></div>
 </div>
 </section>
-<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.55"><polygon points="597,20 600,8 603,20 600,25"/><polygon points="581,20 585,12 589,20"/><polygon points="611,20 615,12 619,20"/><polygon points="560,20 563,15 566,20"/><polygon points="634,20 637,15 640,20"/><polygon points="540,20 542,17 544,20"/><polygon points="656,20 658,17 660,20"/></g><g fill="#2a7a6a" opacity="0.25"><circle cx="400" cy="20" r="2"/><circle cx="800" cy="20" r="2"/><circle cx="200" cy="20" r="1.5"/><circle cx="1000" cy="20" r="1.5"/></g></svg><section class="card" id="s2">
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg0" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4080c0" stop-opacity="0.55"/><stop offset="50%" stop-color="#c040a0" stop-opacity="0.55"/><stop offset="100%" stop-color="#40a080" stop-opacity="0.55"/></linearGradient></defs><rect x="0" y="26" width="1200" height="4" fill="#4080c0" opacity="0.18"/><rect x="150" y="21" width="900" height="5" fill="url(#dg0)" opacity="0.32"/><rect x="350" y="16" width="500" height="5" fill="#c040a0" opacity="0.28"/><rect x="480" y="11" width="240" height="5" fill="#8040c0" opacity="0.32"/><rect x="558" y="6" width="84" height="5" fill="#c8a840" opacity="0.4"/><line x1="0" y1="28.5" x2="1200" y2="28.5" stroke="#4080c0" stroke-width="0.7" opacity="0.45"/></svg><section class="card" id="s2">
 <h2 class="sec-title"><span class="sec-icon">🏆</span><span data-es="Rendimiento por Arquetipo" data-en="Archetype Performance">Rendimiento por Arquetipo</span><span class="sec-count" id="cnt-s2"></span></h2>
 <p class="sec-desc" data-es="Rendimiento de cada arquetipo. Verde = sobre-rinde respecto a su presencia. Rojo = bajo rendimiento." data-en="Archetype performance. Green = overperforming. Red = underperforming.">Rendimiento de cada arquetipo. Verde = sobre-rinde respecto a su presencia. Rojo = bajo rendimiento.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -464,7 +543,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.5"><polygon points="597,20 600,32 603,20"/><polygon points="578,20 581,28 584,20"/><polygon points="616,20 619,28 622,20"/><polygon points="558,20 560,25 562,20"/><polygon points="638,20 640,25 642,20"/></g><g fill="none" stroke="#2a7a6a" stroke-width="0.5" opacity="0.3"><line x1="0" y1="20" x2="540" y2="20"/><line x1="660" y1="20" x2="1200" y2="20"/></g></svg><section class="card" id="s3">
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1200" height="4" fill="#c040a0" opacity="0.15"/><rect x="150" y="4" width="900" height="5" fill="#40a080" opacity="0.22"/><rect x="340" y="9" width="520" height="5" fill="#c8a840" opacity="0.28"/><rect x="470" y="14" width="260" height="5" fill="#4080c0" opacity="0.32"/><rect x="555" y="19" width="90" height="5" fill="#8040c0" opacity="0.38"/><line x1="0" y1="1.5" x2="1200" y2="1.5" stroke="#c040a0" stroke-width="0.7" opacity="0.42"/></svg><section class="card" id="s3">
 <h2 class="sec-title"><span class="sec-icon">👤</span><span data-es="Ranking de Jugadores" data-en="Player Rankings">Ranking de Jugadores</span><span class="sec-count" id="cnt-s3"></span></h2>
 <p class="sec-desc" data-es="Ranking por puntos acumulados. Puntos: Ganador=3, Top 4=2, Top 8=1." data-en="Ranking by accumulated points. Points: Winner=3, Top 4=2, Top 8=1.">Ranking por puntos acumulados. Puntos: Ganador=3, Top 4=2, Top 8=1.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -712,7 +791,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.5" opacity="0.4"/><polyline points="530,20 542,10 554,20 566,30 578,20 590,10 600,20 610,10 622,20 634,30 646,20 658,10 670,20" stroke="#2a7a6a" stroke-width="1" fill="none" opacity="0.5"/><g fill="#2a7a6a" opacity="0.4"><circle cx="600" cy="20" r="3"/><circle cx="530" cy="20" r="2"/><circle cx="670" cy="20" r="2"/></g></svg><section class="card" id="s4">
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#40a080" stop-opacity="0.6"/><stop offset="50%" stop-color="#c8a840" stop-opacity="0.6"/><stop offset="100%" stop-color="#8040c0" stop-opacity="0.6"/></linearGradient></defs><polygon points="0,30 0,26 200,26 200,22 400,22 400,18 600,18 600,14 800,14 800,10 1000,10 1000,7 1200,7 1200,30" fill="url(#dg2)" opacity="0.32"/><polyline points="0,26 200,26 200,22 400,22 400,18 600,18 600,14 800,14 800,10 1000,10 1000,7 1200,7" stroke="#40a080" stroke-width="0.8" fill="none" opacity="0.6"/></svg><section class="card" id="s4">
 <h2 class="sec-title"><span class="sec-icon">🃏</span><span data-es="Cartas Más Jugadas" data-en="Most Played Cards">Cartas Más Jugadas</span><span class="sec-count" id="cnt-s4"></span></h2>
 <p class="sec-desc" data-es="Cartas más usadas en todos los mazos. % de Mazos = porcentaje de mazos que incluye esa carta." data-en="Most used cards across all decks. % of Decks = percentage of decks including this card.">Cartas más usadas en todos los mazos. % de Mazos = porcentaje de mazos que incluye esa carta.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1388,7 +1467,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </div>
 </div>
 </section>
-<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#2a7a6a" stroke-width="0.5" opacity="0.35"><line x1="0" y1="20" x2="558" y2="20"/><line x1="642" y1="20" x2="1200" y2="20"/></g><g fill="none" stroke="#2a7a6a" stroke-width="0.85" opacity="0.55"><polygon points="600,10 610,20 600,30 590,20"/><polygon points="574,14 581,20 574,26 567,20"/><polygon points="626,14 633,20 626,26 619,20"/></g><g fill="#2a7a6a" opacity="0.35"><polygon points="600,15 604,20 600,25 596,20"/></g></svg><section class="card" id="s5">
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="22" x2="1200" y2="22" stroke="#c8a840" stroke-width="0.5" opacity="0.3"/><g opacity="0.68"><rect x="554" y="10" width="9" height="12" fill="#c040a0"/><rect x="565" y="14" width="9" height="8" fill="#4080c0"/><rect x="576" y="7" width="9" height="15" fill="#40a080"/><rect x="587" y="15" width="9" height="7" fill="#c8a840"/><rect x="598" y="5" width="9" height="17" fill="#8040c0"/><rect x="609" y="13" width="9" height="9" fill="#c06020"/><rect x="620" y="9" width="9" height="13" fill="#4080c0"/><rect x="543" y="14" width="9" height="8" fill="#c8a840"/></g></svg><section class="card" id="s5">
 <h2 class="sec-title"><span class="sec-icon">📈</span><span data-es="Evolución del Metagame" data-en="Metagame Evolution">Evolución del Metagame</span><span class="sec-count" id="cnt-s5"></span></h2>
 <p class="sec-desc" data-es="Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos." data-en="Evolution of each archetype's presence tournament by tournament. Use checkboxes to show/hide archetypes.">Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1404,7 +1483,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <div class="cw" id="ecw-all" style="height:460px"><canvas id="echart-all"></canvas></div>
 </div>
 </section>
-<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.55"><polygon points="597,20 600,8 603,20 600,25"/><polygon points="581,20 585,12 589,20"/><polygon points="611,20 615,12 619,20"/><polygon points="560,20 563,15 566,20"/><polygon points="634,20 637,15 640,20"/><polygon points="540,20 542,17 544,20"/><polygon points="656,20 658,17 660,20"/></g><g fill="#2a7a6a" opacity="0.25"><circle cx="400" cy="20" r="2"/><circle cx="800" cy="20" r="2"/><circle cx="200" cy="20" r="1.5"/><circle cx="1000" cy="20" r="1.5"/></g></svg><section class="card" id="s6">
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg0" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4080c0" stop-opacity="0.55"/><stop offset="50%" stop-color="#c040a0" stop-opacity="0.55"/><stop offset="100%" stop-color="#40a080" stop-opacity="0.55"/></linearGradient></defs><rect x="0" y="26" width="1200" height="4" fill="#4080c0" opacity="0.18"/><rect x="150" y="21" width="900" height="5" fill="url(#dg0)" opacity="0.32"/><rect x="350" y="16" width="500" height="5" fill="#c040a0" opacity="0.28"/><rect x="480" y="11" width="240" height="5" fill="#8040c0" opacity="0.32"/><rect x="558" y="6" width="84" height="5" fill="#c8a840" opacity="0.4"/><line x1="0" y1="28.5" x2="1200" y2="28.5" stroke="#4080c0" stroke-width="0.7" opacity="0.45"/></svg><section class="card" id="s6">
 <h2 class="sec-title"><span class="sec-icon">📉</span><span data-es="Cartas en Alza" data-en="Rising Cards">Cartas en Alza</span><span class="sec-count" id="cnt-s6"></span></h2>
 <p class="sec-desc" data-es="Cartas ganando o perdiendo popularidad comparando torneos recientes vs anteriores." data-en="Cards gaining or losing popularity comparing recent vs older tournaments.">Cartas ganando o perdiendo popularidad comparando torneos recientes vs anteriores.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1570,7 +1649,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.5"><polygon points="597,20 600,32 603,20"/><polygon points="578,20 581,28 584,20"/><polygon points="616,20 619,28 622,20"/><polygon points="558,20 560,25 562,20"/><polygon points="638,20 640,25 642,20"/></g><g fill="none" stroke="#2a7a6a" stroke-width="0.5" opacity="0.3"><line x1="0" y1="20" x2="540" y2="20"/><line x1="660" y1="20" x2="1200" y2="20"/></g></svg><section class="card" id="s7">
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="1200" height="4" fill="#c040a0" opacity="0.15"/><rect x="150" y="4" width="900" height="5" fill="#40a080" opacity="0.22"/><rect x="340" y="9" width="520" height="5" fill="#c8a840" opacity="0.28"/><rect x="470" y="14" width="260" height="5" fill="#4080c0" opacity="0.32"/><rect x="555" y="19" width="90" height="5" fill="#8040c0" opacity="0.38"/><line x1="0" y1="1.5" x2="1200" y2="1.5" stroke="#c040a0" stroke-width="0.7" opacity="0.42"/></svg><section class="card" id="s7">
 <h2 class="sec-title"><span class="sec-icon">🎯</span><span data-es="Presencia vs Conversión" data-en="Win Rate vs Presence">Presencia vs Conversión</span><span class="sec-count" id="cnt-s7"></span></h2>
 <p class="sec-desc" data-es="Cada punto = un arquetipo. Eje X: presencia %. Eje Y: conversión a Top-8 %. Tamaño = apariciones. Verde = sobre-rinde, Rojo = bajo rendimiento." data-en="Each point = one archetype. X: presence %. Y: Top-8 conversion %. Size = appearances. Green = overperforming, Red = underperforming.">Cada punto = un arquetipo. Eje X: presencia %. Eje Y: conversión a Top-8 %. Tamaño = apariciones. Verde = sobre-rinde, Rojo = bajo rendimiento.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1657,11 +1736,11 @@ function initTables(){
     }
   });
 }
-(function(){
+try{(function(){
 var L=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Amulet Titan','Domain Zoo','Eldrazi Tron','Sultai Ritual','Ruby Storm','Neobrand','Merfolk','Esper Reanimator','Eldrazi Ramp','Boros Wildfire','UR Prowess','Temur Prowess','Scapeshift','Living End','Esper Blink','Zoo Reanimator'];
 var V=[18.64,10.17,7.63,6.78,5.93,5.08,3.39,2.54,2.54,2.54,2.54,2.54,2.54,2.54,1.69,1.69,1.69,1.69,1.69,0.85];
-function gc(r){var R=Math.round(233+(83-233)*r),G=Math.round(69+(52-69)*r),B=Math.round(96+(131-96)*r);return'rgba('+R+','+G+','+B+',0.85)';}
-var C=L.map(function(_,i){return gc(i/Math.max(L.length-1,1));});
+var BM=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0'];
+var C=L.map(function(_,i){return BM[i%BM.length];});
 var dlPlugin={id:'dl',afterDatasetDraw:function(chart){
   var ctx=chart.ctx,meta=chart.getDatasetMeta(0);
   meta.data.forEach(function(bar,j){
@@ -1676,17 +1755,17 @@ type:'bar',plugins:[dlPlugin],
 data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
 options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
 plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return' '+c.parsed.x.toFixed(1)+'% of field';}}}},
-scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
-y:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
+scales:{x:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
+y:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
 });
 window.__charts=window.__charts||{};
 window.__charts['mchart_pre']=ch;
-})();
-(function(){
+})();}catch(e){console.error('[mchart-pre] '+e);}
+try{(function(){
 var L=['UW Control','UW Blink','Grixis Reanimator','Eldrazi Tron','Affinity','UW Belcher','Living End','Domain Zoo','Boros Wildfire','Boros Burn','Temur Cascade','Ruby Storm','Neobrand','Mono Black Necrodominance','Grull Ponza','Esper Goryo\'s','Esper Control','Esper Blink','Eldrazi Ramp','Dimir Midrange'];
 var V=[11.90,7.14,7.14,7.14,7.14,4.76,4.76,4.76,4.76,4.76,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38];
-function gc(r){var R=Math.round(233+(83-233)*r),G=Math.round(69+(52-69)*r),B=Math.round(96+(131-96)*r);return'rgba('+R+','+G+','+B+',0.85)';}
-var C=L.map(function(_,i){return gc(i/Math.max(L.length-1,1));});
+var BM=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0'];
+var C=L.map(function(_,i){return BM[i%BM.length];});
 var dlPlugin={id:'dl',afterDatasetDraw:function(chart){
   var ctx=chart.ctx,meta=chart.getDatasetMeta(0);
   meta.data.forEach(function(bar,j){
@@ -1701,17 +1780,17 @@ type:'bar',plugins:[dlPlugin],
 data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
 options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
 plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return' '+c.parsed.x.toFixed(1)+'% of field';}}}},
-scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
-y:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
+scales:{x:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
+y:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
 });
 window.__charts=window.__charts||{};
 window.__charts['mchart_post']=ch;
-})();
-(function(){
+})();}catch(e){console.error('[mchart-post] '+e);}
+try{(function(){
 var L=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Domain Zoo','Amulet Titan','Eldrazi Tron','UW Control','Boros Wildfire','Ruby Storm','Neobrand','Living End','Eldrazi Ramp','UW Blink','Sultai Ritual','Merfolk','Grixis Reanimator','Esper Reanimator','Esper Blink','UR Prowess'];
 var V=[14.38,7.50,7.50,6.25,5.00,5.00,4.38,3.13,3.13,2.50,2.50,2.50,2.50,1.88,1.88,1.88,1.88,1.88,1.88,1.25];
-function gc(r){var R=Math.round(233+(83-233)*r),G=Math.round(69+(52-69)*r),B=Math.round(96+(131-96)*r);return'rgba('+R+','+G+','+B+',0.85)';}
-var C=L.map(function(_,i){return gc(i/Math.max(L.length-1,1));});
+var BM=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0'];
+var C=L.map(function(_,i){return BM[i%BM.length];});
 var dlPlugin={id:'dl',afterDatasetDraw:function(chart){
   var ctx=chart.ctx,meta=chart.getDatasetMeta(0);
   meta.data.forEach(function(bar,j){
@@ -1726,157 +1805,205 @@ type:'bar',plugins:[dlPlugin],
 data:{labels:L,datasets:[{data:V,backgroundColor:C,borderColor:C,borderWidth:1,borderRadius:3}]},
 options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
 plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return' '+c.parsed.x.toFixed(1)+'% of field';}}}},
-scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
-y:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
+scales:{x:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
+y:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',font:{size:11}}}}}
 });
 window.__charts=window.__charts||{};
 window.__charts['mchart_all']=ch;
-})();
-(function(){
-var PL=['Boros Energy (18.6%)','Jeskai Blink (10.2%)','Affinity (7.6%)','UW Belcher (6.8%)','Amulet Titan (5.9%)','Domain Zoo (5.1%)','Eldrazi Tron (3.4%)','Sultai Ritual (2.5%)','Ruby Storm (2.5%)','Neobrand (2.5%)','Other (34.7%)'];
-var PV=[18.64,10.17,7.63,6.78,5.93,5.08,3.39,2.54,2.54,2.54,34.75];
-var PA=[22,12,9,8,7,6,4,3,3,3,41];
-var PC=['#ff6b9d','#c9a227','#7b4f7a','#4a90d9','#e08020','#2d9b8e','#cc5555','#9b59b6','#5a8a5a','#6b8cff','#606090'];
-var pieLbl={id:'pieLbl',afterDatasetDraw:function(chart){
+})();}catch(e){console.error('[mchart-all] '+e);}
+try{(function(){
+var PV=[18.64,10.17,7.63,6.78,5.93,5.08,3.39,2.54,2.54,2.54,2.54,2.54,2.54,2.54,24.58];
+var PA=[22,12,9,8,7,6,4,3,3,3,3,3,3,3,29];
+var PN=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Amulet Titan','Domain Zoo','Eldrazi Tron','Sultai Ritual','Ruby Storm','Neobrand','Merfolk','Esper Reanimator','Eldrazi Ramp','Boros Wildfire','Other'];
+var PC=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080'];
+var PIE_LARGE=5.0;
+var pieConn={id:'pieConn',afterDatasetDraw:function(chart){
   var ctx=chart.ctx,meta=chart.getDatasetMeta(0);
   meta.data.forEach(function(arc,i){
-    if(PV[i]<5)return;
+    if(!arc||PV[i]>=PIE_LARGE)return;
     var ang=arc.startAngle+(arc.endAngle-arc.startAngle)/2;
-    var r=arc.outerRadius*0.65;
-    var x=arc.x+r*Math.cos(ang),y=arc.y+r*Math.sin(ang);
-    ctx.save();ctx.fillStyle='#ffffff';ctx.font='bold 11px Open Sans,Arial,sans-serif';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.shadowColor='rgba(0,0,0,0.8)';ctx.shadowBlur=3;
-    ctx.fillText(PV[i].toFixed(1)+'%',x,y);ctx.restore();
+    var r=arc.outerRadius;
+    ctx.save();ctx.strokeStyle=PC[i]||'#a0a0c0';ctx.lineWidth=1;ctx.globalAlpha=0.65;
+    ctx.beginPath();
+    ctx.moveTo(arc.x+(r+3)*Math.cos(ang),arc.y+(r+3)*Math.sin(ang));
+    ctx.lineTo(arc.x+(r+22)*Math.cos(ang),arc.y+(r+22)*Math.sin(ang));
+    ctx.stroke();ctx.restore();
   });
 }};
 var pc=new Chart(document.getElementById('pchart-pre'),{
-type:'doughnut',plugins:[pieLbl],
-data:{labels:PL,datasets:[{data:PV,backgroundColor:PC,borderColor:'#0d0d1a',borderWidth:2,hoverOffset:6}]},
-options:{responsive:true,maintainAspectRatio:false,cutout:'38%',
+type:'doughnut',
+plugins:[pieConn,ChartDataLabels],
+data:{labels:PN,datasets:[{data:PV,backgroundColor:PC,borderColor:'#0d0d1a',borderWidth:2,hoverOffset:5}]},
+options:{responsive:true,maintainAspectRatio:false,cutout:'28%',
+layout:{padding:{top:24,bottom:60,left:100,right:100}},
 plugins:{
-  legend:{display:true,position:'right',labels:{color:'#e8e8f0',font:{size:11},padding:10,boxWidth:12}},
+  legend:{display:false},
   tooltip:{callbacks:{label:function(c){
-    var i=c.dataIndex;var arch=c.label.split(' (')[0];
-    return' '+arch+': '+PA[i]+' appearances — '+PV[i].toFixed(1)+'%';
-  }}}
+    return' '+PN[c.dataIndex]+': '+PA[c.dataIndex]+' appearances — '+PV[c.dataIndex].toFixed(1)+'%';
+  }}},
+  datalabels:{
+    color:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'#ffffff':'#e8e8f0';},
+    anchor:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'center':'end';},
+    align:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'center':'end';},
+    offset:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?0:30;},
+    clamp:false,clip:false,padding:4,textAlign:'center',
+    font:{size:13,weight:'bold',family:"'Open Sans',Arial,sans-serif"},
+    textShadowBlur:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?6:0;},
+    textShadowColor:'rgba(0,0,0,0.9)',
+    formatter:function(value,ctx){
+      var n=PN[ctx.dataIndex];if(n.length>20)n=n.substring(0,18)+'\u2026';
+      return n+'\n'+value.toFixed(1)+'%';
+    }
+  }
 }
 }});
 window.__charts=window.__charts||{};
 window.__charts['pchart_pre']=pc;
-})();
-(function(){
-var PL=['UW Control (11.9%)','UW Blink (7.1%)','Grixis Reanimator (7.1%)','Eldrazi Tron (7.1%)','Affinity (7.1%)','UW Belcher (4.8%)','Living End (4.8%)','Domain Zoo (4.8%)','Boros Wildfire (4.8%)','Boros Burn (4.8%)','Other (35.7%)'];
-var PV=[11.90,7.14,7.14,7.14,7.14,4.76,4.76,4.76,4.76,4.76,35.71];
-var PA=[5,3,3,3,3,2,2,2,2,2,15];
-var PC=['#ff6b9d','#c9a227','#7b4f7a','#4a90d9','#e08020','#2d9b8e','#cc5555','#9b59b6','#5a8a5a','#6b8cff','#606090'];
-var pieLbl={id:'pieLbl',afterDatasetDraw:function(chart){
+})();}catch(e){console.error('[pchart-pre] '+e);}
+try{(function(){
+var PV=[11.90,7.14,7.14,7.14,7.14,4.76,4.76,4.76,4.76,4.76,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38,2.38];
+var PA=[5,3,3,3,3,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+var PN=['UW Control','UW Blink','Grixis Reanimator','Eldrazi Tron','Affinity','UW Belcher','Living End','Domain Zoo','Boros Wildfire','Boros Burn','Temur Cascade','Ruby Storm','Neobrand','Mono Black Necrodominance','Grull Ponza','Esper Goryo\'s','Esper Control','Esper Blink','Eldrazi Ramp','Dimir Midrange','Broodscale','Boros Energy','BG Midrange','Amulet Titan','8 Rack'];
+var PC=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0','#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0'];
+var PIE_LARGE=5.0;
+var pieConn={id:'pieConn',afterDatasetDraw:function(chart){
   var ctx=chart.ctx,meta=chart.getDatasetMeta(0);
   meta.data.forEach(function(arc,i){
-    if(PV[i]<5)return;
+    if(!arc||PV[i]>=PIE_LARGE)return;
     var ang=arc.startAngle+(arc.endAngle-arc.startAngle)/2;
-    var r=arc.outerRadius*0.65;
-    var x=arc.x+r*Math.cos(ang),y=arc.y+r*Math.sin(ang);
-    ctx.save();ctx.fillStyle='#ffffff';ctx.font='bold 11px Open Sans,Arial,sans-serif';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.shadowColor='rgba(0,0,0,0.8)';ctx.shadowBlur=3;
-    ctx.fillText(PV[i].toFixed(1)+'%',x,y);ctx.restore();
+    var r=arc.outerRadius;
+    ctx.save();ctx.strokeStyle=PC[i]||'#a0a0c0';ctx.lineWidth=1;ctx.globalAlpha=0.65;
+    ctx.beginPath();
+    ctx.moveTo(arc.x+(r+3)*Math.cos(ang),arc.y+(r+3)*Math.sin(ang));
+    ctx.lineTo(arc.x+(r+22)*Math.cos(ang),arc.y+(r+22)*Math.sin(ang));
+    ctx.stroke();ctx.restore();
   });
 }};
 var pc=new Chart(document.getElementById('pchart-post'),{
-type:'doughnut',plugins:[pieLbl],
-data:{labels:PL,datasets:[{data:PV,backgroundColor:PC,borderColor:'#0d0d1a',borderWidth:2,hoverOffset:6}]},
-options:{responsive:true,maintainAspectRatio:false,cutout:'38%',
+type:'doughnut',
+plugins:[pieConn,ChartDataLabels],
+data:{labels:PN,datasets:[{data:PV,backgroundColor:PC,borderColor:'#0d0d1a',borderWidth:2,hoverOffset:5}]},
+options:{responsive:true,maintainAspectRatio:false,cutout:'28%',
+layout:{padding:{top:24,bottom:60,left:100,right:100}},
 plugins:{
-  legend:{display:true,position:'right',labels:{color:'#e8e8f0',font:{size:11},padding:10,boxWidth:12}},
+  legend:{display:false},
   tooltip:{callbacks:{label:function(c){
-    var i=c.dataIndex;var arch=c.label.split(' (')[0];
-    return' '+arch+': '+PA[i]+' appearances — '+PV[i].toFixed(1)+'%';
-  }}}
+    return' '+PN[c.dataIndex]+': '+PA[c.dataIndex]+' appearances — '+PV[c.dataIndex].toFixed(1)+'%';
+  }}},
+  datalabels:{
+    color:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'#ffffff':'#e8e8f0';},
+    anchor:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'center':'end';},
+    align:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'center':'end';},
+    offset:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?0:30;},
+    clamp:false,clip:false,padding:4,textAlign:'center',
+    font:{size:13,weight:'bold',family:"'Open Sans',Arial,sans-serif"},
+    textShadowBlur:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?6:0;},
+    textShadowColor:'rgba(0,0,0,0.9)',
+    formatter:function(value,ctx){
+      var n=PN[ctx.dataIndex];if(n.length>20)n=n.substring(0,18)+'\u2026';
+      return n+'\n'+value.toFixed(1)+'%';
+    }
+  }
 }
 }});
 window.__charts=window.__charts||{};
 window.__charts['pchart_post']=pc;
-})();
-(function(){
-var PL=['Boros Energy (14.4%)','Jeskai Blink (7.5%)','Affinity (7.5%)','UW Belcher (6.3%)','Domain Zoo (5.0%)','Amulet Titan (5.0%)','Eldrazi Tron (4.4%)','UW Control (3.1%)','Boros Wildfire (3.1%)','Ruby Storm (2.5%)','Other (41.3%)'];
-var PV=[14.38,7.50,7.50,6.25,5.00,5.00,4.38,3.13,3.13,2.50,41.25];
-var PA=[23,12,12,10,8,8,7,5,5,4,66];
-var PC=['#ff6b9d','#c9a227','#7b4f7a','#4a90d9','#e08020','#2d9b8e','#cc5555','#9b59b6','#5a8a5a','#6b8cff','#606090'];
-var pieLbl={id:'pieLbl',afterDatasetDraw:function(chart){
+})();}catch(e){console.error('[pchart-post] '+e);}
+try{(function(){
+var PV=[14.38,7.50,7.50,6.25,5.00,5.00,4.38,3.13,3.13,2.50,2.50,2.50,2.50,33.75];
+var PA=[23,12,12,10,8,8,7,5,5,4,4,4,4,54];
+var PN=['Boros Energy','Jeskai Blink','Affinity','UW Belcher','Domain Zoo','Amulet Titan','Eldrazi Tron','UW Control','Boros Wildfire','Ruby Storm','Neobrand','Living End','Eldrazi Ramp','Other'];
+var PC=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040'];
+var PIE_LARGE=5.0;
+var pieConn={id:'pieConn',afterDatasetDraw:function(chart){
   var ctx=chart.ctx,meta=chart.getDatasetMeta(0);
   meta.data.forEach(function(arc,i){
-    if(PV[i]<5)return;
+    if(!arc||PV[i]>=PIE_LARGE)return;
     var ang=arc.startAngle+(arc.endAngle-arc.startAngle)/2;
-    var r=arc.outerRadius*0.65;
-    var x=arc.x+r*Math.cos(ang),y=arc.y+r*Math.sin(ang);
-    ctx.save();ctx.fillStyle='#ffffff';ctx.font='bold 11px Open Sans,Arial,sans-serif';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.shadowColor='rgba(0,0,0,0.8)';ctx.shadowBlur=3;
-    ctx.fillText(PV[i].toFixed(1)+'%',x,y);ctx.restore();
+    var r=arc.outerRadius;
+    ctx.save();ctx.strokeStyle=PC[i]||'#a0a0c0';ctx.lineWidth=1;ctx.globalAlpha=0.65;
+    ctx.beginPath();
+    ctx.moveTo(arc.x+(r+3)*Math.cos(ang),arc.y+(r+3)*Math.sin(ang));
+    ctx.lineTo(arc.x+(r+22)*Math.cos(ang),arc.y+(r+22)*Math.sin(ang));
+    ctx.stroke();ctx.restore();
   });
 }};
 var pc=new Chart(document.getElementById('pchart-all'),{
-type:'doughnut',plugins:[pieLbl],
-data:{labels:PL,datasets:[{data:PV,backgroundColor:PC,borderColor:'#0d0d1a',borderWidth:2,hoverOffset:6}]},
-options:{responsive:true,maintainAspectRatio:false,cutout:'38%',
+type:'doughnut',
+plugins:[pieConn,ChartDataLabels],
+data:{labels:PN,datasets:[{data:PV,backgroundColor:PC,borderColor:'#0d0d1a',borderWidth:2,hoverOffset:5}]},
+options:{responsive:true,maintainAspectRatio:false,cutout:'28%',
+layout:{padding:{top:24,bottom:60,left:100,right:100}},
 plugins:{
-  legend:{display:true,position:'right',labels:{color:'#e8e8f0',font:{size:11},padding:10,boxWidth:12}},
+  legend:{display:false},
   tooltip:{callbacks:{label:function(c){
-    var i=c.dataIndex;var arch=c.label.split(' (')[0];
-    return' '+arch+': '+PA[i]+' appearances — '+PV[i].toFixed(1)+'%';
-  }}}
+    return' '+PN[c.dataIndex]+': '+PA[c.dataIndex]+' appearances — '+PV[c.dataIndex].toFixed(1)+'%';
+  }}},
+  datalabels:{
+    color:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'#ffffff':'#e8e8f0';},
+    anchor:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'center':'end';},
+    align:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?'center':'end';},
+    offset:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?0:30;},
+    clamp:false,clip:false,padding:4,textAlign:'center',
+    font:{size:13,weight:'bold',family:"'Open Sans',Arial,sans-serif"},
+    textShadowBlur:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=PIE_LARGE?6:0;},
+    textShadowColor:'rgba(0,0,0,0.9)',
+    formatter:function(value,ctx){
+      var n=PN[ctx.dataIndex];if(n.length>20)n=n.substring(0,18)+'\u2026';
+      return n+'\n'+value.toFixed(1)+'%';
+    }
+  }
 }
 }});
 window.__charts=window.__charts||{};
 window.__charts['pchart_all']=pc;
-})();
-(function(){
+})();}catch(e){console.error('[pchart-all] '+e);}
+try{(function(){
 var EL=['1st RCQ METAGAME','1st RCQ Casa de J...','1st La Comarca Pr...','RCQ Modern BloodMoon','1er RCQ Modern La...','RCQ Modern Todo F...','RCQ Game of Magic...','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood ...'];
 var ETIP_N=['1st RCQ METAGAME','1st RCQ Casa de Juegos','1st La Comarca Providencia','RCQ Modern BloodMoon','1er RCQ Modern La Comarca SB','RCQ Modern Todo Freak Viña del Mar','RCQ Game of Magic Concepcion','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood Moon Games'];
 var ETIP_D=['2026-04-04','2026-04-18','2026-04-25','2026-04-25','2026-05-02','2026-05-02','2026-05-03','2026-05-09','2026-05-10','2026-05-16'];
 var BAN_IDX=-1;
 var ED=[
 {label:'Boros Energy',data:[37.50,19.05,22.22,7.41,25.00,23.08,25.00,25.00,0.00,25.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Jeskai Blink',data:[25.00,9.52,22.22,3.70,0.00,0.00,12.50,25.00,12.50,12.50],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Sultai Ritual',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,25.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Eldrazi Ramp',data:[0.00,0.00,0.00,0.00,0.00,15.38,12.50,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Boros Wildfire',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,12.50,12.50,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Hardened Scales',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Scapeshift',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,12.50,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Hollow One',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Simic Ritual',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Goryo\'s Vengeance',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'UW Belcher',data:[12.50,4.76,11.11,7.41,0.00,0.00,12.50,25.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Affinity',data:[12.50,9.52,11.11,14.81,0.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Amulet Titan',data:[12.50,9.52,22.22,3.70,0.00,0.00,12.50,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Eldrazi Tron',data:[0.00,0.00,0.00,11.11,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Mono Red Belcher Storm',data:[0.00,0.00,11.11,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00,0.00],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Jeskai Blink',data:[25.00,9.52,22.22,3.70,0.00,0.00,12.50,25.00,12.50,12.50],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Sultai Ritual',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,25.00],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Eldrazi Ramp',data:[0.00,0.00,0.00,0.00,0.00,15.38,12.50,0.00,0.00,0.00],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Wildfire',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,12.50,12.50,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Hardened Scales',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Scapeshift',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,12.50,0.00],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Hollow One',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Simic Ritual',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#c0a040',backgroundColor:'#c0a04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Goryo\'s Vengeance',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#6040c0',backgroundColor:'#6040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UW Belcher',data:[12.50,4.76,11.11,7.41,0.00,0.00,12.50,25.00,0.00,0.00],borderColor:'#c04060',backgroundColor:'#c0406020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Affinity',data:[12.50,9.52,11.11,14.81,0.00,0.00,0.00,0.00,0.00,12.50],borderColor:'#40a0c0',backgroundColor:'#40a0c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Amulet Titan',data:[12.50,9.52,22.22,3.70,0.00,0.00,12.50,0.00,0.00,0.00],borderColor:'#a0c040',backgroundColor:'#a0c04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Tron',data:[0.00,0.00,0.00,11.11,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#c06080',backgroundColor:'#c0608020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono Red Belcher Storm',data:[0.00,0.00,11.11,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4080a0',backgroundColor:'#4080a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 {label:'Esper Reanimator',data:[0.00,4.76,0.00,0.00,0.00,0.00,12.50,0.00,12.50,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Ruby Storm',data:[0.00,0.00,0.00,3.70,12.50,0.00,0.00,0.00,12.50,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Temur Prowess',data:[0.00,9.52,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Domain Zoo',data:[0.00,4.76,0.00,7.41,12.50,7.69,0.00,0.00,0.00,12.50],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Blink',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Living End',data:[0.00,0.00,0.00,3.70,0.00,0.00,12.50,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Jeskai Energy Control',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Red Belcher',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Samwisse Combo',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Neobrand',data:[0.00,4.76,0.00,3.70,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'UR Prowess',data:[0.00,0.00,0.00,3.70,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Dimir Oculus',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Mono White Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Rakdos Mid',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Broodscale',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Ruby Storm',data:[0.00,0.00,0.00,3.70,12.50,0.00,0.00,0.00,12.50,0.00],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Temur Prowess',data:[0.00,9.52,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Domain Zoo',data:[0.00,4.76,0.00,7.41,12.50,7.69,0.00,0.00,0.00,12.50],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Blink',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Living End',data:[0.00,0.00,0.00,3.70,0.00,0.00,12.50,0.00,0.00,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Jeskai Energy Control',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Red Belcher',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Samwisse Combo',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Neobrand',data:[0.00,4.76,0.00,3.70,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#c0a040',backgroundColor:'#c0a04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UR Prowess',data:[0.00,0.00,0.00,3.70,0.00,7.69,0.00,0.00,0.00,0.00],borderColor:'#6040c0',backgroundColor:'#6040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Dimir Oculus',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c04060',backgroundColor:'#c0406020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#40a0c0',backgroundColor:'#40a0c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono White Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#a0c040',backgroundColor:'#a0c04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Rakdos Mid',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c06080',backgroundColor:'#c0608020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Broodscale',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4080a0',backgroundColor:'#4080a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 {label:'Dimir Midrange',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Grixis Fenix',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Hammer Time',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Zoo Reanimator',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grixis Fenix',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Hammer Time',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Zoo Reanimator',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 ];
-var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020'];
+var COLORS=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0','#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0','#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020'];
 var banPlugin={id:'banline',afterDraw:function(chart){
   var bi=chart.__banIdx;if(bi===undefined||bi<0)return;
   var xs=chart.scales.x,ys=chart.scales.y;
@@ -1899,9 +2026,9 @@ plugins:{
   tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}},
   banline:{}
 },
-scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
+scales:{x:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
 callback:function(v){return this.getLabelForValue(v)||'';}}},
-y:{min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
+y:{min:0,grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
 }
 });
 echrt.__banIdx=BAN_IDX;
@@ -1942,40 +2069,40 @@ if(panel){
     item.appendChild(document.createTextNode(ds.label));grid.appendChild(item);});
   panel.appendChild(grid);updateCnt();
 }
-})();
-(function(){
+})();}catch(e){console.error('[echart-pre] '+e);}
+try{(function(){
 var EL=['RCQ Modern Magics...','RCQ Modern Onplay','RCQ Modern Oasis ...','RCQ Modern Casa d...'];
 var ETIP_N=['RCQ Modern Magicsur La Reina','RCQ Modern Onplay','RCQ Modern Oasis Games','RCQ Modern Casa de Juegos'];
 var ETIP_D=['2026-05-21','2026-05-21','2026-05-23','2026-05-30'];
 var BAN_IDX=-1;
 var ED=[
 {label:'Amulet Titan',data:[0.00,33.33,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Broodscale',data:[0.00,33.33,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'UW Control',data:[0.00,33.33,50.00,8.33],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'UW Blink',data:[0.00,0.00,25.00,8.33],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Boros Wildfire',data:[0.00,0.00,25.00,4.17],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'8 Rack',data:[9.09,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'BG Midrange',data:[9.09,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Boros Energy',data:[9.09,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Eldrazi Ramp',data:[9.09,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Esper Control',data:[9.09,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Grull Ponza',data:[9.09,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Affinity',data:[9.09,0.00,0.00,8.33],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Eldrazi Tron',data:[9.09,0.00,0.00,8.33],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Grixis Reanimator',data:[9.09,0.00,0.00,8.33],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Domain Zoo',data:[0.00,0.00,0.00,8.33],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Living End',data:[0.00,0.00,0.00,8.33],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Broodscale',data:[0.00,33.33,0.00,0.00],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'UW Control',data:[0.00,33.33,50.00,8.33],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'UW Blink',data:[0.00,0.00,25.00,8.33],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Wildfire',data:[0.00,0.00,25.00,4.17],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'8 Rack',data:[9.09,0.00,0.00,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'BG Midrange',data:[9.09,0.00,0.00,0.00],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Energy',data:[9.09,0.00,0.00,0.00],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Eldrazi Ramp',data:[9.09,0.00,0.00,0.00],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Esper Control',data:[9.09,0.00,0.00,0.00],borderColor:'#c0a040',backgroundColor:'#c0a04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Grull Ponza',data:[9.09,0.00,0.00,0.00],borderColor:'#6040c0',backgroundColor:'#6040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Affinity',data:[9.09,0.00,0.00,8.33],borderColor:'#c04060',backgroundColor:'#c0406020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Tron',data:[9.09,0.00,0.00,8.33],borderColor:'#40a0c0',backgroundColor:'#40a0c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grixis Reanimator',data:[9.09,0.00,0.00,8.33],borderColor:'#a0c040',backgroundColor:'#a0c04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Domain Zoo',data:[0.00,0.00,0.00,8.33],borderColor:'#c06080',backgroundColor:'#c0608020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Living End',data:[0.00,0.00,0.00,8.33],borderColor:'#4080a0',backgroundColor:'#4080a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 {label:'Boros Burn',data:[9.09,0.00,0.00,4.17],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'UW Belcher',data:[9.09,0.00,0.00,4.17],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Dimir Midrange',data:[0.00,0.00,0.00,4.17],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Blink',data:[0.00,0.00,0.00,4.17],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,4.17],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,4.17],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Neobrand',data:[0.00,0.00,0.00,4.17],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Ruby Storm',data:[0.00,0.00,0.00,4.17],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Temur Cascade',data:[0.00,0.00,0.00,4.17],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UW Belcher',data:[9.09,0.00,0.00,4.17],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Dimir Midrange',data:[0.00,0.00,0.00,4.17],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Blink',data:[0.00,0.00,0.00,4.17],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,4.17],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,4.17],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Neobrand',data:[0.00,0.00,0.00,4.17],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Ruby Storm',data:[0.00,0.00,0.00,4.17],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Temur Cascade',data:[0.00,0.00,0.00,4.17],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 ];
-var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0'];
+var COLORS=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0','#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0'];
 var banPlugin={id:'banline',afterDraw:function(chart){
   var bi=chart.__banIdx;if(bi===undefined||bi<0)return;
   var xs=chart.scales.x,ys=chart.scales.y;
@@ -1998,9 +2125,9 @@ plugins:{
   tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}},
   banline:{}
 },
-scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
+scales:{x:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
 callback:function(v){return this.getLabelForValue(v)||'';}}},
-y:{min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
+y:{min:0,grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
 }
 });
 echrt.__banIdx=BAN_IDX;
@@ -2041,61 +2168,61 @@ if(panel){
     item.appendChild(document.createTextNode(ds.label));grid.appendChild(item);});
   panel.appendChild(grid);updateCnt();
 }
-})();
-(function(){
+})();}catch(e){console.error('[echart-post] '+e);}
+try{(function(){
 var EL=['1st RCQ METAGAME','1st RCQ Casa de J...','1st La Comarca Pr...','RCQ Modern BloodMoon','1er RCQ Modern La...','RCQ Modern Todo F...','RCQ Game of Magic...','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood ...','RCQ Modern Magics...','RCQ Modern Onplay','RCQ Modern Oasis ...','RCQ Modern Casa d...'];
 var ETIP_N=['1st RCQ METAGAME','1st RCQ Casa de Juegos','1st La Comarca Providencia','RCQ Modern BloodMoon','1er RCQ Modern La Comarca SB','RCQ Modern Todo Freak Viña del Mar','RCQ Game of Magic Concepcion','RCQ Modern Metagame','RCQ Modern Zendicard','RCQ Modern Blood Moon Games','RCQ Modern Magicsur La Reina','RCQ Modern Onplay','RCQ Modern Oasis Games','RCQ Modern Casa de Juegos'];
 var ETIP_D=['2026-04-04','2026-04-18','2026-04-25','2026-04-25','2026-05-02','2026-05-02','2026-05-03','2026-05-09','2026-05-10','2026-05-16','2026-05-21','2026-05-21','2026-05-23','2026-05-30'];
 var BAN_IDX=10;
 var ED=[
 {label:'UW Control',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,33.33,50.00,8.33],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Boros Energy',data:[37.50,19.05,22.22,7.41,25.00,23.08,25.00,25.00,0.00,25.00,9.09,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Broodscale',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,33.33,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'UW Blink',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,25.00,8.33],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Amulet Titan',data:[12.50,9.52,22.22,3.70,0.00,0.00,12.50,0.00,0.00,0.00,0.00,33.33,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Jeskai Blink',data:[25.00,9.52,22.22,3.70,0.00,0.00,12.50,25.00,12.50,12.50,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Sultai Ritual',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,25.00,0.00,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Boros Wildfire',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,12.50,12.50,0.00,0.00,0.00,25.00,4.17],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Hardened Scales',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
-{label:'Scapeshift',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Hollow One',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Simic Ritual',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Goryo\'s Vengeance',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Eldrazi Ramp',data:[0.00,0.00,0.00,0.00,0.00,15.38,12.50,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Affinity',data:[12.50,9.52,11.11,14.81,0.00,0.00,0.00,0.00,0.00,12.50,9.09,0.00,0.00,8.33],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Merfolk',data:[0.00,0.00,0.00,0.00,0.00,23.08,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Energy',data:[37.50,19.05,22.22,7.41,25.00,23.08,25.00,25.00,0.00,25.00,9.09,0.00,0.00,0.00],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Broodscale',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,33.33,0.00,0.00],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'UW Blink',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,25.00,8.33],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Amulet Titan',data:[12.50,9.52,22.22,3.70,0.00,0.00,12.50,0.00,0.00,0.00,0.00,33.33,0.00,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Jeskai Blink',data:[25.00,9.52,22.22,3.70,0.00,0.00,12.50,25.00,12.50,12.50,0.00,0.00,0.00,0.00],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Sultai Ritual',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,25.00,0.00,0.00,0.00,0.00],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Boros Wildfire',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,12.50,12.50,0.00,0.00,0.00,25.00,4.17],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Hardened Scales',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c0a040',backgroundColor:'#c0a04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:false},
+{label:'Scapeshift',data:[0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#6040c0',backgroundColor:'#6040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Hollow One',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c04060',backgroundColor:'#c0406020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Simic Ritual',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#40a0c0',backgroundColor:'#40a0c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Goryo\'s Vengeance',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00],borderColor:'#a0c040',backgroundColor:'#a0c04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Ramp',data:[0.00,0.00,0.00,0.00,0.00,15.38,12.50,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#c06080',backgroundColor:'#c0608020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Affinity',data:[12.50,9.52,11.11,14.81,0.00,0.00,0.00,0.00,0.00,12.50,9.09,0.00,0.00,8.33],borderColor:'#4080a0',backgroundColor:'#4080a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 {label:'Mono Red Belcher Storm',data:[0.00,0.00,11.11,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'UW Belcher',data:[12.50,4.76,11.11,7.41,0.00,0.00,12.50,25.00,0.00,0.00,9.09,0.00,0.00,4.17],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Eldrazi Tron',data:[0.00,0.00,0.00,11.11,0.00,0.00,0.00,0.00,12.50,0.00,9.09,0.00,0.00,8.33],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Reanimator',data:[0.00,4.76,0.00,0.00,0.00,0.00,12.50,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Temur Prowess',data:[0.00,9.52,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'8 Rack',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'BG Midrange',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Grull Ponza',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Domain Zoo',data:[0.00,4.76,0.00,7.41,12.50,7.69,0.00,0.00,0.00,12.50,0.00,0.00,0.00,8.33],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Grixis Reanimator',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,8.33],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Ruby Storm',data:[0.00,0.00,0.00,3.70,12.50,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,4.17],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Living End',data:[0.00,0.00,0.00,3.70,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00,0.00,8.33],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Jeskai Energy Control',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Red Belcher',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Samwisse Combo',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Blink',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,4.17],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UW Belcher',data:[12.50,4.76,11.11,7.41,0.00,0.00,12.50,25.00,0.00,0.00,9.09,0.00,0.00,4.17],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Eldrazi Tron',data:[0.00,0.00,0.00,11.11,0.00,0.00,0.00,0.00,12.50,0.00,9.09,0.00,0.00,8.33],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Reanimator',data:[0.00,4.76,0.00,0.00,0.00,0.00,12.50,0.00,12.50,0.00,0.00,0.00,0.00,0.00],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Temur Prowess',data:[0.00,9.52,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'8 Rack',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'BG Midrange',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grull Ponza',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Domain Zoo',data:[0.00,4.76,0.00,7.41,12.50,7.69,0.00,0.00,0.00,12.50,0.00,0.00,0.00,8.33],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grixis Reanimator',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,8.33],borderColor:'#c0a040',backgroundColor:'#c0a04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Ruby Storm',data:[0.00,0.00,0.00,3.70,12.50,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,4.17],borderColor:'#6040c0',backgroundColor:'#6040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Living End',data:[0.00,0.00,0.00,3.70,0.00,0.00,12.50,0.00,0.00,0.00,0.00,0.00,0.00,8.33],borderColor:'#c04060',backgroundColor:'#c0406020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Jeskai Energy Control',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#40a0c0',backgroundColor:'#40a0c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Red Belcher',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#a0c040',backgroundColor:'#a0c04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Samwisse Combo',data:[0.00,0.00,0.00,0.00,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c06080',backgroundColor:'#c0608020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Blink',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,12.50,0.00,0.00,0.00,0.00,4.17],borderColor:'#4080a0',backgroundColor:'#4080a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 {label:'Esper Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,0.00],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Boros Burn',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,4.17],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Neobrand',data:[0.00,4.76,0.00,3.70,12.50,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'UR Prowess',data:[0.00,0.00,0.00,3.70,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Dimir Oculus',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Mono White Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Rakdos Mid',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#2d9b8e',backgroundColor:'#2d9b8e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Temur Cascade',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#cc5555',backgroundColor:'#cc555520',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Dimir Midrange',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#c040a0',backgroundColor:'#c040a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#b8962e',backgroundColor:'#b8962e20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#7b4f7a',backgroundColor:'#7b4f7a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Grixis Fenix',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a6b3a',backgroundColor:'#4a6b3a20',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Hammer Time',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4a90d9',backgroundColor:'#4a90d920',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
-{label:'Zoo Reanimator',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#e08020',backgroundColor:'#e0802020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Boros Burn',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,9.09,0.00,0.00,4.17],borderColor:'#4080c0',backgroundColor:'#4080c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Neobrand',data:[0.00,4.76,0.00,3.70,12.50,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#40a080',backgroundColor:'#40a08020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'UR Prowess',data:[0.00,0.00,0.00,3.70,0.00,7.69,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c8a840',backgroundColor:'#c8a84020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Dimir Oculus',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#8040c0',backgroundColor:'#8040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono White Control',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c06020',backgroundColor:'#c0602020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Rakdos Mid',data:[0.00,4.76,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#4060c0',backgroundColor:'#4060c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Temur Cascade',data:[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#a04080',backgroundColor:'#a0408020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Dimir Midrange',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#40c0a0',backgroundColor:'#40c0a020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Esper Goryo\'s',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#c0a040',backgroundColor:'#c0a04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Mono Black Necrodominance',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.17],borderColor:'#6040c0',backgroundColor:'#6040c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Grixis Fenix',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#c04060',backgroundColor:'#c0406020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Hammer Time',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#40a0c0',backgroundColor:'#40a0c020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
+{label:'Zoo Reanimator',data:[0.00,0.00,0.00,3.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],borderColor:'#a0c040',backgroundColor:'#a0c04020',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:0.3,fill:false,hidden:true},
 ];
-var COLORS=['#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020','#2d9b8e','#cc5555','#c040a0','#b8962e','#7b4f7a','#4a6b3a','#4a90d9','#e08020'];
+var COLORS=['#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0','#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040','#c06080','#4080a0','#c040a0','#4080c0','#40a080','#c8a840','#8040c0','#c06020','#4060c0','#a04080','#40c0a0','#c0a040','#6040c0','#c04060','#40a0c0','#a0c040'];
 var banPlugin={id:'banline',afterDraw:function(chart){
   var bi=chart.__banIdx;if(bi===undefined||bi<0)return;
   var xs=chart.scales.x,ys=chart.scales.y;
@@ -2118,9 +2245,9 @@ plugins:{
   tooltip:{filter:function(item){return !echrt.data.datasets[item.datasetIndex].hidden;},callbacks:{title:function(items){if(!items.length)return'';var i=items[0].dataIndex;return[ETIP_N[i],'Date: '+ETIP_D[i]];},label:function(c){return' '+c.dataset.label+': '+c.parsed.y.toFixed(1)+'%';}}},
   banline:{}
 },
-scales:{x:{grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
+scales:{x:{grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',maxRotation:60,minRotation:45,
 callback:function(v){return this.getLabelForValue(v)||'';}}},
-y:{min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
+y:{min:0,grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}}
 }
 });
 echrt.__banIdx=BAN_IDX;
@@ -2161,9 +2288,10 @@ if(panel){
     item.appendChild(document.createTextNode(ds.label));grid.appendChild(item);});
   panel.appendChild(grid);updateCnt();
 }
-})();
-(function(){
+})();}catch(e){console.error('[echart-all] '+e);}
+try{(function(){
 var BASELINE=69.12;
+var MAXPCT=18.64;
 var basePlugin={id:'base',afterDraw:function(chart){
   if(BASELINE<=0)return;
   var ctx=chart.ctx,ys=chart.scales.y,xs=chart.scales.x;
@@ -2176,30 +2304,48 @@ var basePlugin={id:'base',afterDraw:function(chart){
   ctx.restore();
 }};
 var sc=new Chart(document.getElementById('schart-pre'),{
-type:'bubble',plugins:[basePlugin],
+type:'bubble',plugins:[basePlugin,ChartDataLabels],
 data:{datasets:[
-  {label:'Overperforming',data:[{x:18.64,y:81.82,r:16.4,label:'Boros Energy',pct:18.64,apps:22},{x:3.39,y:75.00,r:7.0,label:'Eldrazi Tron',pct:3.39,apps:4},{x:2.54,y:100.00,r:6.1,label:'Neobrand',pct:2.54,apps:3},{x:2.54,y:100.00,r:6.1,label:'Eldrazi Ramp',pct:2.54,apps:3},{x:2.54,y:100.00,r:6.1,label:'Boros Wildfire',pct:2.54,apps:3}],backgroundColor:'rgba(74,158,80,0.72)',borderColor:'#4a9e50',borderWidth:1.5},
-  {label:'Underperforming',data:[{x:10.17,y:66.67,r:12.1,label:'Jeskai Blink',pct:10.17,apps:12},{x:7.63,y:55.56,r:10.5,label:'Affinity',pct:7.63,apps:9},{x:6.78,y:62.50,r:9.9,label:'UW Belcher',pct:6.78,apps:8},{x:5.93,y:42.86,r:9.3,label:'Amulet Titan',pct:5.93,apps:7},{x:5.08,y:50.00,r:8.6,label:'Domain Zoo',pct:5.08,apps:6},{x:2.54,y:66.67,r:6.1,label:'Sultai Ritual',pct:2.54,apps:3},{x:2.54,y:66.67,r:6.1,label:'Ruby Storm',pct:2.54,apps:3},{x:2.54,y:33.33,r:6.1,label:'Merfolk',pct:2.54,apps:3},{x:2.54,y:66.67,r:6.1,label:'Esper Reanimator',pct:2.54,apps:3}],backgroundColor:'rgba(233,69,96,0.72)',borderColor:'#e94560',borderWidth:1.5},
-  {label:'Average',data:[],backgroundColor:'rgba(123,79,122,0.65)',borderColor:'#9080a8',borderWidth:1.5}
+  {label:'Overperforming',data:[{x:18.64,y:81.82,r:33.0,label:'Boros Energy',pct:18.64,apps:22},{x:3.39,y:75.00,r:8.0,label:'Eldrazi Tron',pct:3.39,apps:4},{x:2.54,y:100.00,r:8.0,label:'Neobrand',pct:2.54,apps:3},{x:2.54,y:100.00,r:8.0,label:'Eldrazi Ramp',pct:2.54,apps:3},{x:2.54,y:100.00,r:8.0,label:'Boros Wildfire',pct:2.54,apps:3}],backgroundColor:'rgba(64,160,128,0.72)',borderColor:'#40a080',borderWidth:1.5},
+  {label:'Underperforming',data:[{x:10.17,y:66.67,r:18.0,label:'Jeskai Blink',pct:10.17,apps:12},{x:7.63,y:55.56,r:13.5,label:'Affinity',pct:7.63,apps:9},{x:6.78,y:62.50,r:12.0,label:'UW Belcher',pct:6.78,apps:8},{x:5.93,y:42.86,r:10.5,label:'Amulet Titan',pct:5.93,apps:7},{x:5.08,y:50.00,r:9.0,label:'Domain Zoo',pct:5.08,apps:6},{x:2.54,y:66.67,r:8.0,label:'Sultai Ritual',pct:2.54,apps:3},{x:2.54,y:66.67,r:8.0,label:'Ruby Storm',pct:2.54,apps:3},{x:2.54,y:33.33,r:8.0,label:'Merfolk',pct:2.54,apps:3},{x:2.54,y:66.67,r:8.0,label:'Esper Reanimator',pct:2.54,apps:3}],backgroundColor:'rgba(192,96,32,0.72)',borderColor:'#c06020',borderWidth:1.5},
+  {label:'Average',data:[],backgroundColor:'rgba(128,64,192,0.65)',borderColor:'#8040c0',borderWidth:1.5}
 ]},
 options:{responsive:true,maintainAspectRatio:false,
+layout:{padding:{top:20,bottom:20,left:110,right:110}},
 plugins:{
   legend:{display:true,labels:{color:'#e8e8f0',padding:14,font:{size:12}}},
   tooltip:{callbacks:{label:function(c){
     var d=c.raw;
     return[' '+d.label,' Presence: '+d.pct.toFixed(1)+'%',' Conversion: '+d.y.toFixed(1)+'%',' Appearances: '+d.apps];
-  }}}
+  }}},
+  datalabels:{
+    formatter:function(v,ctx){
+      try{var d=ctx.dataset.data[ctx.dataIndex];return d&&d.label?d.label:'';}catch(e){return '';}
+    },
+    color:'#e8e8f0',
+    font:{size:11,weight:'bold'},
+    anchor:'end',
+    align:function(ctx){
+      var dirs=['right','top','bottom','left','end','start'];return dirs[ctx.dataIndex%dirs.length];
+    },
+    offset:function(ctx){return 8+(ctx.dataIndex%3)*10;},
+    clamp:false,
+    clip:false,
+    textShadowBlur:4,
+    textShadowColor:'rgba(0,0,0,0.95)'
+  }
 },
 scales:{
-  x:{title:{display:true,text:'Presence %',color:'#a0a0c0'},grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
-  y:{title:{display:true,text:'Conversion % (Top-8+)',color:'#a0a0c0'},min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}
+  x:{title:{display:true,text:'Presence %',color:'#a0a0c0'},grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
+  y:{title:{display:true,text:'Conversion % (Top-8+)',color:'#a0a0c0'},min:0,grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}
 }
 }});
 window.__charts=window.__charts||{};
 window.__charts['schart_pre']=sc;
-})();
-(function(){
+})();}catch(e){console.error('[scatter-pre] '+e);}
+try{(function(){
 var BASELINE=38.67;
+var MAXPCT=11.90;
 var basePlugin={id:'base',afterDraw:function(chart){
   if(BASELINE<=0)return;
   var ctx=chart.ctx,ys=chart.scales.y,xs=chart.scales.x;
@@ -2212,30 +2358,48 @@ var basePlugin={id:'base',afterDraw:function(chart){
   ctx.restore();
 }};
 var sc=new Chart(document.getElementById('schart-post'),{
-type:'bubble',plugins:[basePlugin],
+type:'bubble',plugins:[basePlugin,ChartDataLabels],
 data:{datasets:[
-  {label:'Overperforming',data:[],backgroundColor:'rgba(74,158,80,0.72)',borderColor:'#4a9e50',borderWidth:1.5},
-  {label:'Underperforming',data:[{x:11.90,y:60.00,r:7.8,label:'UW Control',pct:11.90,apps:5},{x:7.14,y:66.67,r:6.1,label:'UW Blink',pct:7.14,apps:3},{x:7.14,y:0.00,r:6.1,label:'Grixis Reanimator',pct:7.14,apps:3},{x:7.14,y:33.33,r:6.1,label:'Eldrazi Tron',pct:7.14,apps:3},{x:7.14,y:33.33,r:6.1,label:'Affinity',pct:7.14,apps:3}],backgroundColor:'rgba(233,69,96,0.72)',borderColor:'#e94560',borderWidth:1.5},
-  {label:'Average',data:[],backgroundColor:'rgba(123,79,122,0.65)',borderColor:'#9080a8',borderWidth:1.5}
+  {label:'Overperforming',data:[],backgroundColor:'rgba(64,160,128,0.72)',borderColor:'#40a080',borderWidth:1.5},
+  {label:'Underperforming',data:[{x:11.90,y:60.00,r:8.0,label:'UW Control',pct:11.90,apps:5},{x:7.14,y:66.67,r:8.0,label:'UW Blink',pct:7.14,apps:3},{x:7.14,y:0.00,r:8.0,label:'Grixis Reanimator',pct:7.14,apps:3},{x:7.14,y:33.33,r:8.0,label:'Eldrazi Tron',pct:7.14,apps:3},{x:7.14,y:33.33,r:8.0,label:'Affinity',pct:7.14,apps:3}],backgroundColor:'rgba(192,96,32,0.72)',borderColor:'#c06020',borderWidth:1.5},
+  {label:'Average',data:[],backgroundColor:'rgba(128,64,192,0.65)',borderColor:'#8040c0',borderWidth:1.5}
 ]},
 options:{responsive:true,maintainAspectRatio:false,
+layout:{padding:{top:20,bottom:20,left:110,right:110}},
 plugins:{
   legend:{display:true,labels:{color:'#e8e8f0',padding:14,font:{size:12}}},
   tooltip:{callbacks:{label:function(c){
     var d=c.raw;
     return[' '+d.label,' Presence: '+d.pct.toFixed(1)+'%',' Conversion: '+d.y.toFixed(1)+'%',' Appearances: '+d.apps];
-  }}}
+  }}},
+  datalabels:{
+    formatter:function(v,ctx){
+      try{var d=ctx.dataset.data[ctx.dataIndex];return d&&d.label?d.label:'';}catch(e){return '';}
+    },
+    color:'#e8e8f0',
+    font:{size:11,weight:'bold'},
+    anchor:'end',
+    align:function(ctx){
+      var dirs=['right','top','bottom','left','end','start'];return dirs[ctx.dataIndex%dirs.length];
+    },
+    offset:function(ctx){return 8+(ctx.dataIndex%3)*10;},
+    clamp:false,
+    clip:false,
+    textShadowBlur:4,
+    textShadowColor:'rgba(0,0,0,0.95)'
+  }
 },
 scales:{
-  x:{title:{display:true,text:'Presence %',color:'#a0a0c0'},grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
-  y:{title:{display:true,text:'Conversion % (Top-8+)',color:'#a0a0c0'},min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}
+  x:{title:{display:true,text:'Presence %',color:'#a0a0c0'},grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
+  y:{title:{display:true,text:'Conversion % (Top-8+)',color:'#a0a0c0'},min:0,grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}
 }
 }});
 window.__charts=window.__charts||{};
 window.__charts['schart_post']=sc;
-})();
-(function(){
+})();}catch(e){console.error('[scatter-post] '+e);}
+try{(function(){
 var BASELINE=63.05;
+var MAXPCT=14.38;
 var basePlugin={id:'base',afterDraw:function(chart){
   if(BASELINE<=0)return;
   var ctx=chart.ctx,ys=chart.scales.y,xs=chart.scales.x;
@@ -2248,28 +2412,45 @@ var basePlugin={id:'base',afterDraw:function(chart){
   ctx.restore();
 }};
 var sc=new Chart(document.getElementById('schart-all'),{
-type:'bubble',plugins:[basePlugin],
+type:'bubble',plugins:[basePlugin,ChartDataLabels],
 data:{datasets:[
-  {label:'Overperforming',data:[{x:14.38,y:78.26,r:16.8,label:'Boros Energy',pct:14.38,apps:23},{x:3.13,y:80.00,r:7.8,label:'Boros Wildfire',pct:3.13,apps:5},{x:2.50,y:100.00,r:7.0,label:'Neobrand',pct:2.50,apps:4},{x:2.50,y:75.00,r:7.0,label:'Living End',pct:2.50,apps:4},{x:2.50,y:100.00,r:7.0,label:'Eldrazi Ramp',pct:2.50,apps:4},{x:1.88,y:100.00,r:6.1,label:'Esper Blink',pct:1.88,apps:3}],backgroundColor:'rgba(74,158,80,0.72)',borderColor:'#4a9e50',borderWidth:1.5},
-  {label:'Underperforming',data:[{x:7.50,y:66.67,r:12.1,label:'Jeskai Blink',pct:7.50,apps:12},{x:7.50,y:50.00,r:12.1,label:'Affinity',pct:7.50,apps:12},{x:6.25,y:60.00,r:11.1,label:'UW Belcher',pct:6.25,apps:10},{x:5.00,y:37.50,r:9.9,label:'Domain Zoo',pct:5.00,apps:8},{x:5.00,y:50.00,r:9.9,label:'Amulet Titan',pct:5.00,apps:8},{x:4.38,y:57.14,r:9.3,label:'Eldrazi Tron',pct:4.38,apps:7},{x:3.13,y:60.00,r:7.8,label:'UW Control',pct:3.13,apps:5},{x:2.50,y:50.00,r:7.0,label:'Ruby Storm',pct:2.50,apps:4},{x:1.88,y:66.67,r:6.1,label:'UW Blink',pct:1.88,apps:3},{x:1.88,y:66.67,r:6.1,label:'Sultai Ritual',pct:1.88,apps:3},{x:1.88,y:33.33,r:6.1,label:'Merfolk',pct:1.88,apps:3},{x:1.88,y:0.00,r:6.1,label:'Grixis Reanimator',pct:1.88,apps:3},{x:1.88,y:66.67,r:6.1,label:'Esper Reanimator',pct:1.88,apps:3}],backgroundColor:'rgba(233,69,96,0.72)',borderColor:'#e94560',borderWidth:1.5},
-  {label:'Average',data:[],backgroundColor:'rgba(123,79,122,0.65)',borderColor:'#9080a8',borderWidth:1.5}
+  {label:'Overperforming',data:[{x:14.38,y:78.26,r:34.5,label:'Boros Energy',pct:14.38,apps:23},{x:3.13,y:80.00,r:8.0,label:'Boros Wildfire',pct:3.13,apps:5},{x:2.50,y:100.00,r:8.0,label:'Neobrand',pct:2.50,apps:4},{x:2.50,y:75.00,r:8.0,label:'Living End',pct:2.50,apps:4},{x:2.50,y:100.00,r:8.0,label:'Eldrazi Ramp',pct:2.50,apps:4},{x:1.88,y:100.00,r:8.0,label:'Esper Blink',pct:1.88,apps:3}],backgroundColor:'rgba(64,160,128,0.72)',borderColor:'#40a080',borderWidth:1.5},
+  {label:'Underperforming',data:[{x:7.50,y:66.67,r:18.0,label:'Jeskai Blink',pct:7.50,apps:12},{x:7.50,y:50.00,r:18.0,label:'Affinity',pct:7.50,apps:12},{x:6.25,y:60.00,r:15.0,label:'UW Belcher',pct:6.25,apps:10},{x:5.00,y:37.50,r:12.0,label:'Domain Zoo',pct:5.00,apps:8},{x:5.00,y:50.00,r:12.0,label:'Amulet Titan',pct:5.00,apps:8},{x:4.38,y:57.14,r:10.5,label:'Eldrazi Tron',pct:4.38,apps:7},{x:3.13,y:60.00,r:8.0,label:'UW Control',pct:3.13,apps:5},{x:2.50,y:50.00,r:8.0,label:'Ruby Storm',pct:2.50,apps:4},{x:1.88,y:66.67,r:8.0,label:'UW Blink',pct:1.88,apps:3},{x:1.88,y:66.67,r:8.0,label:'Sultai Ritual',pct:1.88,apps:3},{x:1.88,y:33.33,r:8.0,label:'Merfolk',pct:1.88,apps:3},{x:1.88,y:0.00,r:8.0,label:'Grixis Reanimator',pct:1.88,apps:3},{x:1.88,y:66.67,r:8.0,label:'Esper Reanimator',pct:1.88,apps:3}],backgroundColor:'rgba(192,96,32,0.72)',borderColor:'#c06020',borderWidth:1.5},
+  {label:'Average',data:[],backgroundColor:'rgba(128,64,192,0.65)',borderColor:'#8040c0',borderWidth:1.5}
 ]},
 options:{responsive:true,maintainAspectRatio:false,
+layout:{padding:{top:20,bottom:20,left:110,right:110}},
 plugins:{
   legend:{display:true,labels:{color:'#e8e8f0',padding:14,font:{size:12}}},
   tooltip:{callbacks:{label:function(c){
     var d=c.raw;
     return[' '+d.label,' Presence: '+d.pct.toFixed(1)+'%',' Conversion: '+d.y.toFixed(1)+'%',' Appearances: '+d.apps];
-  }}}
+  }}},
+  datalabels:{
+    formatter:function(v,ctx){
+      try{var d=ctx.dataset.data[ctx.dataIndex];return d&&d.label?d.label:'';}catch(e){return '';}
+    },
+    color:'#e8e8f0',
+    font:{size:11,weight:'bold'},
+    anchor:'end',
+    align:function(ctx){
+      var dirs=['right','top','bottom','left','end','start'];return dirs[ctx.dataIndex%dirs.length];
+    },
+    offset:function(ctx){return 8+(ctx.dataIndex%3)*10;},
+    clamp:false,
+    clip:false,
+    textShadowBlur:4,
+    textShadowColor:'rgba(0,0,0,0.95)'
+  }
 },
 scales:{
-  x:{title:{display:true,text:'Presence %',color:'#a0a0c0'},grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
-  y:{title:{display:true,text:'Conversion % (Top-8+)',color:'#a0a0c0'},min:0,grid:{color:'#4a3f5c'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}
+  x:{title:{display:true,text:'Presence %',color:'#a0a0c0'},grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(1)+'%';}}},
+  y:{title:{display:true,text:'Conversion % (Top-8+)',color:'#a0a0c0'},min:0,grid:{color:'rgba(64,128,192,0.12)'},ticks:{color:'#e8e8f0',callback:function(v){return v.toFixed(0)+'%';}}}
 }
 }});
 window.__charts=window.__charts||{};
 window.__charts['schart_all']=sc;
-})();
+})();}catch(e){console.error('[scatter-all] '+e);}
 var KPI_PRE={t:10,d:118,p:88,a:38};
 var KPI_POST={t:4,d:42,p:38,a:25};
 var KPI_ALL={t:14,d:160,p:106,a:46};
