@@ -187,6 +187,36 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 /* ── Overlay ────────────────────────────────────────────────────────── */
 .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:190}
 
+/* ── Eldrazi: header background ──────────────────────────────────────── */
+.hbar{overflow:hidden}
+.hbar-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hbar-bg svg{width:100%;height:100%;display:block}
+.hbar-left,.hbar-right,.period-tabs{position:relative;z-index:1}
+
+@keyframes eldEyePulse{0%,100%{opacity:.58}50%{opacity:.95}}
+@keyframes eldPupilBlink{0%,78%,100%{opacity:.52}86%{opacity:1}}
+@keyframes eldTentFlow{from{stroke-dashoffset:500}to{stroke-dashoffset:0}}
+
+.eld-eye-inner{animation:eldEyePulse 4s ease-in-out infinite}
+.eld-eye-outer{animation:eldEyePulse 6.5s ease-in-out infinite 1.5s}
+.eld-pupil{animation:eldPupilBlink 7s ease-in-out infinite}
+.elt1,.elt2,.elt3,.elt4,.elt5,.elt6,.elt7,.elt8{stroke-dasharray:240 260;animation:eldTentFlow 14s linear infinite}
+.elt1{animation-delay:0s}.elt2{animation-delay:-3.5s}.elt3{animation-delay:-7s}.elt4{animation-delay:-10.5s}
+.elt5{animation-delay:-1.8s}.elt6{animation-delay:-5.3s}.elt7{animation-delay:-8.9s}.elt8{animation-delay:-12.2s}
+
+/* ── Eldrazi: section dividers ───────────────────────────────────────── */
+.eld-div{display:block;width:100%;height:40px;margin:0 0 -1px;overflow:visible}
+
+/* ── Eldrazi: footer tentacles ───────────────────────────────────────── */
+.eld-footer{display:block;width:100%;height:72px;margin-bottom:-1px}
+
+/* ── Eldrazi: card corner runes ──────────────────────────────────────── */
+.card{position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;width:22px;height:22px;
+  clip-path:polygon(0 0,100% 0,0 100%);background:rgba(192,64,160,.2);border-radius:8px 0 0 0;pointer-events:none}
+.card::after{content:'';position:absolute;bottom:0;right:0;width:22px;height:22px;
+  clip-path:polygon(100% 0,100% 100%,0 100%);background:rgba(192,64,160,.15);border-radius:0 0 8px 0;pointer-events:none}
+
 /* ── Responsive ─────────────────────────────────────────────────────── */
 @media(max-width:900px){.hbar-meta{display:none}}
 @media(max-width:768px){
@@ -229,6 +259,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </nav>
 <div class="layout">
 <header class="hbar">
+<div class="hbar-bg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="eldA" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff00cc" stop-opacity="0.72"/><stop offset="45%" stop-color="#7b2d8b" stop-opacity="0.38"/><stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/></radialGradient><radialGradient id="eldB" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#c040a0" stop-opacity="0.45"/><stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="60" fill="#0d0d1a"/><ellipse cx="600" cy="30" rx="300" ry="34" fill="url(#eldB)" class="eld-eye-outer"/><ellipse cx="600" cy="30" rx="112" ry="23" fill="url(#eldA)" class="eld-eye-inner"/><g stroke="#c040a0" stroke-width="0.8" fill="none" opacity="0.32"><path d="M600,30 C545,22 460,26 300,12" class="elt1"/><path d="M600,30 C655,22 740,26 900,12" class="elt2"/><path d="M600,30 C548,37 430,43 240,39" class="elt3"/><path d="M600,30 C652,37 770,43 960,39" class="elt4"/><path d="M600,30 C535,18 388,22 178,8" class="elt5"/><path d="M600,30 C665,18 812,22 1022,8" class="elt6"/><path d="M600,30 C570,42 506,54 400,57" class="elt7"/><path d="M600,30 C630,42 694,54 800,57" class="elt8"/></g><g stroke="#7b2d8b" stroke-width="0.5" fill="none" opacity="0.22"><path d="M600,30 C572,23 520,20 440,17 C395,15 348,19 288,14"/><path d="M600,30 C628,23 680,20 760,17 C805,15 852,19 912,14"/><path d="M600,30 C583,38 554,48 508,52"/><path d="M600,30 C617,38 646,48 692,52"/><path d="M440,17 C420,13 408,7 394,4"/><path d="M760,17 C780,13 792,7 806,4"/></g><ellipse cx="600" cy="30" rx="14" ry="9" fill="#ff00cc" opacity="0.48" class="eld-pupil"/><ellipse cx="600" cy="30" rx="5" ry="3.5" fill="#ffffff" opacity="0.42" class="eld-pupil"/><rect width="1200" height="60" fill="#12151f" opacity="0.63"/></svg></div>
 <div class="hbar-left"><button class="hbar-hamburger" id="sbtoggle" aria-label="Menu">&#9776;</button><span class="hbar-title">DAILY MODERN</span></div>
 <div class="hbar-right">
 <div class="period-tabs">
@@ -237,7 +268,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <button class="ptab ptab-all active" id="ptab-all" onclick="setPeriod('all')">All Time</button>
 </div>
 <span class="hbar-badge" id="period-badge" data-fmt="Modern">Modern — All Time</span>
-<span class="hbar-meta"><span data-es="Generado el" data-en="Generated">Generado el</span> junio 3, 2026</span>
+<span class="hbar-meta"><span data-es="Generado el" data-en="Generated">Generado el</span> junio 4, 2026</span>
 <div class="lang-toggle"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button><span class="lang-sep"> | </span><button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button></div>
 </div>
 </header>
@@ -379,7 +410,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<section class="card" id="s2">
+<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.55"><polygon points="597,20 600,8 603,20 600,25"/><polygon points="581,20 585,12 589,20"/><polygon points="611,20 615,12 619,20"/><polygon points="560,20 563,15 566,20"/><polygon points="634,20 637,15 640,20"/><polygon points="540,20 542,17 544,20"/><polygon points="656,20 658,17 660,20"/></g><g fill="#2a7a6a" opacity="0.25"><circle cx="400" cy="20" r="2"/><circle cx="800" cy="20" r="2"/><circle cx="200" cy="20" r="1.5"/><circle cx="1000" cy="20" r="1.5"/></g></svg><section class="card" id="s2">
 <h2 class="sec-title"><span class="sec-icon">🏆</span><span data-es="Rendimiento por Arquetipo" data-en="Archetype Performance">Rendimiento por Arquetipo</span><span class="sec-count" id="cnt-s2"></span></h2>
 <p class="sec-desc" data-es="Rendimiento de cada arquetipo. Verde = sobre-rinde respecto a su presencia. Rojo = bajo rendimiento." data-en="Archetype performance. Green = overperforming. Red = underperforming.">Rendimiento de cada arquetipo. Verde = sobre-rinde respecto a su presencia. Rojo = bajo rendimiento.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -433,7 +464,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<section class="card" id="s3">
+<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.5"><polygon points="597,20 600,32 603,20"/><polygon points="578,20 581,28 584,20"/><polygon points="616,20 619,28 622,20"/><polygon points="558,20 560,25 562,20"/><polygon points="638,20 640,25 642,20"/></g><g fill="none" stroke="#2a7a6a" stroke-width="0.5" opacity="0.3"><line x1="0" y1="20" x2="540" y2="20"/><line x1="660" y1="20" x2="1200" y2="20"/></g></svg><section class="card" id="s3">
 <h2 class="sec-title"><span class="sec-icon">👤</span><span data-es="Ranking de Jugadores" data-en="Player Rankings">Ranking de Jugadores</span><span class="sec-count" id="cnt-s3"></span></h2>
 <p class="sec-desc" data-es="Ranking por puntos acumulados. Puntos: Ganador=3, Top 4=2, Top 8=1." data-en="Ranking by accumulated points. Points: Winner=3, Top 4=2, Top 8=1.">Ranking por puntos acumulados. Puntos: Ganador=3, Top 4=2, Top 8=1.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -681,7 +712,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<section class="card" id="s4">
+<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.5" opacity="0.4"/><polyline points="530,20 542,10 554,20 566,30 578,20 590,10 600,20 610,10 622,20 634,30 646,20 658,10 670,20" stroke="#2a7a6a" stroke-width="1" fill="none" opacity="0.5"/><g fill="#2a7a6a" opacity="0.4"><circle cx="600" cy="20" r="3"/><circle cx="530" cy="20" r="2"/><circle cx="670" cy="20" r="2"/></g></svg><section class="card" id="s4">
 <h2 class="sec-title"><span class="sec-icon">🃏</span><span data-es="Cartas Más Jugadas" data-en="Most Played Cards">Cartas Más Jugadas</span><span class="sec-count" id="cnt-s4"></span></h2>
 <p class="sec-desc" data-es="Cartas más usadas en todos los mazos. % de Mazos = porcentaje de mazos que incluye esa carta." data-en="Most used cards across all decks. % of Decks = percentage of decks including this card.">Cartas más usadas en todos los mazos. % de Mazos = porcentaje de mazos que incluye esa carta.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1357,7 +1388,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </div>
 </div>
 </section>
-<section class="card" id="s5">
+<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#2a7a6a" stroke-width="0.5" opacity="0.35"><line x1="0" y1="20" x2="558" y2="20"/><line x1="642" y1="20" x2="1200" y2="20"/></g><g fill="none" stroke="#2a7a6a" stroke-width="0.85" opacity="0.55"><polygon points="600,10 610,20 600,30 590,20"/><polygon points="574,14 581,20 574,26 567,20"/><polygon points="626,14 633,20 626,26 619,20"/></g><g fill="#2a7a6a" opacity="0.35"><polygon points="600,15 604,20 600,25 596,20"/></g></svg><section class="card" id="s5">
 <h2 class="sec-title"><span class="sec-icon">📈</span><span data-es="Evolución del Metagame" data-en="Metagame Evolution">Evolución del Metagame</span><span class="sec-count" id="cnt-s5"></span></h2>
 <p class="sec-desc" data-es="Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos." data-en="Evolution of each archetype's presence tournament by tournament. Use checkboxes to show/hide archetypes.">Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1373,7 +1404,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <div class="cw" id="ecw-all" style="height:460px"><canvas id="echart-all"></canvas></div>
 </div>
 </section>
-<section class="card" id="s6">
+<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.55"><polygon points="597,20 600,8 603,20 600,25"/><polygon points="581,20 585,12 589,20"/><polygon points="611,20 615,12 619,20"/><polygon points="560,20 563,15 566,20"/><polygon points="634,20 637,15 640,20"/><polygon points="540,20 542,17 544,20"/><polygon points="656,20 658,17 660,20"/></g><g fill="#2a7a6a" opacity="0.25"><circle cx="400" cy="20" r="2"/><circle cx="800" cy="20" r="2"/><circle cx="200" cy="20" r="1.5"/><circle cx="1000" cy="20" r="1.5"/></g></svg><section class="card" id="s6">
 <h2 class="sec-title"><span class="sec-icon">📉</span><span data-es="Cartas en Alza" data-en="Rising Cards">Cartas en Alza</span><span class="sec-count" id="cnt-s6"></span></h2>
 <p class="sec-desc" data-es="Cartas ganando o perdiendo popularidad comparando torneos recientes vs anteriores." data-en="Cards gaining or losing popularity comparing recent vs older tournaments.">Cartas ganando o perdiendo popularidad comparando torneos recientes vs anteriores.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1539,7 +1570,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </section>
-<section class="card" id="s7">
+<svg class="eld-div" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="20" x2="1200" y2="20" stroke="#2a7a6a" stroke-width="0.6" opacity="0.5"/><g fill="#2a7a6a" opacity="0.5"><polygon points="597,20 600,32 603,20"/><polygon points="578,20 581,28 584,20"/><polygon points="616,20 619,28 622,20"/><polygon points="558,20 560,25 562,20"/><polygon points="638,20 640,25 642,20"/></g><g fill="none" stroke="#2a7a6a" stroke-width="0.5" opacity="0.3"><line x1="0" y1="20" x2="540" y2="20"/><line x1="660" y1="20" x2="1200" y2="20"/></g></svg><section class="card" id="s7">
 <h2 class="sec-title"><span class="sec-icon">🎯</span><span data-es="Presencia vs Conversión" data-en="Win Rate vs Presence">Presencia vs Conversión</span><span class="sec-count" id="cnt-s7"></span></h2>
 <p class="sec-desc" data-es="Cada punto = un arquetipo. Eje X: presencia %. Eje Y: conversión a Top-8 %. Tamaño = apariciones. Verde = sobre-rinde, Rojo = bajo rendimiento." data-en="Each point = one archetype. X: presence %. Y: Top-8 conversion %. Size = appearances. Green = overperforming, Red = underperforming.">Cada punto = un arquetipo. Eje X: presencia %. Eje Y: conversión a Top-8 %. Tamaño = apariciones. Verde = sobre-rinde, Rojo = bajo rendimiento.</p>
 <div class="pblock pblock-pre" style="display:none">
@@ -1552,7 +1583,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <div class="cw" id="scw-all" style="height:450px"><canvas id="schart-all"></canvas></div>
 </div>
 </section>
-<footer class="rf">Generated by <strong>MTG Metagame Tracker</strong> &middot; junio 3, 2026</footer>
+<svg class="eld-footer" viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ftTG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c040a0" stop-opacity="0.35"/><stop offset="100%" stop-color="#c040a0" stop-opacity="0"/></linearGradient><linearGradient id="ftVG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7b2d8b" stop-opacity="0.28"/><stop offset="100%" stop-color="#7b2d8b" stop-opacity="0"/></linearGradient></defs><path d="M140,72 C150,52 132,34 165,12" stroke="url(#ftTG)" stroke-width="1.5" fill="none"/><path d="M340,72 C328,48 370,32 348,8" stroke="url(#ftTG)" stroke-width="1.2" fill="none" opacity="0.82"/><path d="M600,72 C616,46 582,28 610,4" stroke="url(#ftTG)" stroke-width="1.8" fill="none"/><path d="M860,72 C846,48 886,34 856,10" stroke="url(#ftTG)" stroke-width="1.2" fill="none" opacity="0.82"/><path d="M1060,72 C1070,52 1046,34 1072,12" stroke="url(#ftTG)" stroke-width="1.5" fill="none"/><path d="M165,12 C160,7 172,4 167,0" stroke="url(#ftVG)" stroke-width="0.7" fill="none"/><path d="M165,12 C176,8 186,14 196,9" stroke="url(#ftVG)" stroke-width="0.5" fill="none"/><path d="M610,4 C604,0 616,-2 611,-6" stroke="url(#ftVG)" stroke-width="0.7" fill="none"/><path d="M610,4 C622,1 632,7 644,2" stroke="url(#ftVG)" stroke-width="0.5" fill="none"/><path d="M856,10 C850,5 863,2 857,-2" stroke="url(#ftVG)" stroke-width="0.6" fill="none"/></svg><footer class="rf">Generated by <strong>MTG Metagame Tracker</strong> &middot; junio 4, 2026</footer>
 </main>
 </div>
 <div class="sb-overlay" id="sb-overlay"></div>
