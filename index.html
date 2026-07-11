@@ -195,6 +195,7 @@ tr.de-top8 td:first-child{color:#d4a050;font-weight:700}
 #s2 .sec-title{color:#2d5fa8}
 #s3 .sec-title{color:#5a2d8a}
 #s4 .sec-title{color:#1f7a4a}
+#sbst .sec-title{color:#7a3020}
 #s5 .sec-title{color:#9b2d6e}
 #s6 .sec-title{color:#1a6a7a}
 #s7 .sec-title{color:#1a3d7a}
@@ -373,6 +374,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <li><a href="#s2"><span class="sb-icon">🏆</span><span data-es="Rendimiento Arquetipos" data-en="Archetype Performance">Rendimiento Arquetipos</span></a></li>
 <li><a href="#s3"><span class="sb-icon">👤</span><span data-es="Ranking Jugadores" data-en="Player Rankings">Ranking Jugadores</span></a></li>
 <li><a href="#s4"><span class="sb-icon">🃏</span><span data-es="Cartas Más Jugadas" data-en="Most Played Cards">Cartas Más Jugadas</span></a></li>
+<li><a href="#sbst"><span class="sb-icon">🎒</span><span data-es="Cartas de Sideboard" data-en="Sideboard Staples">Cartas de Sideboard</span></a></li>
 <li><a href="#s5"><span class="sb-icon">📈</span><span data-es="Evolución del Metagame" data-en="Metagame Evolution">Evolución del Metagame</span></a></li>
 <li><a href="#s6"><span class="sb-icon">📉</span><span data-es="Cartas en Alza" data-en="Rising Cards">Cartas en Alza</span></a></li>
 <li><a href="#s7"><span class="sb-icon">🎯</span><span data-es="Presencia vs Conversión" data-en="Win Rate vs Presence">Presencia vs Conversión</span></a></li>
@@ -391,7 +393,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <button class="ptab ptab-de" id="ptab-de-34" onclick="setPeriod('de-34')">&#11088; Destination Event …</button>
 </div>
 <span class="hbar-badge" id="period-badge" data-fmt="Modern">Modern — All Time</span>
-<span class="hbar-meta"><span data-es="Generado el" data-en="Generated">Generado el</span> julio 10, 2026</span>
+<span class="hbar-meta"><span data-es="Generado el" data-en="Generated">Generado el</span> julio 11, 2026</span>
 <div class="lang-toggle"><button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button><span class="lang-sep"> | </span><button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button></div>
 <button class="exp-img-btn" id="exp-img-btn" onclick="exportImages()">&#128248; Export Images</button>
 <button class="sm-mode-btn" id="sm-mode-btn" onclick="toggleSMMode()">&#128241; Social Media Mode</button>
@@ -401,7 +403,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <div class="kpi-row">
 <div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-body"><div class="kpi-num" id="kpi-t">21</div><div class="kpi-lbl" data-es="Torneos" data-en="Tournaments">Torneos</div></div></div>
 <div class="kpi-card"><div class="kpi-icon">🃏</div><div class="kpi-body"><div class="kpi-num" id="kpi-d">324</div><div class="kpi-lbl" data-es="Mazos" data-en="Deck Entries">Mazos</div></div></div>
-<div class="kpi-card"><div class="kpi-icon">👤</div><div class="kpi-body"><div class="kpi-num" id="kpi-p">182</div><div class="kpi-lbl" data-es="Jugadores" data-en="Players">Jugadores</div></div></div>
+<div class="kpi-card"><div class="kpi-icon">👤</div><div class="kpi-body"><div class="kpi-num" id="kpi-p">181</div><div class="kpi-lbl" data-es="Jugadores" data-en="Players">Jugadores</div></div></div>
 <div class="kpi-card"><div class="kpi-icon">📊</div><div class="kpi-body"><div class="kpi-num" id="kpi-a">72</div><div class="kpi-lbl" data-es="Arquetipos" data-en="Archetypes">Arquetipos</div></div></div>
 </div>
 <div id="main-sections">
@@ -688,89 +690,88 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr class="rk-gold"><td class="rk"><span class="m-gold">🥇</span></td><td><strong>Freddy Paredes</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>4</td><td>12th</td><td>Boros Wildfire</td><td>41.7%</td></tr>
 <tr class="rk-silver"><td class="rk"><span class="m-silver">🥈</span></td><td><strong>Francisco Miranda</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>2</td><td>1st</td><td>Domain Zoo</td><td>83.3%</td></tr>
 <tr class="rk-bronze"><td class="rk"><span class="m-bronze">🥉</span></td><td><strong>Andres Cifuentes</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>3</td><td>2nd</td><td>UW Belcher</td><td>55.6%</td></tr>
-<tr><td class="rk">4</td><td><strong>Joaquin Maldonado</strong></td><td><strong>4</strong></td><td>0</td><td>1</td><td>2</td><td>3</td><td>8th</td><td>Boros Energy</td><td>44.4%</td></tr>
-<tr><td class="rk">5</td><td><strong>Francisca Garcia Veliz</strong></td><td><strong>4</strong></td><td>1</td><td>0</td><td>1</td><td>3</td><td>10th</td><td>Jeskai Blink</td><td>44.4%</td></tr>
-<tr><td class="rk">6</td><td><strong>Tomas Martinez Cordova</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
-<tr><td class="rk">7</td><td><strong>Roberto del Rio</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
-<tr><td class="rk">8</td><td><strong>Pedro Gonzalez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>3</td><td>16th</td><td>Scapeshift</td><td>33.3%</td></tr>
-<tr><td class="rk">9</td><td><strong>Mario Bizama</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>100.0%</td></tr>
-<tr><td class="rk">10</td><td><strong>Marco Gaete</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Esper Blink</td><td>100.0%</td></tr>
-<tr><td class="rk">11</td><td><strong>Luis Cabrera</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>3</td><td>—</td><td>UW Belcher</td><td>33.3%</td></tr>
-<tr><td class="rk">12</td><td><strong>Julian Prado</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Red Belcher</td><td>100.0%</td></tr>
-<tr><td class="rk">13</td><td><strong>Gustavo Danker</strong></td><td><strong>3</strong></td><td>0</td><td>0</td><td>3</td><td>4</td><td>7th</td><td>Boros Energy</td><td>25.0%</td></tr>
-<tr><td class="rk">14</td><td><strong>Felipe Hidalgo</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>100.0%</td></tr>
-<tr><td class="rk">15</td><td><strong>Diego Mosscoso</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>100.0%</td></tr>
-<tr><td class="rk">16</td><td><strong>Daniel Soto</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>5th</td><td>Affinity</td><td>50.0%</td></tr>
-<tr><td class="rk">17</td><td><strong>Camilo Rodriguez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>4</td><td>19th</td><td>Jeskai Blink</td><td>25.0%</td></tr>
-<tr><td class="rk">18</td><td><strong>Rodrigo Nuñez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Hollow One</td><td>66.7%</td></tr>
-<tr><td class="rk">19</td><td><strong>Raul Soto</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Neobrand</td><td>66.7%</td></tr>
-<tr><td class="rk">20</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Neobrand</td><td>33.3%</td></tr>
-<tr><td class="rk">21</td><td><strong>Patricio Duarte</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
-<tr><td class="rk">22</td><td><strong>Oscar Hernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>11th</td><td>Domain Zoo</td><td>33.3%</td></tr>
-<tr><td class="rk">23</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Hammer Time</td><td>66.7%</td></tr>
-<tr><td class="rk">24</td><td><strong>Marcelo Lopez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Boros Energy</td><td>66.7%</td></tr>
-<tr><td class="rk">25</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>3</td><td>23rd</td><td>Sultai Ritual</td><td>22.2%</td></tr>
-<tr><td class="rk">26</td><td><strong>Julio Velasquez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
-<tr><td class="rk">27</td><td><strong>Juan Pablo Turra</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>14th</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">28</td><td><strong>Juan Cerda</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Sultai Ritual</td><td>66.7%</td></tr>
-<tr><td class="rk">29</td><td><strong>Javier ''Pillin'' Rivera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>66.7%</td></tr>
-<tr><td class="rk">30</td><td><strong>Francisco Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Amulet Titan</td><td>66.7%</td></tr>
-<tr><td class="rk">31</td><td><strong>Felipe ''Cachorro'' Guzman</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>66.7%</td></tr>
-<tr><td class="rk">32</td><td><strong>Emanuel Sutter</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Esper Reanimator</td><td>66.7%</td></tr>
-<tr><td class="rk">33</td><td><strong>David brill</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>10th</td><td>Boros Wildfire</td><td>33.3%</td></tr>
-<tr><td class="rk">34</td><td><strong>Daniel Fernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Affinity</td><td>33.3%</td></tr>
-<tr><td class="rk">35</td><td><strong>Cristian Valenzuela</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Energy Control</td><td>66.7%</td></tr>
-<tr><td class="rk">36</td><td><strong>Cesar Urrutia</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Living End</td><td>66.7%</td></tr>
-<tr><td class="rk">37</td><td><strong>Camilo Cabrera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
-<tr><td class="rk">38</td><td><strong>Alex Cid</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
-<tr><td class="rk">39</td><td><strong>Vicente Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>25th</td><td>Boros Energy</td><td>16.7%</td></tr>
-<tr><td class="rk">40</td><td><strong>Sebastian Tello</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Merfolk</td><td>33.3%</td></tr>
-<tr><td class="rk">41</td><td><strong>Samuel Zurita</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Esper Reanimator</td><td>33.3%</td></tr>
-<tr><td class="rk">42</td><td><strong>Pablo Parra</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Goryo's Vengeance</td><td>33.3%</td></tr>
-<tr><td class="rk">43</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">44</td><td><strong>Juan Verdugo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
-<tr><td class="rk">45</td><td><strong>Ignacio Valenzuela Salgado</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">46</td><td><strong>Hugo Castro</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Amulet Titan</td><td>33.3%</td></tr>
-<tr><td class="rk">47</td><td><strong>Hernan Lobos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
-<tr><td class="rk">48</td><td><strong>Gabriel Saba</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">49</td><td><strong>Frederick Escobar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Esper Blink</td><td>33.3%</td></tr>
-<tr><td class="rk">50</td><td><strong>Fernando Oviedo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Hardened Scales</td><td>33.3%</td></tr>
-<tr><td class="rk">51</td><td><strong>Emanuel Montaño</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">52</td><td><strong>Eduardo Murga</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">53</td><td><strong>David Reyes</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
-<tr><td class="rk">54</td><td><strong>Daniel Lopez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>6th</td><td>Mono Black Necrodominance</td><td>16.7%</td></tr>
-<tr><td class="rk">55</td><td><strong>Crisitian Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Domain Zoo</td><td>33.3%</td></tr>
-<tr><td class="rk">56</td><td><strong>Carlos Olea</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">57</td><td><strong>Calos Venegas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">58</td><td><strong>Angelo Perez Villablanca</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
-<tr><td class="rk">59</td><td><strong>Alejandro Gatica</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
-<tr><td class="rk">60</td><td><strong>Tomas Cordova</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">61</td><td><strong>Thomas Fischer Pulgar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Merfolk</td><td>0.0%</td></tr>
-<tr><td class="rk">62</td><td><strong>Sebastian Cotreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UW Belcher</td><td>0.0%</td></tr>
-<tr><td class="rk">63</td><td><strong>Sebastian Cabello</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
-<tr><td class="rk">64</td><td><strong>Rodrigo Lopez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
-<tr><td class="rk">65</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
-<tr><td class="rk">66</td><td><strong>Oscar Lapierre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">67</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Mono Red Belcher Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">68</td><td><strong>Nicolas De Prada</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">69</td><td><strong>Mauricio Rios</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
-<tr><td class="rk">70</td><td><strong>Mario Vega</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Merfolk</td><td>0.0%</td></tr>
-<tr><td class="rk">71</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Temur Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">72</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">73</td><td><strong>Juan Torres</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Amulet Titan</td><td>0.0%</td></tr>
-<tr><td class="rk">74</td><td><strong>Ivan Chaparro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">75</td><td><strong>Isaias Lembach</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Zoo Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">76</td><td><strong>Ignacio V. De La Paz</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Samwisse Combo</td><td>0.0%</td></tr>
-<tr><td class="rk">77</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>20th</td><td>Esper Control</td><td>0.0%</td></tr>
-<tr><td class="rk">78</td><td><strong>Hernan Pimentel</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">79</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">80</td><td><strong>Fuji Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">81</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">82</td><td><strong>Francisco Gonzalez (Lagarto)</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Mono White Control</td><td>0.0%</td></tr>
-<tr><td class="rk">83</td><td><strong>Fernando Yaksic</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>13th</td><td>Temur Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">84</td><td><strong>Felipe Fuentes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Oculus</td><td>0.0%</td></tr>
-<tr><td class="rk">85</td><td><strong>Daniel Palma</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">86</td><td><strong>Alonso Cancino</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Living End</td><td>0.0%</td></tr>
+<tr><td class="rk">4</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>4</strong></td><td>0</td><td>1</td><td>2</td><td>3</td><td>2nd</td><td>Neobrand</td><td>44.4%</td></tr>
+<tr><td class="rk">5</td><td><strong>Joaquin Maldonado</strong></td><td><strong>4</strong></td><td>0</td><td>1</td><td>2</td><td>3</td><td>8th</td><td>Boros Energy</td><td>44.4%</td></tr>
+<tr><td class="rk">6</td><td><strong>Francisca Garcia Veliz</strong></td><td><strong>4</strong></td><td>1</td><td>0</td><td>1</td><td>3</td><td>10th</td><td>Jeskai Blink</td><td>44.4%</td></tr>
+<tr><td class="rk">7</td><td><strong>Tomas Martinez Cordova</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
+<tr><td class="rk">8</td><td><strong>Roberto del Rio</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
+<tr><td class="rk">9</td><td><strong>Pedro Gonzalez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>3</td><td>16th</td><td>Scapeshift</td><td>33.3%</td></tr>
+<tr><td class="rk">10</td><td><strong>Mario Bizama</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>100.0%</td></tr>
+<tr><td class="rk">11</td><td><strong>Marco Gaete</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Esper Blink</td><td>100.0%</td></tr>
+<tr><td class="rk">12</td><td><strong>Luis Cabrera</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>3</td><td>—</td><td>UW Belcher</td><td>33.3%</td></tr>
+<tr><td class="rk">13</td><td><strong>Julian Prado</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Red Belcher</td><td>100.0%</td></tr>
+<tr><td class="rk">14</td><td><strong>Gustavo Danker</strong></td><td><strong>3</strong></td><td>0</td><td>0</td><td>3</td><td>4</td><td>7th</td><td>Boros Energy</td><td>25.0%</td></tr>
+<tr><td class="rk">15</td><td><strong>Felipe Hidalgo</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>100.0%</td></tr>
+<tr><td class="rk">16</td><td><strong>Diego Mosscoso</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>100.0%</td></tr>
+<tr><td class="rk">17</td><td><strong>Daniel Soto</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>5th</td><td>Affinity</td><td>50.0%</td></tr>
+<tr><td class="rk">18</td><td><strong>Camilo Rodriguez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>4</td><td>19th</td><td>Jeskai Blink</td><td>25.0%</td></tr>
+<tr><td class="rk">19</td><td><strong>Rodrigo Nuñez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Hollow One</td><td>66.7%</td></tr>
+<tr><td class="rk">20</td><td><strong>Patricio Duarte</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
+<tr><td class="rk">21</td><td><strong>Oscar Hernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>11th</td><td>Domain Zoo</td><td>33.3%</td></tr>
+<tr><td class="rk">22</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Hammer Time</td><td>66.7%</td></tr>
+<tr><td class="rk">23</td><td><strong>Marcelo Lopez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">24</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>3</td><td>23rd</td><td>Sultai Ritual</td><td>22.2%</td></tr>
+<tr><td class="rk">25</td><td><strong>Julio Velasquez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">26</td><td><strong>Juan Pablo Turra</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>14th</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">27</td><td><strong>Juan Cerda</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Sultai Ritual</td><td>66.7%</td></tr>
+<tr><td class="rk">28</td><td><strong>Javier ''Pillin'' Rivera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>66.7%</td></tr>
+<tr><td class="rk">29</td><td><strong>Francisco Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Amulet Titan</td><td>66.7%</td></tr>
+<tr><td class="rk">30</td><td><strong>Felipe ''Cachorro'' Guzman</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>66.7%</td></tr>
+<tr><td class="rk">31</td><td><strong>Emanuel Sutter</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Esper Reanimator</td><td>66.7%</td></tr>
+<tr><td class="rk">32</td><td><strong>David brill</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>10th</td><td>Boros Wildfire</td><td>33.3%</td></tr>
+<tr><td class="rk">33</td><td><strong>Daniel Fernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Affinity</td><td>33.3%</td></tr>
+<tr><td class="rk">34</td><td><strong>Cristian Valenzuela</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Energy Control</td><td>66.7%</td></tr>
+<tr><td class="rk">35</td><td><strong>Cesar Urrutia</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Living End</td><td>66.7%</td></tr>
+<tr><td class="rk">36</td><td><strong>Camilo Cabrera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">37</td><td><strong>Alex Cid</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">38</td><td><strong>Vicente Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>25th</td><td>Boros Energy</td><td>16.7%</td></tr>
+<tr><td class="rk">39</td><td><strong>Sebastian Tello</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Merfolk</td><td>33.3%</td></tr>
+<tr><td class="rk">40</td><td><strong>Samuel Zurita</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Esper Reanimator</td><td>33.3%</td></tr>
+<tr><td class="rk">41</td><td><strong>Pablo Parra</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Goryo's Vengeance</td><td>33.3%</td></tr>
+<tr><td class="rk">42</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">43</td><td><strong>Juan Verdugo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">44</td><td><strong>Ignacio Valenzuela Salgado</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">45</td><td><strong>Hugo Castro</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Amulet Titan</td><td>33.3%</td></tr>
+<tr><td class="rk">46</td><td><strong>Hernan Lobos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">47</td><td><strong>Gabriel Saba</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">48</td><td><strong>Frederick Escobar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Esper Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">49</td><td><strong>Fernando Oviedo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Hardened Scales</td><td>33.3%</td></tr>
+<tr><td class="rk">50</td><td><strong>Emanuel Montaño</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">51</td><td><strong>Eduardo Murga</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">52</td><td><strong>David Reyes</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">53</td><td><strong>Daniel Lopez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>6th</td><td>Mono Black Necrodominance</td><td>16.7%</td></tr>
+<tr><td class="rk">54</td><td><strong>Crisitian Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Domain Zoo</td><td>33.3%</td></tr>
+<tr><td class="rk">55</td><td><strong>Carlos Olea</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">56</td><td><strong>Calos Venegas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">57</td><td><strong>Angelo Perez Villablanca</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">58</td><td><strong>Alejandro Gatica</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">59</td><td><strong>Tomas Cordova</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">60</td><td><strong>Thomas Fischer Pulgar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Merfolk</td><td>0.0%</td></tr>
+<tr><td class="rk">61</td><td><strong>Sebastian Cotreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UW Belcher</td><td>0.0%</td></tr>
+<tr><td class="rk">62</td><td><strong>Sebastian Cabello</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">63</td><td><strong>Rodrigo Lopez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">64</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
+<tr><td class="rk">65</td><td><strong>Oscar Lapierre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">66</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Mono Red Belcher Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">67</td><td><strong>Nicolas De Prada</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">68</td><td><strong>Mauricio Rios</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
+<tr><td class="rk">69</td><td><strong>Mario Vega</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Merfolk</td><td>0.0%</td></tr>
+<tr><td class="rk">70</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Temur Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">71</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">72</td><td><strong>Juan Torres</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">73</td><td><strong>Ivan Chaparro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">74</td><td><strong>Isaias Lembach</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Zoo Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">75</td><td><strong>Ignacio V. De La Paz</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Samwisse Combo</td><td>0.0%</td></tr>
+<tr><td class="rk">76</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>20th</td><td>Esper Control</td><td>0.0%</td></tr>
+<tr><td class="rk">77</td><td><strong>Hernan Pimentel</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">78</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">79</td><td><strong>Fuji Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">80</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">81</td><td><strong>Francisco Gonzalez (Lagarto)</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Mono White Control</td><td>0.0%</td></tr>
+<tr><td class="rk">82</td><td><strong>Fernando Yaksic</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>13th</td><td>Temur Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">83</td><td><strong>Felipe Fuentes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Oculus</td><td>0.0%</td></tr>
+<tr><td class="rk">84</td><td><strong>Daniel Palma</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">85</td><td><strong>Alonso Cancino</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Living End</td><td>0.0%</td></tr>
 </tbody></table></div>
 </div>
 <div class="pblock pblock-post" style="display:none">
@@ -816,7 +817,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">39</td><td><strong>Alejandro Gatica</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>2nd</td><td>Temur Cascade</td><td>33.3%</td></tr>
 <tr><td class="rk">40</td><td><strong>Victor Rodriguez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>5th</td><td>Living End</td><td>33.3%</td></tr>
 <tr><td class="rk">41</td><td><strong>Rodrigo Nuñez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>Hollow One</td><td>33.3%</td></tr>
-<tr><td class="rk">42</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>6th</td><td>Neobrand</td><td>16.7%</td></tr>
+<tr><td class="rk">42</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>3</td><td>6th</td><td>Neobrand</td><td>11.1%</td></tr>
 <tr><td class="rk">43</td><td><strong>Paulo Gonzalez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>8th</td><td>Affinity</td><td>16.7%</td></tr>
 <tr><td class="rk">44</td><td><strong>Oscar Lapierre</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>5th</td><td>Affinity</td><td>16.7%</td></tr>
 <tr><td class="rk">45</td><td><strong>Nicolas De Prada</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Crashing Cascade</td><td>33.3%</td></tr>
@@ -849,77 +850,76 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">72</td><td><strong>Rolando Gatica</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>45th</td><td>Golgari Elves</td><td>0.0%</td></tr>
 <tr><td class="rk">73</td><td><strong>Roberto del Rio</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>0.0%</td></tr>
 <tr><td class="rk">74</td><td><strong>Ricardo Parra</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Living End</td><td>0.0%</td></tr>
-<tr><td class="rk">75</td><td><strong>Raul Soto</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Neobrand</td><td>0.0%</td></tr>
-<tr><td class="rk">76</td><td><strong>Pedro Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>59th</td><td>RG Valakut</td><td>0.0%</td></tr>
-<tr><td class="rk">77</td><td><strong>Pavel Morames</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">78</td><td><strong>Patricio Roman Escaffi</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>71st</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">79</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
-<tr><td class="rk">80</td><td><strong>Pablo Garay Lillo</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">81</td><td><strong>Oscar Mendoza</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>47th</td><td>Dimir Sorin</td><td>0.0%</td></tr>
-<tr><td class="rk">82</td><td><strong>Oscar Hernandez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>19th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">83</td><td><strong>Nicolas Rudisky</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Crashing Cascade Temur</td><td>0.0%</td></tr>
-<tr><td class="rk">84</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>40th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">85</td><td><strong>Nicolas Morales Macaya</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>13th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">86</td><td><strong>Nicolas Morales Jara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>66th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">87</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>34th</td><td>Hammer Time</td><td>0.0%</td></tr>
-<tr><td class="rk">88</td><td><strong>Mauricio Gonzalez Chang</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>57th</td><td>Goryo's Vengeance</td><td>0.0%</td></tr>
-<tr><td class="rk">89</td><td><strong>Matias Nuñez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>28th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">90</td><td><strong>Marco Gaete</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>46th</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">91</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>23rd</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">92</td><td><strong>Marcelo Lopez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">93</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Samwise Combo</td><td>0.0%</td></tr>
-<tr><td class="rk">94</td><td><strong>Manuel Corvalan Martinez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">95</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>10th</td><td>Boros Burn</td><td>0.0%</td></tr>
-<tr><td class="rk">96</td><td><strong>Luis Lizama</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>54th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
-<tr><td class="rk">97</td><td><strong>Luis Cabrera</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>36th</td><td>UW Belcher</td><td>0.0%</td></tr>
-<tr><td class="rk">98</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>11th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">99</td><td><strong>Lucas Campos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>51st</td><td>Jund Hollow One</td><td>0.0%</td></tr>
-<tr><td class="rk">100</td><td><strong>Jurgen Kruger</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>20th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">101</td><td><strong>Julian Prado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>50th</td><td>Mono Red Belcher Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">102</td><td><strong>Juan Torres Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>52nd</td><td>Mono Red Burn</td><td>0.0%</td></tr>
-<tr><td class="rk">103</td><td><strong>Juan Pablo Turra</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>30th</td><td>Jund Infect</td><td>0.0%</td></tr>
-<tr><td class="rk">104</td><td><strong>Jose Navarrete</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">105</td><td><strong>Jose Manuel Borquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>UW Control</td><td>0.0%</td></tr>
-<tr><td class="rk">106</td><td><strong>Jose Delgado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>9th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">107</td><td><strong>Jorge Moreno</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">108</td><td><strong>Jorge Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
-<tr><td class="rk">109</td><td><strong>Jorge  Atre Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">110</td><td><strong>Jonathan Chavez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
-<tr><td class="rk">111</td><td><strong>Ingacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Esper Control</td><td>0.0%</td></tr>
-<tr><td class="rk">112</td><td><strong>Ignacio Valenzuela</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
-<tr><td class="rk">113</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>65th</td><td>Esper Midrange</td><td>0.0%</td></tr>
-<tr><td class="rk">114</td><td><strong>Hernan Lobos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>20th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
-<tr><td class="rk">115</td><td><strong>Guillermo Ferran</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>43rd</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">116</td><td><strong>Gonzalo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Midrange</td><td>0.0%</td></tr>
-<tr><td class="rk">117</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>58th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">118</td><td><strong>Gonzalo Llorente</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>55th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">119</td><td><strong>Gabriel Retamales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Dimir Mill</td><td>0.0%</td></tr>
-<tr><td class="rk">120</td><td><strong>Frederick Escobar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Living End</td><td>0.0%</td></tr>
-<tr><td class="rk">121</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>69th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">122</td><td><strong>Francisco Sandoval</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>70th</td><td>Boros Burn</td><td>0.0%</td></tr>
-<tr><td class="rk">123</td><td><strong>Francisco Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">124</td><td><strong>Francisco Miranda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>UW Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">125</td><td><strong>Francisco Gonzalez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Amulet Titan</td><td>0.0%</td></tr>
-<tr><td class="rk">126</td><td><strong>Felipe Schnyder</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>73rd</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">127</td><td><strong>Esteban Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>BG Necrodominance</td><td>0.0%</td></tr>
-<tr><td class="rk">128</td><td><strong>Eduardo Mendez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>8 Rack</td><td>0.0%</td></tr>
-<tr><td class="rk">129</td><td><strong>David Juan</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>15th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">130</td><td><strong>David Brill</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>56th</td><td>Boros Ponza</td><td>0.0%</td></tr>
-<tr><td class="rk">131</td><td><strong>Dario Vergara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>38th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">132</td><td><strong>Daniel Fernandez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>10th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">133</td><td><strong>Daniel Dreyse Mery</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>44th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">134</td><td><strong>Daniel Dreyse</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">135</td><td><strong>Daniel Cuellar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>BG Midrange</td><td>0.0%</td></tr>
-<tr><td class="rk">136</td><td><strong>Cristobal Rolando</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">137</td><td><strong>Cristian Velazquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Living End</td><td>0.0%</td></tr>
-<tr><td class="rk">138</td><td><strong>Claudio Pacheco</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Hollow One</td><td>0.0%</td></tr>
-<tr><td class="rk">139</td><td><strong>Cesar Urrutia</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
-<tr><td class="rk">140</td><td><strong>Carlos Moore</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Death &amp; Taxes</td><td>0.0%</td></tr>
-<tr><td class="rk">141</td><td><strong>Camilo Rodríguez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>32nd</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">142</td><td><strong>Camilo Rodriguez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>12th</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">143</td><td><strong>Camilo Lara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>63rd</td><td>Samwise Combo</td><td>0.0%</td></tr>
-<tr><td class="rk">144</td><td><strong>Benjamin Reyes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>11th</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">145</td><td><strong>Armando Contreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
+<tr><td class="rk">75</td><td><strong>Pedro Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>59th</td><td>RG Valakut</td><td>0.0%</td></tr>
+<tr><td class="rk">76</td><td><strong>Pavel Morames</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">77</td><td><strong>Patricio Roman Escaffi</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>71st</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">78</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
+<tr><td class="rk">79</td><td><strong>Pablo Garay Lillo</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">80</td><td><strong>Oscar Mendoza</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>47th</td><td>Dimir Sorin</td><td>0.0%</td></tr>
+<tr><td class="rk">81</td><td><strong>Oscar Hernandez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>19th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">82</td><td><strong>Nicolas Rudisky</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Crashing Cascade Temur</td><td>0.0%</td></tr>
+<tr><td class="rk">83</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>40th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">84</td><td><strong>Nicolas Morales Macaya</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>13th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">85</td><td><strong>Nicolas Morales Jara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>66th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">86</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>34th</td><td>Hammer Time</td><td>0.0%</td></tr>
+<tr><td class="rk">87</td><td><strong>Mauricio Gonzalez Chang</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>57th</td><td>Goryo's Vengeance</td><td>0.0%</td></tr>
+<tr><td class="rk">88</td><td><strong>Matias Nuñez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>28th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">89</td><td><strong>Marco Gaete</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>46th</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">90</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>23rd</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">91</td><td><strong>Marcelo Lopez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">92</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Samwise Combo</td><td>0.0%</td></tr>
+<tr><td class="rk">93</td><td><strong>Manuel Corvalan Martinez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">94</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>10th</td><td>Boros Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">95</td><td><strong>Luis Lizama</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>54th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
+<tr><td class="rk">96</td><td><strong>Luis Cabrera</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>36th</td><td>UW Belcher</td><td>0.0%</td></tr>
+<tr><td class="rk">97</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>11th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">98</td><td><strong>Lucas Campos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>51st</td><td>Jund Hollow One</td><td>0.0%</td></tr>
+<tr><td class="rk">99</td><td><strong>Jurgen Kruger</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>20th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">100</td><td><strong>Julian Prado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>50th</td><td>Mono Red Belcher Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">101</td><td><strong>Juan Torres Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>52nd</td><td>Mono Red Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">102</td><td><strong>Juan Pablo Turra</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>30th</td><td>Jund Infect</td><td>0.0%</td></tr>
+<tr><td class="rk">103</td><td><strong>Jose Navarrete</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">104</td><td><strong>Jose Manuel Borquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>UW Control</td><td>0.0%</td></tr>
+<tr><td class="rk">105</td><td><strong>Jose Delgado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>9th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">106</td><td><strong>Jorge Moreno</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">107</td><td><strong>Jorge Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
+<tr><td class="rk">108</td><td><strong>Jorge  Atre Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">109</td><td><strong>Jonathan Chavez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
+<tr><td class="rk">110</td><td><strong>Ingacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Esper Control</td><td>0.0%</td></tr>
+<tr><td class="rk">111</td><td><strong>Ignacio Valenzuela</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
+<tr><td class="rk">112</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>65th</td><td>Esper Midrange</td><td>0.0%</td></tr>
+<tr><td class="rk">113</td><td><strong>Hernan Lobos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>20th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
+<tr><td class="rk">114</td><td><strong>Guillermo Ferran</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>43rd</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">115</td><td><strong>Gonzalo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Midrange</td><td>0.0%</td></tr>
+<tr><td class="rk">116</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>58th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">117</td><td><strong>Gonzalo Llorente</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>55th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">118</td><td><strong>Gabriel Retamales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Dimir Mill</td><td>0.0%</td></tr>
+<tr><td class="rk">119</td><td><strong>Frederick Escobar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Living End</td><td>0.0%</td></tr>
+<tr><td class="rk">120</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>69th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">121</td><td><strong>Francisco Sandoval</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>70th</td><td>Boros Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">122</td><td><strong>Francisco Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">123</td><td><strong>Francisco Miranda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>UW Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">124</td><td><strong>Francisco Gonzalez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">125</td><td><strong>Felipe Schnyder</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>73rd</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">126</td><td><strong>Esteban Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>BG Necrodominance</td><td>0.0%</td></tr>
+<tr><td class="rk">127</td><td><strong>Eduardo Mendez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>8 Rack</td><td>0.0%</td></tr>
+<tr><td class="rk">128</td><td><strong>David Juan</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>15th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">129</td><td><strong>David Brill</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>56th</td><td>Boros Ponza</td><td>0.0%</td></tr>
+<tr><td class="rk">130</td><td><strong>Dario Vergara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>38th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">131</td><td><strong>Daniel Fernandez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>10th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">132</td><td><strong>Daniel Dreyse Mery</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>44th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">133</td><td><strong>Daniel Dreyse</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">134</td><td><strong>Daniel Cuellar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>BG Midrange</td><td>0.0%</td></tr>
+<tr><td class="rk">135</td><td><strong>Cristobal Rolando</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">136</td><td><strong>Cristian Velazquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Living End</td><td>0.0%</td></tr>
+<tr><td class="rk">137</td><td><strong>Claudio Pacheco</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Hollow One</td><td>0.0%</td></tr>
+<tr><td class="rk">138</td><td><strong>Cesar Urrutia</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>24th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
+<tr><td class="rk">139</td><td><strong>Carlos Moore</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Death &amp; Taxes</td><td>0.0%</td></tr>
+<tr><td class="rk">140</td><td><strong>Camilo Rodríguez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>32nd</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">141</td><td><strong>Camilo Rodriguez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>12th</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">142</td><td><strong>Camilo Lara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>63rd</td><td>Samwise Combo</td><td>0.0%</td></tr>
+<tr><td class="rk">143</td><td><strong>Benjamin Reyes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>11th</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">144</td><td><strong>Armando Contreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
 </tbody></table></div>
 </div>
 <div class="pblock pblock-all">
@@ -931,19 +931,19 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">5</td><td><strong>Daniel Lopez</strong></td><td><strong>6</strong></td><td>0</td><td>2</td><td>2</td><td>8</td><td>4th</td><td>Mono Black Necrodominance</td><td>25.0%</td></tr>
 <tr><td class="rk">6</td><td><strong>Sebastian Oyarzun</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>2</td><td>1st</td><td>Affinity</td><td>83.3%</td></tr>
 <tr><td class="rk">7</td><td><strong>Ricardo Vasquez</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>3</td><td>1st</td><td>Eldrazi Ramp</td><td>55.6%</td></tr>
-<tr><td class="rk">8</td><td><strong>Patricio Roman</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>4</td><td>1st</td><td>UW Blink</td><td>41.7%</td></tr>
-<tr><td class="rk">9</td><td><strong>Joaquin Maldonado</strong></td><td><strong>5</strong></td><td>0</td><td>1</td><td>3</td><td>6</td><td>6th</td><td>Boros Energy</td><td>27.8%</td></tr>
-<tr><td class="rk">10</td><td><strong>Gustavo Danker</strong></td><td><strong>5</strong></td><td>0</td><td>0</td><td>5</td><td>8</td><td>6th</td><td>Boros Energy</td><td>20.8%</td></tr>
-<tr><td class="rk">11</td><td><strong>Francisco Miranda</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>3</td><td>1st</td><td>Domain Zoo</td><td>55.6%</td></tr>
-<tr><td class="rk">12</td><td><strong>Fernando Oviedo</strong></td><td><strong>5</strong></td><td>1</td><td>0</td><td>2</td><td>3</td><td>1st</td><td>Broodscale</td><td>55.6%</td></tr>
-<tr><td class="rk">13</td><td><strong>Emanuel Sutter</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>5</td><td>2nd</td><td>Esper Goryo's</td><td>33.3%</td></tr>
-<tr><td class="rk">14</td><td><strong>Daniel Soto</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>3</td><td>2nd</td><td>Affinity</td><td>55.6%</td></tr>
-<tr><td class="rk">15</td><td><strong>Pablo Parra</strong></td><td><strong>4</strong></td><td>0</td><td>1</td><td>2</td><td>3</td><td>4th</td><td>Esper Goryo's</td><td>44.4%</td></tr>
-<tr><td class="rk">16</td><td><strong>Juan Carlos Torres</strong></td><td><strong>4</strong></td><td>0</td><td>2</td><td>0</td><td>2</td><td>4th</td><td>Amulet Titan</td><td>66.7%</td></tr>
-<tr><td class="rk">17</td><td><strong>Tomas Martinez Cordova</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
-<tr><td class="rk">18</td><td><strong>Rodrigo Nuñez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>8th</td><td>Hollow One</td><td>50.0%</td></tr>
-<tr><td class="rk">19</td><td><strong>Roberto del Rio</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>2</td><td>—</td><td>Affinity</td><td>50.0%</td></tr>
-<tr><td class="rk">20</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>3</strong></td><td>0</td><td>0</td><td>3</td><td>4</td><td>5th</td><td>Neobrand</td><td>25.0%</td></tr>
+<tr><td class="rk">8</td><td><strong>Raul Alejandro Soto</strong></td><td><strong>5</strong></td><td>0</td><td>1</td><td>3</td><td>6</td><td>2nd</td><td>Neobrand</td><td>27.8%</td></tr>
+<tr><td class="rk">9</td><td><strong>Patricio Roman</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>4</td><td>1st</td><td>UW Blink</td><td>41.7%</td></tr>
+<tr><td class="rk">10</td><td><strong>Joaquin Maldonado</strong></td><td><strong>5</strong></td><td>0</td><td>1</td><td>3</td><td>6</td><td>6th</td><td>Boros Energy</td><td>27.8%</td></tr>
+<tr><td class="rk">11</td><td><strong>Gustavo Danker</strong></td><td><strong>5</strong></td><td>0</td><td>0</td><td>5</td><td>8</td><td>6th</td><td>Boros Energy</td><td>20.8%</td></tr>
+<tr><td class="rk">12</td><td><strong>Francisco Miranda</strong></td><td><strong>5</strong></td><td>1</td><td>1</td><td>0</td><td>3</td><td>1st</td><td>Domain Zoo</td><td>55.6%</td></tr>
+<tr><td class="rk">13</td><td><strong>Fernando Oviedo</strong></td><td><strong>5</strong></td><td>1</td><td>0</td><td>2</td><td>3</td><td>1st</td><td>Broodscale</td><td>55.6%</td></tr>
+<tr><td class="rk">14</td><td><strong>Emanuel Sutter</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>5</td><td>2nd</td><td>Esper Goryo's</td><td>33.3%</td></tr>
+<tr><td class="rk">15</td><td><strong>Daniel Soto</strong></td><td><strong>5</strong></td><td>0</td><td>2</td><td>1</td><td>3</td><td>2nd</td><td>Affinity</td><td>55.6%</td></tr>
+<tr><td class="rk">16</td><td><strong>Pablo Parra</strong></td><td><strong>4</strong></td><td>0</td><td>1</td><td>2</td><td>3</td><td>4th</td><td>Esper Goryo's</td><td>44.4%</td></tr>
+<tr><td class="rk">17</td><td><strong>Juan Carlos Torres</strong></td><td><strong>4</strong></td><td>0</td><td>2</td><td>0</td><td>2</td><td>4th</td><td>Amulet Titan</td><td>66.7%</td></tr>
+<tr><td class="rk">18</td><td><strong>Tomas Martinez Cordova</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Affinity</td><td>100.0%</td></tr>
+<tr><td class="rk">19</td><td><strong>Rodrigo Nuñez</strong></td><td><strong>3</strong></td><td>0</td><td>1</td><td>1</td><td>2</td><td>8th</td><td>Hollow One</td><td>50.0%</td></tr>
+<tr><td class="rk">20</td><td><strong>Roberto del Rio</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>2</td><td>—</td><td>Affinity</td><td>50.0%</td></tr>
 <tr><td class="rk">21</td><td><strong>Pablo Tapia</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Dredge</td><td>100.0%</td></tr>
 <tr><td class="rk">22</td><td><strong>Nicolas Morales</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>100.0%</td></tr>
 <tr><td class="rk">23</td><td><strong>Matias Castro</strong></td><td><strong>3</strong></td><td>1</td><td>0</td><td>0</td><td>1</td><td>1st</td><td>Living End</td><td>100.0%</td></tr>
@@ -963,149 +963,148 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <tr><td class="rk">37</td><td><strong>Sebastian Quintana</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>10th</td><td>UW Belcher</td><td>33.3%</td></tr>
 <tr><td class="rk">38</td><td><strong>Rodrigo Muñoz</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Living End</td><td>66.7%</td></tr>
 <tr><td class="rk">39</td><td><strong>Rodrigo Lopez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>4th</td><td>Grixis Oculus</td><td>33.3%</td></tr>
-<tr><td class="rk">40</td><td><strong>Raul Soto</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>2nd</td><td>Neobrand</td><td>33.3%</td></tr>
-<tr><td class="rk">41</td><td><strong>Patricio Duarte</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
-<tr><td class="rk">42</td><td><strong>Pablo Jabase</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Grixis Reanimator</td><td>66.7%</td></tr>
-<tr><td class="rk">43</td><td><strong>Pablo Carreño</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Domain Zoo</td><td>66.7%</td></tr>
-<tr><td class="rk">44</td><td><strong>Oscar Hernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>4</td><td>11th</td><td>Domain Zoo</td><td>16.7%</td></tr>
-<tr><td class="rk">45</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>34th</td><td>Hammer Time</td><td>33.3%</td></tr>
-<tr><td class="rk">46</td><td><strong>Mauricio Mondaca</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Eldrazi Ramp</td><td>66.7%</td></tr>
-<tr><td class="rk">47</td><td><strong>Marcelo Lopez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Affinity</td><td>33.3%</td></tr>
-<tr><td class="rk">48</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>4</td><td>18th</td><td>Sultai Ritual</td><td>16.7%</td></tr>
-<tr><td class="rk">49</td><td><strong>Julio Velasquez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
-<tr><td class="rk">50</td><td><strong>Juan Pablo Turra</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>3</td><td>14th</td><td>Boros Energy</td><td>22.2%</td></tr>
-<tr><td class="rk">51</td><td><strong>Juan Cerda</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Sultai Ritual</td><td>66.7%</td></tr>
-<tr><td class="rk">52</td><td><strong>Jorge Cortes</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Boros Energy</td><td>66.7%</td></tr>
-<tr><td class="rk">53</td><td><strong>Johan Ramirez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Humans</td><td>66.7%</td></tr>
-<tr><td class="rk">54</td><td><strong>Javier ''Pillin'' Rivera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>66.7%</td></tr>
-<tr><td class="rk">55</td><td><strong>Ivan Chaparro Ulloa</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Esper Goryo's</td><td>33.3%</td></tr>
-<tr><td class="rk">56</td><td><strong>Hallan Nahuelpan</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Domain Zoo</td><td>66.7%</td></tr>
-<tr><td class="rk">57</td><td><strong>Francisco Ibañez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>UR Prowess</td><td>66.7%</td></tr>
-<tr><td class="rk">58</td><td><strong>Francisco Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>4th</td><td>Amulet Titan</td><td>33.3%</td></tr>
-<tr><td class="rk">59</td><td><strong>Fernando Yaksic</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>3</td><td>2nd</td><td>Temur Prowess</td><td>22.2%</td></tr>
-<tr><td class="rk">60</td><td><strong>Felipe ''Cachorro'' Guzman</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>66.7%</td></tr>
-<tr><td class="rk">61</td><td><strong>Diego Pirexiano</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Grixis Reanimator</td><td>33.3%</td></tr>
-<tr><td class="rk">62</td><td><strong>David Reyes</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>3</td><td>8th</td><td>Living End</td><td>22.2%</td></tr>
-<tr><td class="rk">63</td><td><strong>David brill</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>3</td><td>10th</td><td>Boros Ponza</td><td>22.2%</td></tr>
-<tr><td class="rk">64</td><td><strong>Dario Vergara Lara</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Ruby Storm</td><td>66.7%</td></tr>
-<tr><td class="rk">65</td><td><strong>Daniel Fernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>4</td><td>3rd</td><td>Affinity</td><td>16.7%</td></tr>
-<tr><td class="rk">66</td><td><strong>Cristian Valenzuela</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Energy Control</td><td>66.7%</td></tr>
-<tr><td class="rk">67</td><td><strong>Cesar Urrutia</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>24th</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">68</td><td><strong>Carlos Olea</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">69</td><td><strong>Carlos Medina</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Dimir Midrange</td><td>33.3%</td></tr>
-<tr><td class="rk">70</td><td><strong>Camilo Cabrera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
-<tr><td class="rk">71</td><td><strong>Andres Camargo</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Living End</td><td>33.3%</td></tr>
-<tr><td class="rk">72</td><td><strong>Alex Cid</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
-<tr><td class="rk">73</td><td><strong>Victor Rodriguez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>5th</td><td>Living End</td><td>33.3%</td></tr>
-<tr><td class="rk">74</td><td><strong>Vicente Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>3</td><td>25th</td><td>Boros Energy</td><td>11.1%</td></tr>
-<tr><td class="rk">75</td><td><strong>Sebastian Tello</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Merfolk</td><td>33.3%</td></tr>
-<tr><td class="rk">76</td><td><strong>Samuel Zurita</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>29th</td><td>Esper Goryo's</td><td>16.7%</td></tr>
-<tr><td class="rk">77</td><td><strong>Paulo Gonzalez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>8th</td><td>Affinity</td><td>16.7%</td></tr>
-<tr><td class="rk">78</td><td><strong>Oscar Lapierre</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>3</td><td>5th</td><td>Affinity</td><td>11.1%</td></tr>
-<tr><td class="rk">79</td><td><strong>Nicolas De Prada</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>7th</td><td>Crashing Cascade</td><td>16.7%</td></tr>
-<tr><td class="rk">80</td><td><strong>Maximilian Kalm</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>5th</td><td>Esper Blink</td><td>33.3%</td></tr>
-<tr><td class="rk">81</td><td><strong>Mario Cuellar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>Affinity</td><td>33.3%</td></tr>
-<tr><td class="rk">82</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>23rd</td><td>Grixis Reanimator</td><td>16.7%</td></tr>
-<tr><td class="rk">83</td><td><strong>Manuel Corvalan</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>Grixis Reanimator</td><td>33.3%</td></tr>
-<tr><td class="rk">84</td><td><strong>Juan Verdugo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
-<tr><td class="rk">85</td><td><strong>Juan Solar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Domain Zoo</td><td>33.3%</td></tr>
-<tr><td class="rk">86</td><td><strong>Jose Varas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Titan Breach</td><td>33.3%</td></tr>
-<tr><td class="rk">87</td><td><strong>Jonathan Sepulveda Vasquez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>UR Prowess</td><td>33.3%</td></tr>
-<tr><td class="rk">88</td><td><strong>Ignacio Valenzuela Salgado</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">89</td><td><strong>Hugo Castro</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Amulet Titan</td><td>33.3%</td></tr>
-<tr><td class="rk">90</td><td><strong>Hernan Lobos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>20th</td><td>Eldrazi Ramp</td><td>16.7%</td></tr>
-<tr><td class="rk">91</td><td><strong>Hernan Jofre</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>UW Belcher</td><td>33.3%</td></tr>
-<tr><td class="rk">92</td><td><strong>Gabriel Saba</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">93</td><td><strong>Frederick Escobar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>21st</td><td>Esper Blink</td><td>16.7%</td></tr>
-<tr><td class="rk">94</td><td><strong>Fernando Moya</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>7th</td><td>UW Control</td><td>16.7%</td></tr>
-<tr><td class="rk">95</td><td><strong>Fabian Diaz</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">96</td><td><strong>Emanuel Montaño</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">97</td><td><strong>Eduardo Murga</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
-<tr><td class="rk">98</td><td><strong>Diego Segovia</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Samwise Combo</td><td>33.3%</td></tr>
-<tr><td class="rk">99</td><td><strong>Cristian Ramirez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Ruby Storm</td><td>33.3%</td></tr>
-<tr><td class="rk">100</td><td><strong>Crisitian Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Domain Zoo</td><td>33.3%</td></tr>
-<tr><td class="rk">101</td><td><strong>Calos Venegas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
-<tr><td class="rk">102</td><td><strong>Boris Marin</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>UW Blink</td><td>33.3%</td></tr>
-<tr><td class="rk">103</td><td><strong>Angelo Perez Villablanca</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
-<tr><td class="rk">104</td><td><strong>Victor Avalos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>10th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">105</td><td><strong>Tomas Martinez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>39th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">106</td><td><strong>Tomas Cordova</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">107</td><td><strong>Thomas Fischer Pulgar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Merfolk</td><td>0.0%</td></tr>
-<tr><td class="rk">108</td><td><strong>Simon Bousquet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>23rd</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">109</td><td><strong>Sergio Medina</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">110</td><td><strong>Sebastian Silva</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>31st</td><td>BG Yawgmoth</td><td>0.0%</td></tr>
-<tr><td class="rk">111</td><td><strong>Sebastian Gonzalez Cortes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>41st</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">112</td><td><strong>Sebastian Cotreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UW Belcher</td><td>0.0%</td></tr>
-<tr><td class="rk">113</td><td><strong>Sebastian Contreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>49th</td><td>Blue Belcher</td><td>0.0%</td></tr>
-<tr><td class="rk">114</td><td><strong>Sebastian Castro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>12th</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">115</td><td><strong>Sebastian Cabello</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
-<tr><td class="rk">116</td><td><strong>Ronald Jara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>37th</td><td>Domain Rhino</td><td>0.0%</td></tr>
-<tr><td class="rk">117</td><td><strong>Rolando Gatica</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>45th</td><td>Golgari Elves</td><td>0.0%</td></tr>
-<tr><td class="rk">118</td><td><strong>Ricardo Parra</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Living End</td><td>0.0%</td></tr>
-<tr><td class="rk">119</td><td><strong>Pedro Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>59th</td><td>RG Valakut</td><td>0.0%</td></tr>
-<tr><td class="rk">120</td><td><strong>Pavel Morames</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">121</td><td><strong>Patricio Roman Escaffi</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>71st</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">122</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>17th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
-<tr><td class="rk">123</td><td><strong>Pablo Garay Lillo</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">124</td><td><strong>Oscar Mendoza</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>47th</td><td>Dimir Sorin</td><td>0.0%</td></tr>
-<tr><td class="rk">125</td><td><strong>Nicolas Rudisky</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Crashing Cascade Temur</td><td>0.0%</td></tr>
-<tr><td class="rk">126</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>40th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">127</td><td><strong>Nicolas Morales Macaya</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>13th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">128</td><td><strong>Nicolas Morales Jara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>66th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">129</td><td><strong>Mauricio Rios</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
-<tr><td class="rk">130</td><td><strong>Mauricio Gonzalez Chang</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>57th</td><td>Goryo's Vengeance</td><td>0.0%</td></tr>
-<tr><td class="rk">131</td><td><strong>Matias Nuñez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>28th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">132</td><td><strong>Mario Vega</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Merfolk</td><td>0.0%</td></tr>
-<tr><td class="rk">133</td><td><strong>Manuel Corvalan Martinez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">134</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>4</td><td>10th</td><td>Boros Burn</td><td>0.0%</td></tr>
-<tr><td class="rk">135</td><td><strong>Luis Lizama</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>54th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
-<tr><td class="rk">136</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>4</td><td>11th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">137</td><td><strong>Lucas Campos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>51st</td><td>Jund Hollow One</td><td>0.0%</td></tr>
-<tr><td class="rk">138</td><td><strong>Jurgen Kruger</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>20th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">139</td><td><strong>Juan Torres Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>52nd</td><td>Mono Red Burn</td><td>0.0%</td></tr>
-<tr><td class="rk">140</td><td><strong>Juan Torres</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Amulet Titan</td><td>0.0%</td></tr>
-<tr><td class="rk">141</td><td><strong>Jose Navarrete</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">142</td><td><strong>Jose Manuel Borquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>UW Control</td><td>0.0%</td></tr>
-<tr><td class="rk">143</td><td><strong>Jose Delgado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>9th</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">144</td><td><strong>Jorge Moreno</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">145</td><td><strong>Jorge Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
-<tr><td class="rk">146</td><td><strong>Jorge  Atre Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">147</td><td><strong>Jonathan Chavez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
-<tr><td class="rk">148</td><td><strong>Ivan Chaparro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">149</td><td><strong>Isaias Lembach</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Zoo Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">150</td><td><strong>Ingacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Esper Control</td><td>0.0%</td></tr>
-<tr><td class="rk">151</td><td><strong>Ignacio Valenzuela</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
-<tr><td class="rk">152</td><td><strong>Ignacio V. De La Paz</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Samwisse Combo</td><td>0.0%</td></tr>
-<tr><td class="rk">153</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>20th</td><td>Esper Control</td><td>0.0%</td></tr>
-<tr><td class="rk">154</td><td><strong>Hernan Pimentel</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">155</td><td><strong>Guillermo Ferran</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>43rd</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">156</td><td><strong>Gonzalo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Midrange</td><td>0.0%</td></tr>
-<tr><td class="rk">157</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>11th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">158</td><td><strong>Gonzalo Llorente</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>55th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">159</td><td><strong>Gabriel Retamales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Dimir Mill</td><td>0.0%</td></tr>
-<tr><td class="rk">160</td><td><strong>Fuji Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">161</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>15th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">162</td><td><strong>Francisco Sandoval</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>70th</td><td>Boros Burn</td><td>0.0%</td></tr>
-<tr><td class="rk">163</td><td><strong>Francisco Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Domain Zoo</td><td>0.0%</td></tr>
-<tr><td class="rk">164</td><td><strong>Francisco Gonzalez (Lagarto)</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Mono White Control</td><td>0.0%</td></tr>
-<tr><td class="rk">165</td><td><strong>Felipe Schnyder</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>73rd</td><td>Boros Energy</td><td>0.0%</td></tr>
-<tr><td class="rk">166</td><td><strong>Felipe Fuentes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Oculus</td><td>0.0%</td></tr>
-<tr><td class="rk">167</td><td><strong>Esteban Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>BG Necrodominance</td><td>0.0%</td></tr>
-<tr><td class="rk">168</td><td><strong>Eduardo Mendez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>8 Rack</td><td>0.0%</td></tr>
-<tr><td class="rk">169</td><td><strong>David Juan</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>15th</td><td>Affinity</td><td>0.0%</td></tr>
-<tr><td class="rk">170</td><td><strong>Dario Vergara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>38th</td><td>Ruby Storm</td><td>0.0%</td></tr>
-<tr><td class="rk">171</td><td><strong>Daniel Palma</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>UR Prowess</td><td>0.0%</td></tr>
-<tr><td class="rk">172</td><td><strong>Daniel Dreyse Mery</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>44th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">173</td><td><strong>Daniel Dreyse</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Broodscale</td><td>0.0%</td></tr>
-<tr><td class="rk">174</td><td><strong>Daniel Cuellar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>BG Midrange</td><td>0.0%</td></tr>
-<tr><td class="rk">175</td><td><strong>Cristobal Rolando</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">176</td><td><strong>Cristian Velazquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Living End</td><td>0.0%</td></tr>
-<tr><td class="rk">177</td><td><strong>Claudio Pacheco</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Hollow One</td><td>0.0%</td></tr>
-<tr><td class="rk">178</td><td><strong>Carlos Moore</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Death &amp; Taxes</td><td>0.0%</td></tr>
-<tr><td class="rk">179</td><td><strong>Camilo Rodríguez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>32nd</td><td>Esper Blink</td><td>0.0%</td></tr>
-<tr><td class="rk">180</td><td><strong>Camilo Lara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>63rd</td><td>Samwise Combo</td><td>0.0%</td></tr>
-<tr><td class="rk">181</td><td><strong>Benjamin Reyes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>11th</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
-<tr><td class="rk">182</td><td><strong>Armando Contreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
+<tr><td class="rk">40</td><td><strong>Patricio Duarte</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>UW Belcher</td><td>66.7%</td></tr>
+<tr><td class="rk">41</td><td><strong>Pablo Jabase</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Grixis Reanimator</td><td>66.7%</td></tr>
+<tr><td class="rk">42</td><td><strong>Pablo Carreño</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Domain Zoo</td><td>66.7%</td></tr>
+<tr><td class="rk">43</td><td><strong>Oscar Hernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>4</td><td>11th</td><td>Domain Zoo</td><td>16.7%</td></tr>
+<tr><td class="rk">44</td><td><strong>Maximiliano Jimenez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>34th</td><td>Hammer Time</td><td>33.3%</td></tr>
+<tr><td class="rk">45</td><td><strong>Mauricio Mondaca</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Eldrazi Ramp</td><td>66.7%</td></tr>
+<tr><td class="rk">46</td><td><strong>Marcelo Lopez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Affinity</td><td>33.3%</td></tr>
+<tr><td class="rk">47</td><td><strong>Marcelo Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>4</td><td>18th</td><td>Sultai Ritual</td><td>16.7%</td></tr>
+<tr><td class="rk">48</td><td><strong>Julio Velasquez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">49</td><td><strong>Juan Pablo Turra</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>3</td><td>14th</td><td>Boros Energy</td><td>22.2%</td></tr>
+<tr><td class="rk">50</td><td><strong>Juan Cerda</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Sultai Ritual</td><td>66.7%</td></tr>
+<tr><td class="rk">51</td><td><strong>Jorge Cortes</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">52</td><td><strong>Johan Ramirez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>4th</td><td>Humans</td><td>66.7%</td></tr>
+<tr><td class="rk">53</td><td><strong>Javier ''Pillin'' Rivera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>66.7%</td></tr>
+<tr><td class="rk">54</td><td><strong>Ivan Chaparro Ulloa</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Esper Goryo's</td><td>33.3%</td></tr>
+<tr><td class="rk">55</td><td><strong>Hallan Nahuelpan</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>Domain Zoo</td><td>66.7%</td></tr>
+<tr><td class="rk">56</td><td><strong>Francisco Ibañez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>3rd</td><td>UR Prowess</td><td>66.7%</td></tr>
+<tr><td class="rk">57</td><td><strong>Francisco Gonzalez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>4th</td><td>Amulet Titan</td><td>33.3%</td></tr>
+<tr><td class="rk">58</td><td><strong>Fernando Yaksic</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>3</td><td>2nd</td><td>Temur Prowess</td><td>22.2%</td></tr>
+<tr><td class="rk">59</td><td><strong>Felipe ''Cachorro'' Guzman</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Ruby Storm</td><td>66.7%</td></tr>
+<tr><td class="rk">60</td><td><strong>Diego Pirexiano</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Grixis Reanimator</td><td>33.3%</td></tr>
+<tr><td class="rk">61</td><td><strong>David Reyes</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>3</td><td>8th</td><td>Living End</td><td>22.2%</td></tr>
+<tr><td class="rk">62</td><td><strong>David brill</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>3</td><td>10th</td><td>Boros Ponza</td><td>22.2%</td></tr>
+<tr><td class="rk">63</td><td><strong>Dario Vergara Lara</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>2nd</td><td>Ruby Storm</td><td>66.7%</td></tr>
+<tr><td class="rk">64</td><td><strong>Daniel Fernandez</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>4</td><td>3rd</td><td>Affinity</td><td>16.7%</td></tr>
+<tr><td class="rk">65</td><td><strong>Cristian Valenzuela</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Energy Control</td><td>66.7%</td></tr>
+<tr><td class="rk">66</td><td><strong>Cesar Urrutia</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>24th</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">67</td><td><strong>Carlos Olea</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">68</td><td><strong>Carlos Medina</strong></td><td><strong>2</strong></td><td>0</td><td>0</td><td>2</td><td>2</td><td>5th</td><td>Dimir Midrange</td><td>33.3%</td></tr>
+<tr><td class="rk">69</td><td><strong>Camilo Cabrera</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>66.7%</td></tr>
+<tr><td class="rk">70</td><td><strong>Andres Camargo</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>2</td><td>3rd</td><td>Living End</td><td>33.3%</td></tr>
+<tr><td class="rk">71</td><td><strong>Alex Cid</strong></td><td><strong>2</strong></td><td>0</td><td>1</td><td>0</td><td>1</td><td>—</td><td>Boros Energy</td><td>66.7%</td></tr>
+<tr><td class="rk">72</td><td><strong>Victor Rodriguez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>5th</td><td>Living End</td><td>33.3%</td></tr>
+<tr><td class="rk">73</td><td><strong>Vicente Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>3</td><td>25th</td><td>Boros Energy</td><td>11.1%</td></tr>
+<tr><td class="rk">74</td><td><strong>Sebastian Tello</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Merfolk</td><td>33.3%</td></tr>
+<tr><td class="rk">75</td><td><strong>Samuel Zurita</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>29th</td><td>Esper Goryo's</td><td>16.7%</td></tr>
+<tr><td class="rk">76</td><td><strong>Paulo Gonzalez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>8th</td><td>Affinity</td><td>16.7%</td></tr>
+<tr><td class="rk">77</td><td><strong>Oscar Lapierre</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>3</td><td>5th</td><td>Affinity</td><td>11.1%</td></tr>
+<tr><td class="rk">78</td><td><strong>Nicolas De Prada</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>7th</td><td>Crashing Cascade</td><td>16.7%</td></tr>
+<tr><td class="rk">79</td><td><strong>Maximilian Kalm</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>5th</td><td>Esper Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">80</td><td><strong>Mario Cuellar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>Affinity</td><td>33.3%</td></tr>
+<tr><td class="rk">81</td><td><strong>Marcelo Lopez Lagos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>23rd</td><td>Grixis Reanimator</td><td>16.7%</td></tr>
+<tr><td class="rk">82</td><td><strong>Manuel Corvalan</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>Grixis Reanimator</td><td>33.3%</td></tr>
+<tr><td class="rk">83</td><td><strong>Juan Verdugo</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Tron</td><td>33.3%</td></tr>
+<tr><td class="rk">84</td><td><strong>Juan Solar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Domain Zoo</td><td>33.3%</td></tr>
+<tr><td class="rk">85</td><td><strong>Jose Varas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Titan Breach</td><td>33.3%</td></tr>
+<tr><td class="rk">86</td><td><strong>Jonathan Sepulveda Vasquez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>UR Prowess</td><td>33.3%</td></tr>
+<tr><td class="rk">87</td><td><strong>Ignacio Valenzuela Salgado</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">88</td><td><strong>Hugo Castro</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Amulet Titan</td><td>33.3%</td></tr>
+<tr><td class="rk">89</td><td><strong>Hernan Lobos</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>20th</td><td>Eldrazi Ramp</td><td>16.7%</td></tr>
+<tr><td class="rk">90</td><td><strong>Hernan Jofre</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>8th</td><td>UW Belcher</td><td>33.3%</td></tr>
+<tr><td class="rk">91</td><td><strong>Gabriel Saba</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">92</td><td><strong>Frederick Escobar</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>21st</td><td>Esper Blink</td><td>16.7%</td></tr>
+<tr><td class="rk">93</td><td><strong>Fernando Moya</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>2</td><td>7th</td><td>UW Control</td><td>16.7%</td></tr>
+<tr><td class="rk">94</td><td><strong>Fabian Diaz</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">95</td><td><strong>Emanuel Montaño</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">96</td><td><strong>Eduardo Murga</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Eldrazi Ramp</td><td>33.3%</td></tr>
+<tr><td class="rk">97</td><td><strong>Diego Segovia</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Samwise Combo</td><td>33.3%</td></tr>
+<tr><td class="rk">98</td><td><strong>Cristian Ramirez</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>7th</td><td>Ruby Storm</td><td>33.3%</td></tr>
+<tr><td class="rk">99</td><td><strong>Crisitian Carrasco</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Domain Zoo</td><td>33.3%</td></tr>
+<tr><td class="rk">100</td><td><strong>Calos Venegas</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Boros Energy</td><td>33.3%</td></tr>
+<tr><td class="rk">101</td><td><strong>Boris Marin</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>6th</td><td>UW Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">102</td><td><strong>Angelo Perez Villablanca</strong></td><td><strong>1</strong></td><td>0</td><td>0</td><td>1</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>33.3%</td></tr>
+<tr><td class="rk">103</td><td><strong>Victor Avalos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>10th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">104</td><td><strong>Tomas Martinez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>39th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">105</td><td><strong>Tomas Cordova</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">106</td><td><strong>Thomas Fischer Pulgar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Merfolk</td><td>0.0%</td></tr>
+<tr><td class="rk">107</td><td><strong>Simon Bousquet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>23rd</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">108</td><td><strong>Sergio Medina</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">109</td><td><strong>Sebastian Silva</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>31st</td><td>BG Yawgmoth</td><td>0.0%</td></tr>
+<tr><td class="rk">110</td><td><strong>Sebastian Gonzalez Cortes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>41st</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">111</td><td><strong>Sebastian Cotreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UW Belcher</td><td>0.0%</td></tr>
+<tr><td class="rk">112</td><td><strong>Sebastian Contreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>49th</td><td>Blue Belcher</td><td>0.0%</td></tr>
+<tr><td class="rk">113</td><td><strong>Sebastian Castro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>12th</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">114</td><td><strong>Sebastian Cabello</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">115</td><td><strong>Ronald Jara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>37th</td><td>Domain Rhino</td><td>0.0%</td></tr>
+<tr><td class="rk">116</td><td><strong>Rolando Gatica</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>45th</td><td>Golgari Elves</td><td>0.0%</td></tr>
+<tr><td class="rk">117</td><td><strong>Ricardo Parra</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>Living End</td><td>0.0%</td></tr>
+<tr><td class="rk">118</td><td><strong>Pedro Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>59th</td><td>RG Valakut</td><td>0.0%</td></tr>
+<tr><td class="rk">119</td><td><strong>Pavel Morames</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">120</td><td><strong>Patricio Roman Escaffi</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>71st</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">121</td><td><strong>Pablo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>17th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
+<tr><td class="rk">122</td><td><strong>Pablo Garay Lillo</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">123</td><td><strong>Oscar Mendoza</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>47th</td><td>Dimir Sorin</td><td>0.0%</td></tr>
+<tr><td class="rk">124</td><td><strong>Nicolas Rudisky</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Crashing Cascade Temur</td><td>0.0%</td></tr>
+<tr><td class="rk">125</td><td><strong>Nicolas Ormeño</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>40th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">126</td><td><strong>Nicolas Morales Macaya</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>13th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">127</td><td><strong>Nicolas Morales Jara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>66th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">128</td><td><strong>Mauricio Rios</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
+<tr><td class="rk">129</td><td><strong>Mauricio Gonzalez Chang</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>57th</td><td>Goryo's Vengeance</td><td>0.0%</td></tr>
+<tr><td class="rk">130</td><td><strong>Matias Nuñez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>28th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">131</td><td><strong>Mario Vega</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>11th</td><td>Merfolk</td><td>0.0%</td></tr>
+<tr><td class="rk">132</td><td><strong>Manuel Corvalan Martinez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">133</td><td><strong>Luis Navas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>4</td><td>10th</td><td>Boros Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">134</td><td><strong>Luis Lizama</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>54th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
+<tr><td class="rk">135</td><td><strong>Lucas Romero</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>4</td><td>11th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">136</td><td><strong>Lucas Campos</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>51st</td><td>Jund Hollow One</td><td>0.0%</td></tr>
+<tr><td class="rk">137</td><td><strong>Jurgen Kruger</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>20th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">138</td><td><strong>Juan Torres Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>52nd</td><td>Mono Red Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">139</td><td><strong>Juan Torres</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>12th</td><td>Amulet Titan</td><td>0.0%</td></tr>
+<tr><td class="rk">140</td><td><strong>Jose Navarrete</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">141</td><td><strong>Jose Manuel Borquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>UW Control</td><td>0.0%</td></tr>
+<tr><td class="rk">142</td><td><strong>Jose Delgado</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>9th</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">143</td><td><strong>Jorge Moreno</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>9th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">144</td><td><strong>Jorge Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Boros Wildfire</td><td>0.0%</td></tr>
+<tr><td class="rk">145</td><td><strong>Jorge  Atre Aguirre</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>16th</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">146</td><td><strong>Jonathan Chavez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Eldrazi Tron</td><td>0.0%</td></tr>
+<tr><td class="rk">147</td><td><strong>Ivan Chaparro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Jeskai Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">148</td><td><strong>Isaias Lembach</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>26th</td><td>Zoo Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">149</td><td><strong>Ingacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Esper Control</td><td>0.0%</td></tr>
+<tr><td class="rk">150</td><td><strong>Ignacio Valenzuela</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>17th</td><td>Eldrazi Ramp</td><td>0.0%</td></tr>
+<tr><td class="rk">151</td><td><strong>Ignacio V. De La Paz</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>13th</td><td>Samwisse Combo</td><td>0.0%</td></tr>
+<tr><td class="rk">152</td><td><strong>Ignacio Bustamante</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>20th</td><td>Esper Control</td><td>0.0%</td></tr>
+<tr><td class="rk">153</td><td><strong>Hernan Pimentel</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">154</td><td><strong>Guillermo Ferran</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>43rd</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">155</td><td><strong>Gonzalo Valdenegro</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Midrange</td><td>0.0%</td></tr>
+<tr><td class="rk">156</td><td><strong>Gonzalo Morales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>11th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">157</td><td><strong>Gonzalo Llorente</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>55th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">158</td><td><strong>Gabriel Retamales</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>19th</td><td>Dimir Mill</td><td>0.0%</td></tr>
+<tr><td class="rk">159</td><td><strong>Fuji Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">160</td><td><strong>Francisco Vargas</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>15th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">161</td><td><strong>Francisco Sandoval</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>70th</td><td>Boros Burn</td><td>0.0%</td></tr>
+<tr><td class="rk">162</td><td><strong>Francisco Pinochet</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>27th</td><td>Domain Zoo</td><td>0.0%</td></tr>
+<tr><td class="rk">163</td><td><strong>Francisco Gonzalez (Lagarto)</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>18th</td><td>Mono White Control</td><td>0.0%</td></tr>
+<tr><td class="rk">164</td><td><strong>Felipe Schnyder</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>73rd</td><td>Boros Energy</td><td>0.0%</td></tr>
+<tr><td class="rk">165</td><td><strong>Felipe Fuentes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>21st</td><td>Dimir Oculus</td><td>0.0%</td></tr>
+<tr><td class="rk">166</td><td><strong>Esteban Cerda</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>BG Necrodominance</td><td>0.0%</td></tr>
+<tr><td class="rk">167</td><td><strong>Eduardo Mendez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>8 Rack</td><td>0.0%</td></tr>
+<tr><td class="rk">168</td><td><strong>David Juan</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>2</td><td>15th</td><td>Affinity</td><td>0.0%</td></tr>
+<tr><td class="rk">169</td><td><strong>Dario Vergara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>38th</td><td>Ruby Storm</td><td>0.0%</td></tr>
+<tr><td class="rk">170</td><td><strong>Daniel Palma</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>UR Prowess</td><td>0.0%</td></tr>
+<tr><td class="rk">171</td><td><strong>Daniel Dreyse Mery</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>44th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">172</td><td><strong>Daniel Dreyse</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Broodscale</td><td>0.0%</td></tr>
+<tr><td class="rk">173</td><td><strong>Daniel Cuellar</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>BG Midrange</td><td>0.0%</td></tr>
+<tr><td class="rk">174</td><td><strong>Cristobal Rolando</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>—</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">175</td><td><strong>Cristian Velazquez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>15th</td><td>Living End</td><td>0.0%</td></tr>
+<tr><td class="rk">176</td><td><strong>Claudio Pacheco</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Hollow One</td><td>0.0%</td></tr>
+<tr><td class="rk">177</td><td><strong>Carlos Moore</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>14th</td><td>Death &amp; Taxes</td><td>0.0%</td></tr>
+<tr><td class="rk">178</td><td><strong>Camilo Rodríguez</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>32nd</td><td>Esper Blink</td><td>0.0%</td></tr>
+<tr><td class="rk">179</td><td><strong>Camilo Lara</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>63rd</td><td>Samwise Combo</td><td>0.0%</td></tr>
+<tr><td class="rk">180</td><td><strong>Benjamin Reyes</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>3</td><td>11th</td><td>Grixis Reanimator</td><td>0.0%</td></tr>
+<tr><td class="rk">181</td><td><strong>Armando Contreras</strong></td><td><strong>0</strong></td><td>0</td><td>0</td><td>0</td><td>1</td><td>10th</td><td>Esper Goryo's</td><td>0.0%</td></tr>
 </tbody></table></div>
 </div>
 </section>
@@ -1785,6 +1784,178 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </div>
 </div>
 </section>
+<svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><g fill="none"><path d="M0,22 C200,10 420,26 640,14 C820,5 1020,20 1200,10" stroke="#9b2d6e" stroke-width="1" opacity="0.45"/><path d="M0,12 C260,24 480,8 720,20 C900,28 1060,12 1200,20" stroke="#5a2d8a" stroke-width="0.7" opacity="0.35"/><path d="M640,14 C680,8 700,10 730,3" stroke="#9b2d6e" stroke-width="0.5" opacity="0.35"/><path d="M640,14 C670,20 706,18 740,26" stroke="#9b2d6e" stroke-width="0.5" opacity="0.35"/></g><circle cx="640" cy="14" r="2.5" fill="#2d5fa8" opacity="0.7"/></svg><section class="card" id="sbst">
+<h2 class="sec-title"><span class="sec-icon">🎒</span><span data-es="Cartas Más Jugadas en Sideboard" data-en="Most Used Sideboard Cards">Cartas Más Jugadas en Sideboard</span><span class="sec-count" id="cnt-sbst"></span></h2>
+<p class="sec-desc" data-es="Cartas más usadas en el sideboard. % de Mazos = porcentaje de mazos que incluyen la carta en el sideboard. Copias Prom. = promedio de copias en los mazos que la usan." data-en="Most used sideboard cards. % of Decks = percentage of decks including this card in the sideboard. Avg Copies = average copies per deck.">Cartas más usadas en el sideboard. % de Mazos = porcentaje de mazos que incluyen la carta en el sideboard. Copias Prom. = promedio de copias en los mazos que la usan.</p>
+<div class="pblock pblock-pre" style="display:none">
+<div id="sbc-pre">
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mystical Dispute</td><td>41.5%</td><td>2.3</td></tr>
+<tr><td class="rk">2</td><td>Consign to Memory</td><td>38.1%</td><td>3.1</td></tr>
+<tr><td class="rk">3</td><td>Surgical Extraction</td><td>36.4%</td><td>1.2</td></tr>
+<tr><td class="rk">4</td><td>Wrath of the Skies</td><td>33.1%</td><td>2.1</td></tr>
+<tr><td class="rk">5</td><td>Celestial Purge</td><td>32.2%</td><td>1.5</td></tr>
+<tr><td class="rk">6</td><td>Damping Sphere</td><td>30.5%</td><td>1.9</td></tr>
+<tr><td class="rk">7</td><td>Vexing Bauble</td><td>26.3%</td><td>1.4</td></tr>
+<tr><td class="rk">8</td><td>Obsidian Charmaw</td><td>24.6%</td><td>2.6</td></tr>
+<tr><td class="rk">9</td><td>Orim's Chant</td><td>22.9%</td><td>2.0</td></tr>
+<tr><td class="rk">10</td><td>Ashiok, Dream Render</td><td>21.2%</td><td>1.4</td></tr>
+<tr><td class="rk">11</td><td>High Noon</td><td>20.3%</td><td>1.8</td></tr>
+<tr><td class="rk">12</td><td>Blood Moon</td><td>20.3%</td><td>1.3</td></tr>
+<tr><td class="rk">13</td><td>Force of Vigor</td><td>13.6%</td><td>1.9</td></tr>
+<tr><td class="rk">14</td><td>The Legend of Roku</td><td>11.9%</td><td>1.3</td></tr>
+<tr><td class="rk">15</td><td>Meltdown</td><td>11.9%</td><td>1.5</td></tr>
+<tr><td class="rk">16</td><td>Strix Serenade</td><td>11.0%</td><td>1.5</td></tr>
+<tr><td class="rk">17</td><td>Dismember</td><td>10.2%</td><td>2.3</td></tr>
+<tr><td class="rk">18</td><td>Trinisphere</td><td>9.3%</td><td>1.8</td></tr>
+<tr><td class="rk">19</td><td>Grafdigger's Cage</td><td>9.3%</td><td>1.1</td></tr>
+<tr><td class="rk">20</td><td>Force of Negation</td><td>9.3%</td><td>1.6</td></tr>
+<tr><td class="rk">21</td><td>Wear</td><td>8.5%</td><td>1.7</td></tr>
+<tr><td class="rk">22</td><td>Into the Flood Maw</td><td>8.5%</td><td>1.3</td></tr>
+<tr><td class="rk">23</td><td>Collector Ouphe</td><td>8.5%</td><td>1.2</td></tr>
+<tr><td class="rk">24</td><td>Teferi, Time Raveler</td><td>7.6%</td><td>1.3</td></tr>
+<tr><td class="rk">25</td><td>Whipflare</td><td>6.8%</td><td>2.1</td></tr>
+<tr><td class="rk">26</td><td>Unholy Heat</td><td>6.8%</td><td>2.9</td></tr>
+<tr><td class="rk">27</td><td>Spell Pierce</td><td>6.8%</td><td>1.8</td></tr>
+<tr><td class="rk">28</td><td>Harbinger of the Seas</td><td>6.8%</td><td>2.0</td></tr>
+<tr><td class="rk">29</td><td>Fire Magic</td><td>6.8%</td><td>2.3</td></tr>
+<tr><td class="rk">30</td><td>Disruptor Flute</td><td>6.8%</td><td>1.8</td></tr>
+<tr><td class="rk">31</td><td>Soul-Guide Lantern</td><td>5.9%</td><td>1.3</td></tr>
+<tr><td class="rk">32</td><td>Galvanic Blast</td><td>5.9%</td><td>1.7</td></tr>
+<tr><td class="rk">33</td><td>Brotherhood's End</td><td>5.9%</td><td>1.7</td></tr>
+<tr><td class="rk">34</td><td>Torpor Orb</td><td>5.1%</td><td>1.2</td></tr>
+<tr><td class="rk">35</td><td>Tormod's Crypt</td><td>5.1%</td><td>1.0</td></tr>
+<tr><td class="rk">36</td><td>Spell Snare</td><td>5.1%</td><td>1.2</td></tr>
+<tr><td class="rk">37</td><td>Six</td><td>5.1%</td><td>1.0</td></tr>
+<tr><td class="rk">38</td><td>Rest in Peace</td><td>5.1%</td><td>1.8</td></tr>
+<tr><td class="rk">39</td><td>Pyroclasm</td><td>5.1%</td><td>1.7</td></tr>
+<tr><td class="rk">40</td><td>Elesh Norn, Mother of Machines</td><td>5.1%</td><td>1.0</td></tr>
+<tr><td class="rk">41</td><td>Bojuka Bog</td><td>5.1%</td><td>1.0</td></tr>
+<tr><td class="rk">42</td><td>Stony Silence</td><td>4.2%</td><td>1.8</td></tr>
+<tr><td class="rk">43</td><td>Soulless Jailer</td><td>4.2%</td><td>1.4</td></tr>
+<tr><td class="rk">44</td><td>Prismatic Ending</td><td>4.2%</td><td>2.6</td></tr>
+<tr><td class="rk">45</td><td>Nature's Claim</td><td>4.2%</td><td>2.4</td></tr>
+<tr><td class="rk">46</td><td>Island</td><td>4.2%</td><td>1.0</td></tr>
+<tr><td class="rk">47</td><td>Engineered Explosives</td><td>4.2%</td><td>2.0</td></tr>
+<tr><td class="rk">48</td><td>Clarion Conqueror</td><td>4.2%</td><td>1.4</td></tr>
+<tr><td class="rk">49</td><td>Walking Ballista</td><td>3.4%</td><td>1.0</td></tr>
+<tr><td class="rk">50</td><td>Unable to Scream</td><td>3.4%</td><td>1.5</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="pblock pblock-post" style="display:none">
+<div id="sbc-post">
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mystical Dispute</td><td>48.1%</td><td>2.3</td></tr>
+<tr><td class="rk">2</td><td>Consign to Memory</td><td>46.1%</td><td>3.0</td></tr>
+<tr><td class="rk">3</td><td>Vexing Bauble</td><td>30.6%</td><td>1.6</td></tr>
+<tr><td class="rk">4</td><td>Wrath of the Skies</td><td>28.6%</td><td>2.0</td></tr>
+<tr><td class="rk">5</td><td>Damping Sphere</td><td>28.6%</td><td>1.7</td></tr>
+<tr><td class="rk">6</td><td>High Noon</td><td>26.7%</td><td>2.0</td></tr>
+<tr><td class="rk">7</td><td>Surgical Extraction</td><td>26.2%</td><td>1.2</td></tr>
+<tr><td class="rk">8</td><td>Rest in Peace</td><td>20.4%</td><td>1.9</td></tr>
+<tr><td class="rk">9</td><td>Meltdown</td><td>16.5%</td><td>1.7</td></tr>
+<tr><td class="rk">10</td><td>Obsidian Charmaw</td><td>15.5%</td><td>2.4</td></tr>
+<tr><td class="rk">11</td><td>Force of Vigor</td><td>14.6%</td><td>2.1</td></tr>
+<tr><td class="rk">12</td><td>Orim's Chant</td><td>13.6%</td><td>2.1</td></tr>
+<tr><td class="rk">13</td><td>Blood Moon</td><td>13.6%</td><td>1.3</td></tr>
+<tr><td class="rk">14</td><td>Tormod's Crypt</td><td>11.7%</td><td>1.3</td></tr>
+<tr><td class="rk">15</td><td>Celestial Purge</td><td>11.2%</td><td>1.4</td></tr>
+<tr><td class="rk">16</td><td>Brotherhood's End</td><td>11.2%</td><td>1.4</td></tr>
+<tr><td class="rk">17</td><td>Nihil Spellbomb</td><td>10.7%</td><td>1.5</td></tr>
+<tr><td class="rk">18</td><td>Teferi, Time Raveler</td><td>10.2%</td><td>1.4</td></tr>
+<tr><td class="rk">19</td><td>Drannith Magistrate</td><td>9.7%</td><td>1.4</td></tr>
+<tr><td class="rk">20</td><td>Harbinger of the Seas</td><td>8.3%</td><td>1.8</td></tr>
+<tr><td class="rk">21</td><td>Whipflare</td><td>7.8%</td><td>1.6</td></tr>
+<tr><td class="rk">22</td><td>Unholy Heat</td><td>7.8%</td><td>2.8</td></tr>
+<tr><td class="rk">23</td><td>Galvanic Blast</td><td>7.8%</td><td>2.3</td></tr>
+<tr><td class="rk">24</td><td>Chalice of the Void</td><td>7.8%</td><td>1.6</td></tr>
+<tr><td class="rk">25</td><td>Soulless Jailer</td><td>7.3%</td><td>1.4</td></tr>
+<tr><td class="rk">26</td><td>Pyroclasm</td><td>7.3%</td><td>1.9</td></tr>
+<tr><td class="rk">27</td><td>Endurance</td><td>7.3%</td><td>1.9</td></tr>
+<tr><td class="rk">28</td><td>Inevitable Betrayal</td><td>6.8%</td><td>2.0</td></tr>
+<tr><td class="rk">29</td><td>Grafdigger's Cage</td><td>6.8%</td><td>1.1</td></tr>
+<tr><td class="rk">30</td><td>Engineered Explosives</td><td>6.8%</td><td>1.6</td></tr>
+<tr><td class="rk">31</td><td>Clarion Conqueror</td><td>6.8%</td><td>1.7</td></tr>
+<tr><td class="rk">32</td><td>Ashiok, Dream Render</td><td>6.8%</td><td>1.2</td></tr>
+<tr><td class="rk">33</td><td>Soul-Guide Lantern</td><td>6.3%</td><td>1.4</td></tr>
+<tr><td class="rk">34</td><td>Kaheera, the Orphanguard</td><td>6.3%</td><td>1.0</td></tr>
+<tr><td class="rk">35</td><td>Force of Negation</td><td>6.3%</td><td>1.5</td></tr>
+<tr><td class="rk">36</td><td>Trinisphere</td><td>5.8%</td><td>2.2</td></tr>
+<tr><td class="rk">37</td><td>Pithing Needle</td><td>5.8%</td><td>1.3</td></tr>
+<tr><td class="rk">38</td><td>Nature's Claim</td><td>5.8%</td><td>2.1</td></tr>
+<tr><td class="rk">39</td><td>Flusterstorm</td><td>5.8%</td><td>1.4</td></tr>
+<tr><td class="rk">40</td><td>Veil of Summer</td><td>5.3%</td><td>1.9</td></tr>
+<tr><td class="rk">41</td><td>Prismatic Ending</td><td>5.3%</td><td>2.6</td></tr>
+<tr><td class="rk">42</td><td>Fire Magic</td><td>5.3%</td><td>1.5</td></tr>
+<tr><td class="rk">43</td><td>Disruptor Flute</td><td>5.3%</td><td>1.8</td></tr>
+<tr><td class="rk">44</td><td>Spell Pierce</td><td>4.9%</td><td>2.0</td></tr>
+<tr><td class="rk">45</td><td>Fade from History</td><td>4.9%</td><td>1.8</td></tr>
+<tr><td class="rk">46</td><td>Dismember</td><td>4.9%</td><td>1.9</td></tr>
+<tr><td class="rk">47</td><td>White Orchid Phantom</td><td>4.4%</td><td>2.2</td></tr>
+<tr><td class="rk">48</td><td>Ingot Chewer</td><td>4.4%</td><td>1.2</td></tr>
+<tr><td class="rk">49</td><td>Swan Song</td><td>3.9%</td><td>1.4</td></tr>
+<tr><td class="rk">50</td><td>Strix Serenade</td><td>3.9%</td><td>1.1</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="pblock pblock-all">
+<div id="sbc-all">
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mystical Dispute</td><td>45.7%</td><td>2.3</td></tr>
+<tr><td class="rk">2</td><td>Consign to Memory</td><td>43.2%</td><td>3.0</td></tr>
+<tr><td class="rk">3</td><td>Wrath of the Skies</td><td>30.2%</td><td>2.1</td></tr>
+<tr><td class="rk">4</td><td>Surgical Extraction</td><td>29.9%</td><td>1.2</td></tr>
+<tr><td class="rk">5</td><td>Damping Sphere</td><td>29.3%</td><td>1.8</td></tr>
+<tr><td class="rk">6</td><td>Vexing Bauble</td><td>29.0%</td><td>1.6</td></tr>
+<tr><td class="rk">7</td><td>High Noon</td><td>24.4%</td><td>1.9</td></tr>
+<tr><td class="rk">8</td><td>Obsidian Charmaw</td><td>18.8%</td><td>2.5</td></tr>
+<tr><td class="rk">9</td><td>Celestial Purge</td><td>18.8%</td><td>1.5</td></tr>
+<tr><td class="rk">10</td><td>Orim's Chant</td><td>17.0%</td><td>2.0</td></tr>
+<tr><td class="rk">11</td><td>Blood Moon</td><td>16.0%</td><td>1.3</td></tr>
+<tr><td class="rk">12</td><td>Rest in Peace</td><td>14.8%</td><td>1.9</td></tr>
+<tr><td class="rk">13</td><td>Meltdown</td><td>14.8%</td><td>1.7</td></tr>
+<tr><td class="rk">14</td><td>Force of Vigor</td><td>14.2%</td><td>2.0</td></tr>
+<tr><td class="rk">15</td><td>Ashiok, Dream Render</td><td>12.0%</td><td>1.3</td></tr>
+<tr><td class="rk">16</td><td>Tormod's Crypt</td><td>9.3%</td><td>1.3</td></tr>
+<tr><td class="rk">17</td><td>Teferi, Time Raveler</td><td>9.3%</td><td>1.4</td></tr>
+<tr><td class="rk">18</td><td>Brotherhood's End</td><td>9.3%</td><td>1.5</td></tr>
+<tr><td class="rk">19</td><td>Harbinger of the Seas</td><td>7.7%</td><td>1.8</td></tr>
+<tr><td class="rk">20</td><td>Grafdigger's Cage</td><td>7.7%</td><td>1.1</td></tr>
+<tr><td class="rk">21</td><td>Whipflare</td><td>7.4%</td><td>1.8</td></tr>
+<tr><td class="rk">22</td><td>Unholy Heat</td><td>7.4%</td><td>2.8</td></tr>
+<tr><td class="rk">23</td><td>Nihil Spellbomb</td><td>7.4%</td><td>1.5</td></tr>
+<tr><td class="rk">24</td><td>Force of Negation</td><td>7.4%</td><td>1.5</td></tr>
+<tr><td class="rk">25</td><td>Trinisphere</td><td>7.1%</td><td>2.0</td></tr>
+<tr><td class="rk">26</td><td>Galvanic Blast</td><td>7.1%</td><td>2.1</td></tr>
+<tr><td class="rk">27</td><td>Dismember</td><td>6.8%</td><td>2.1</td></tr>
+<tr><td class="rk">28</td><td>Strix Serenade</td><td>6.5%</td><td>1.3</td></tr>
+<tr><td class="rk">29</td><td>Pyroclasm</td><td>6.5%</td><td>1.9</td></tr>
+<tr><td class="rk">30</td><td>Drannith Magistrate</td><td>6.5%</td><td>1.4</td></tr>
+<tr><td class="rk">31</td><td>Soulless Jailer</td><td>6.2%</td><td>1.4</td></tr>
+<tr><td class="rk">32</td><td>Soul-Guide Lantern</td><td>6.2%</td><td>1.4</td></tr>
+<tr><td class="rk">33</td><td>Fire Magic</td><td>5.9%</td><td>1.8</td></tr>
+<tr><td class="rk">34</td><td>Engineered Explosives</td><td>5.9%</td><td>1.7</td></tr>
+<tr><td class="rk">35</td><td>Disruptor Flute</td><td>5.9%</td><td>1.8</td></tr>
+<tr><td class="rk">36</td><td>Clarion Conqueror</td><td>5.9%</td><td>1.6</td></tr>
+<tr><td class="rk">37</td><td>The Legend of Roku</td><td>5.6%</td><td>1.3</td></tr>
+<tr><td class="rk">38</td><td>Spell Pierce</td><td>5.6%</td><td>1.9</td></tr>
+<tr><td class="rk">39</td><td>Endurance</td><td>5.6%</td><td>1.7</td></tr>
+<tr><td class="rk">40</td><td>Collector Ouphe</td><td>5.6%</td><td>1.1</td></tr>
+<tr><td class="rk">41</td><td>Chalice of the Void</td><td>5.6%</td><td>1.6</td></tr>
+<tr><td class="rk">42</td><td>Nature's Claim</td><td>5.2%</td><td>2.2</td></tr>
+<tr><td class="rk">43</td><td>Prismatic Ending</td><td>4.9%</td><td>2.6</td></tr>
+<tr><td class="rk">44</td><td>Pithing Needle</td><td>4.9%</td><td>1.3</td></tr>
+<tr><td class="rk">45</td><td>Inevitable Betrayal</td><td>4.9%</td><td>2.1</td></tr>
+<tr><td class="rk">46</td><td>Into the Flood Maw</td><td>4.6%</td><td>1.2</td></tr>
+<tr><td class="rk">47</td><td>Flusterstorm</td><td>4.3%</td><td>1.5</td></tr>
+<tr><td class="rk">48</td><td>Veil of Summer</td><td>4.0%</td><td>1.8</td></tr>
+<tr><td class="rk">49</td><td>Kaheera, the Orphanguard</td><td>4.0%</td><td>1.0</td></tr>
+<tr><td class="rk">50</td><td>Swan Song</td><td>3.7%</td><td>1.5</td></tr>
+</tbody></table></div>
+</div>
+</div>
+</section>
 <svg class="eld-div" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><g stroke="#5a2d8a" stroke-width="0.5" opacity="0.45"><line x1="340" y1="15" x2="555" y2="15"/><line x1="645" y1="15" x2="860" y2="15"/><line x1="400" y1="10" x2="560" y2="13"/><line x1="640" y1="13" x2="800" y2="10"/><line x1="400" y1="20" x2="560" y2="17"/><line x1="640" y1="17" x2="800" y2="20"/></g><ellipse cx="600" cy="15" rx="34" ry="10" fill="none" stroke="#b84080" stroke-width="0.8" opacity="0.55"/><ellipse cx="600" cy="15" rx="12" ry="6" fill="#9b2d6e" opacity="0.45"/><ellipse cx="600" cy="15" rx="4" ry="2.5" fill="#b84080" opacity="0.8"/></svg><section class="card" id="s5">
 <h2 class="sec-title"><span class="sec-icon">📈</span><span data-es="Evolución del Metagame" data-en="Metagame Evolution">Evolución del Metagame</span><span class="sec-count" id="cnt-s5"></span></h2>
 <p class="sec-desc" data-es="Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos." data-en="Evolution of each archetype's presence tournament by tournament. Use checkboxes to show/hide archetypes.">Evolución de la presencia de cada arquetipo torneo a torneo. Usa las casillas para mostrar/ocultar arquetipos.</p>
@@ -1986,7 +2157,7 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 <div class="cw" id="scw-all" style="height:450px"><canvas id="schart-all"></canvas></div>
 </div>
 </section>
-<svg class="eld-footer" viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="emkFtT" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9b2d6e" stop-opacity="0.45"/><stop offset="100%" stop-color="#9b2d6e" stop-opacity="0"/></linearGradient><linearGradient id="emkFtV" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a2d8a" stop-opacity="0.35"/><stop offset="100%" stop-color="#5a2d8a" stop-opacity="0"/></linearGradient></defs><path d="M140,72 C150,52 132,34 165,12" stroke="url(#emkFtT)" stroke-width="1.5" fill="none"/><path d="M340,72 C328,48 370,32 348,8" stroke="url(#emkFtT)" stroke-width="1.2" fill="none" opacity="0.82"/><path d="M600,72 C616,46 582,28 610,4" stroke="url(#emkFtT)" stroke-width="1.8" fill="none"/><path d="M860,72 C846,48 886,34 856,10" stroke="url(#emkFtT)" stroke-width="1.2" fill="none" opacity="0.82"/><path d="M1060,72 C1070,52 1046,34 1072,12" stroke="url(#emkFtT)" stroke-width="1.5" fill="none"/><path d="M165,12 C160,7 172,4 167,0" stroke="url(#emkFtV)" stroke-width="0.7" fill="none"/><path d="M610,4 C604,0 616,-2 611,-6" stroke="url(#emkFtV)" stroke-width="0.7" fill="none"/><path d="M856,10 C850,5 863,2 857,-2" stroke="url(#emkFtV)" stroke-width="0.6" fill="none"/><g fill="#c8c8d8"><polygon points="250,8 253,15 250,24 247,15" opacity="0.35"/><polygon points="610,26 614,35 610,46 606,35" opacity="0.28"/><polygon points="950,10 953,17 950,26 947,17" opacity="0.35"/></g><ellipse cx="600" cy="70" rx="260" ry="10" fill="#9b2d6e" opacity="0.08"/></svg><footer class="rf">Generated by <strong>MTG Metagame Tracker</strong> &middot; julio 10, 2026</footer>
+<svg class="eld-footer" viewBox="0 0 1200 72" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="emkFtT" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9b2d6e" stop-opacity="0.45"/><stop offset="100%" stop-color="#9b2d6e" stop-opacity="0"/></linearGradient><linearGradient id="emkFtV" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a2d8a" stop-opacity="0.35"/><stop offset="100%" stop-color="#5a2d8a" stop-opacity="0"/></linearGradient></defs><path d="M140,72 C150,52 132,34 165,12" stroke="url(#emkFtT)" stroke-width="1.5" fill="none"/><path d="M340,72 C328,48 370,32 348,8" stroke="url(#emkFtT)" stroke-width="1.2" fill="none" opacity="0.82"/><path d="M600,72 C616,46 582,28 610,4" stroke="url(#emkFtT)" stroke-width="1.8" fill="none"/><path d="M860,72 C846,48 886,34 856,10" stroke="url(#emkFtT)" stroke-width="1.2" fill="none" opacity="0.82"/><path d="M1060,72 C1070,52 1046,34 1072,12" stroke="url(#emkFtT)" stroke-width="1.5" fill="none"/><path d="M165,12 C160,7 172,4 167,0" stroke="url(#emkFtV)" stroke-width="0.7" fill="none"/><path d="M610,4 C604,0 616,-2 611,-6" stroke="url(#emkFtV)" stroke-width="0.7" fill="none"/><path d="M856,10 C850,5 863,2 857,-2" stroke="url(#emkFtV)" stroke-width="0.6" fill="none"/><g fill="#c8c8d8"><polygon points="250,8 253,15 250,24 247,15" opacity="0.35"/><polygon points="610,26 614,35 610,46 606,35" opacity="0.28"/><polygon points="950,10 953,17 950,26 947,17" opacity="0.35"/></g><ellipse cx="600" cy="70" rx="260" ry="10" fill="#9b2d6e" opacity="0.08"/></svg><footer class="rf">Generated by <strong>MTG Metagame Tracker</strong> &middot; julio 11, 2026</footer>
 </div>
 <div class="de-section" id="de-34" style="display:none">
 <div class="card de-header-card">
@@ -2172,6 +2343,61 @@ td.rk{font-family:'Cinzel','Times New Roman',Georgia,serif;color:var(--muted);
 </tbody></table></div>
 </div>
 </div>
+</div>
+<div class="card" style="margin-top:16px">
+<h2 class="de-sec-title"><span>🎒</span><span data-es="Cartas de Sideboard" data-en="Sideboard Staples">Cartas de Sideboard</span></h2>
+<div class="tbl-wrap"><table><thead><tr><th data-sort="0">#</th><th data-es="Carta" data-en="Card" data-sort="0">Carta</th><th data-es="% de Mazos" data-en="% of Decks" data-sort="0">% de Mazos</th><th data-es="Copias Prom." data-en="Avg Copies" data-sort="0">Copias Prom.</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td>Mystical Dispute</td><td>43.8%</td><td>2.16</td></tr>
+<tr><td class="rk">2</td><td>Consign to Memory</td><td>39.7%</td><td>3.03</td></tr>
+<tr><td class="rk">3</td><td>Vexing Bauble</td><td>35.6%</td><td>1.54</td></tr>
+<tr><td class="rk">4</td><td>Damping Sphere</td><td>32.9%</td><td>1.54</td></tr>
+<tr><td class="rk">5</td><td>Wear/Tear</td><td>31.5%</td><td>2.09</td></tr>
+<tr><td class="rk">6</td><td>Wrath of the Skies</td><td>23.3%</td><td>1.94</td></tr>
+<tr><td class="rk">7</td><td>High Noon</td><td>23.3%</td><td>1.76</td></tr>
+<tr><td class="rk">8</td><td>Rest in Peace</td><td>19.2%</td><td>2.07</td></tr>
+<tr><td class="rk">9</td><td>Orim's Chant</td><td>19.2%</td><td>2.07</td></tr>
+<tr><td class="rk">10</td><td>Obsidian Charmaw</td><td>19.2%</td><td>2.43</td></tr>
+<tr><td class="rk">11</td><td>Meltdown</td><td>16.4%</td><td>1.58</td></tr>
+<tr><td class="rk">12</td><td>Blood Moon</td><td>16.4%</td><td>1.42</td></tr>
+<tr><td class="rk">13</td><td>Surgical Extraction</td><td>15.1%</td><td>1.18</td></tr>
+<tr><td class="rk">14</td><td>Force of Vigor</td><td>15.1%</td><td>2.27</td></tr>
+<tr><td class="rk">15</td><td>Brotherhood's End</td><td>13.7%</td><td>1.30</td></tr>
+<tr><td class="rk">16</td><td>Whipflare</td><td>12.3%</td><td>1.33</td></tr>
+<tr><td class="rk">17</td><td>Galvanic Blast</td><td>12.3%</td><td>2.22</td></tr>
+<tr><td class="rk">18</td><td>Soulless Jailer</td><td>11.0%</td><td>1.50</td></tr>
+<tr><td class="rk">19</td><td>Nihil Spellbomb</td><td>11.0%</td><td>1.50</td></tr>
+<tr><td class="rk">20</td><td>Tormod's Crypt</td><td>9.6%</td><td>1.43</td></tr>
+<tr><td class="rk">21</td><td>Grafdigger's Cage</td><td>9.6%</td><td>1.14</td></tr>
+<tr><td class="rk">22</td><td>Drannith Magistrate</td><td>9.6%</td><td>1.43</td></tr>
+<tr><td class="rk">23</td><td>Celestial Purge</td><td>9.6%</td><td>1.29</td></tr>
+<tr><td class="rk">24</td><td>Unholy Heat</td><td>8.2%</td><td>2.33</td></tr>
+<tr><td class="rk">25</td><td>Teferi, Time Raveler</td><td>8.2%</td><td>1.83</td></tr>
+<tr><td class="rk">26</td><td>Strix Serenade</td><td>8.2%</td><td>1.17</td></tr>
+<tr><td class="rk">27</td><td>Pyroclasm</td><td>8.2%</td><td>1.83</td></tr>
+<tr><td class="rk">28</td><td>Pithing Needle</td><td>8.2%</td><td>1.17</td></tr>
+<tr><td class="rk">29</td><td>Nature's Claim</td><td>8.2%</td><td>2.17</td></tr>
+<tr><td class="rk">30</td><td>Veil of Summer</td><td>6.8%</td><td>1.80</td></tr>
+<tr><td class="rk">31</td><td>Force of Negation</td><td>6.8%</td><td>1.60</td></tr>
+<tr><td class="rk">32</td><td>Flusterstorm</td><td>6.8%</td><td>1.60</td></tr>
+<tr><td class="rk">33</td><td>Engineered Explosives</td><td>6.8%</td><td>1.80</td></tr>
+<tr><td class="rk">34</td><td>Disruptor Flute</td><td>6.8%</td><td>1.60</td></tr>
+<tr><td class="rk">35</td><td>Vandalblast</td><td>5.5%</td><td>1.00</td></tr>
+<tr><td class="rk">36</td><td>Untimely Malfunction</td><td>5.5%</td><td>1.00</td></tr>
+<tr><td class="rk">37</td><td>Soul-Guide Lantern</td><td>5.5%</td><td>2.00</td></tr>
+<tr><td class="rk">38</td><td>Prismatic Ending</td><td>5.5%</td><td>3.25</td></tr>
+<tr><td class="rk">39</td><td>Past in Flames</td><td>5.5%</td><td>1.00</td></tr>
+<tr><td class="rk">40</td><td>Leyline of the Void</td><td>5.5%</td><td>3.00</td></tr>
+<tr><td class="rk">41</td><td>Inevitable Betrayal</td><td>5.5%</td><td>2.00</td></tr>
+<tr><td class="rk">42</td><td>Hurkyl's Recall</td><td>5.5%</td><td>1.00</td></tr>
+<tr><td class="rk">43</td><td>Harbinger of the Seas</td><td>5.5%</td><td>1.75</td></tr>
+<tr><td class="rk">44</td><td>Grapeshot</td><td>5.5%</td><td>1.00</td></tr>
+<tr><td class="rk">45</td><td>Fade from History</td><td>5.5%</td><td>1.50</td></tr>
+<tr><td class="rk">46</td><td>Erode</td><td>5.5%</td><td>1.50</td></tr>
+<tr><td class="rk">47</td><td>Endurance</td><td>5.5%</td><td>2.00</td></tr>
+<tr><td class="rk">48</td><td>Dismember</td><td>5.5%</td><td>1.50</td></tr>
+<tr><td class="rk">49</td><td>Clarion Conqueror</td><td>5.5%</td><td>2.00</td></tr>
+<tr><td class="rk">50</td><td>Ashiok, Dream Render</td><td>5.5%</td><td>1.25</td></tr>
+</tbody></table></div>
 </div>
 </div>
 </main>
@@ -3105,12 +3331,12 @@ plugins:{
 window.__charts=window.__charts||{};
 window.__charts['pchart_de34']=pc;
 })();}catch(e){console.error('[pchart-de34] '+e);}
-var KPI_PRE={t:10,d:118,p:86,a:38};
-var KPI_POST={t:11,d:206,p:145,a:57};
-var KPI_ALL={t:21,d:324,p:182,a:72};
-var CNT_PRE={s1:38,s2:14,s3:86,s4:-1,s5:-1,s6:50,s7:14};
-var CNT_POST={s1:57,s2:22,s3:145,s4:-1,s5:-1,s6:50,s7:22};
-var CNT_ALL={s1:72,s2:28,s3:182,s4:-1,s5:-1,s6:50,s7:28};
+var KPI_PRE={t:10,d:118,p:85,a:38};
+var KPI_POST={t:11,d:206,p:144,a:57};
+var KPI_ALL={t:21,d:324,p:181,a:72};
+var CNT_PRE={s1:38,s2:14,s3:85,s4:-1,sbst:50,s5:-1,s6:50,s7:14};
+var CNT_POST={s1:57,s2:22,s3:144,s4:-1,sbst:50,s5:-1,s6:50,s7:22};
+var CNT_ALL={s1:72,s2:28,s3:181,s4:-1,sbst:50,s5:-1,s6:50,s7:28};
 var DE_NAMES={'de-34':'Destination Event Modern Onplay',};
 var currentPeriod='all';
 function setPeriod(p){
@@ -3372,11 +3598,13 @@ window.exportImages=function(){
       {file:'social-metagame-share-'+sfx+'.png',  title:'Metagame Share \u2014 '+lbl,        ids:['mcw-'+p]},
       {file:'social-metagame-dist-'+sfx+'.png',   title:'Metagame Distribution \u2014 '+lbl,  ids:['ms-pie-'+p]},
       {file:'social-top-cards-'+sfx+'.png',       title:'Most Played Cards \u2014 '+lbl,     ids:['cg-'+p],top10:true},
+      {file:'social-sideboard-cards-'+sfx+'.png', title:'Sideboard Staples \u2014 '+lbl,     ids:['sbc-'+p],top10:true},
       {file:'social-rising-cards-'+sfx+'.png',    title:'Rising Cards \u2014 '+lbl,          ids:['rc-'+p],top10:true}
     ]:[
       {file:'metagame-share-'+sfx+'.png',         title:'Metagame Share \u2014 '+lbl,        ids:['mcw-'+p,'ms-tbl-'+p]},
       {file:'metagame-distribution-'+sfx+'.png',  title:'Metagame Distribution \u2014 '+lbl,  ids:['ms-pie-'+p]},
       {file:'top-cards-'+sfx+'.png',              title:'Most Played Cards \u2014 '+lbl,     ids:['cg-'+p],top10:true},
+      {file:'sideboard-cards-'+sfx+'.png',        title:'Sideboard Staples \u2014 '+lbl,     ids:['sbc-'+p],top10:true},
       {file:'rising-cards-'+sfx+'.png',           title:'Rising Cards \u2014 '+lbl,          ids:['rc-'+p]}
     ];
     var idx=0,done=0;
